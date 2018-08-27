@@ -16,6 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".SignActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".TrendingActivity" />
+        <activity android:name=".AppInfoActivity" />
+        <activity android:name=".QnaActivtiy" />
+        <activity android:name=".MyChallengeListActivity" />
+        <activity android:name=".MakeMyChallengeActivity" />
+        <activity android:name=".ViewChallengeActivity" />
+        <activity android:name=".WriteMyDiaryActivity" />
+        <activity android:name=".ChallengeInfoActivity" />
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".ViewBookActivity" />
+        <activity android:name=".StoreActivity" />
+        <activity android:name=".ChangeSkinActivity"></activity>
     </application>
 
 </manifest>
