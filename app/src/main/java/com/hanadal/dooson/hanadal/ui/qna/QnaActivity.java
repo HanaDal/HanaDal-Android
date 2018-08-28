@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.hanadal.dooson.hanadal.R;
 
-public class QuaActivity extends AppCompatActivity {
+public class QnaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

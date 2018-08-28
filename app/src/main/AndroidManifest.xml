@@ -25,7 +25,7 @@
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.trending.TrendingActivity" />
         <activity android:name=".ui.app_info.AppInfoActivity" />
-        <activity android:name=".ui.qna.QuaActivity" />
+        <activity android:name=".ui.qna.QnaActivity" />
         <activity android:name=".ui.my_challenge_list.MyChallengeListActivity" />
         <activity android:name=".ui.make_my_challenge.MakeMyChallengeActivity" />
         <activity android:name=".ui.view_challenge.ViewChallengeActivity" />
