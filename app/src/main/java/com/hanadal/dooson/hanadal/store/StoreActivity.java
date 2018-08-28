@@ -1,13 +1,15 @@
-package com.hanadal.dooson.hanadal;
+package com.hanadal.dooson.hanadal.store;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ChangeSkinActivity extends AppCompatActivity {
+import com.hanadal.dooson.hanadal.R;
+
+public class StoreActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_skin);
+        setContentView(R.layout.activity_store);
     }
 }

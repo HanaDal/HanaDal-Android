@@ -1,7 +1,9 @@
-package com.hanadal.dooson.hanadal;
+package com.hanadal.dooson.hanadal.write_my_diary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.hanadal.dooson.hanadal.R;
 
 public class WriteMyDiaryActivity extends AppCompatActivity {
 
