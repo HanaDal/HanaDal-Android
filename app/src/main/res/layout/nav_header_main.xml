@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/star_real"
     android:orientation="vertical"
-    android:paddingBottom="60dp"
+    android:paddingBottom="45dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
