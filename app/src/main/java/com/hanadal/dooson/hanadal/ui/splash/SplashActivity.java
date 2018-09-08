@@ -3,7 +3,6 @@ package com.hanadal.dooson.hanadal.ui.splash;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Handler;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
