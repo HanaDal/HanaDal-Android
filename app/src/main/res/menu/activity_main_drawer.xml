@@ -8,19 +8,19 @@
             android:icon="@drawable/nav_favorite"
             android:title="공감한 편린들" />
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_my_challenge"
             android:icon="@drawable/nav_whatshot"
             android:title="나의 편린" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_question"
             android:icon="@drawable/nav_question_answer"
             android:title="나의 질문/답변" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_skin"
             android:icon="@drawable/nav_gallery"
             android:title="스킨/훈장 변경" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_info"
             android:icon="@drawable/nav_info"
             android:title="앱 정보" />
     </group>

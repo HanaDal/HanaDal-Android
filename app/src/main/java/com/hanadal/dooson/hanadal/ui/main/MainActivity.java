@@ -10,7 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.hanadal.dooson.hanadal.R;
+import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
+import com.hanadal.dooson.hanadal.ui.change_skin.ChangeSkinActivity;
+import com.hanadal.dooson.hanadal.ui.qna.QnaActivity;
 import com.hanadal.dooson.hanadal.ui.store.StoreActivity;
+import com.hanadal.dooson.hanadal.ui.trending.TrendingActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -41,17 +45,23 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        switch (item.getItemId()){
+            case R.id.nav_hart:
+                startActivity(new Intent(getApplicationContext(), TrendingActivity.class));
+                break;
+            case R.id.nav_my_challenge:
+                startActivity(new Intent(getApplicationContext(), TrendingActivity.class));
+                break;
+            case R.id.nav_question:
+                startActivity(new Intent(getApplicationContext(), QnaActivity.class));
+                break;
+            case R.id.nav_skin:
+                startActivity(new Intent(getApplicationContext(), ChangeSkinActivity.class));
+                break;
+            case R.id.nav_info:
+                startActivity(new Intent(getApplicationContext(), AppInfoActivity.class));
+                break;
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
