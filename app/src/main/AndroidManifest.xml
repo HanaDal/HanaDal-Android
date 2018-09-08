@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hanadal.dooson.hanadal">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity android:name=".TestActivity">-->
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.sign.SignActivity" />
-        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.trending.TrendingActivity" />
         <activity android:name=".ui.app_info.AppInfoActivity" />
@@ -35,6 +34,6 @@
         <activity android:name=".ui.view_book.ViewBookActivity" />
         <activity android:name=".ui.store.StoreActivity" />
         <activity android:name=".ui.change_skin.ChangeSkinActivity" />
-
     </application>
+
 </manifest>
