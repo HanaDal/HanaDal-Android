@@ -1,15 +1,11 @@
 package com.hanadal.dooson.hanadal.ui.splash;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.os.Build;
 import android.os.Handler;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
@@ -67,4 +63,6 @@ public class SplashActivity extends AppCompatActivity{
             ani = true;
         }
     }
+
+    public void onBackPressed() { }
 }
