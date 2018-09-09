@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -55,27 +56,26 @@
             android:id="@+id/kakao_btn"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="38dp"
             android:layout_marginStart="38dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/kakao"
-            app:layout_constraintBottom_toTopOf="@+id/face_btn"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.583" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/face_btn"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginBottom="76dp"
             android:layout_marginEnd="38dp"
             android:layout_marginStart="38dp"
+            android:layout_marginTop="36dp"
             android:background="@drawable/facebook"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kakao_btn" />
     </android.support.constraint.ConstraintLayout>
 </layout>

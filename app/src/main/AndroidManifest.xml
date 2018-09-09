@@ -20,20 +20,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.sign.SignActivity" />
-        <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.search.SearchActivity" />
-        <activity android:name=".ui.trending.TrendingActivity" />
+        <activity android:name=".ui.main.MainActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.app_info.AppInfoActivity" />
-        <activity android:name=".ui.qna.QnaActivity" />
-        <activity android:name=".ui.my_challenge_list.MyChallengeListActivity" />
         <activity android:name=".ui.make_my_challenge.MakeMyChallengeActivity" />
         <activity android:name=".ui.view_challenge.ViewChallengeActivity" />
         <activity android:name=".ui.write_my_diary.WriteMyDiaryActivity" />
         <activity android:name=".ui.challenge_info.ChallengeInfoActivity" />
         <activity android:name=".ui.request.RequestActivity" />
         <activity android:name=".ui.view_book.ViewBookActivity" />
-        <activity android:name=".ui.store.StoreActivity" />
-        <activity android:name=".ui.change_skin.ChangeSkinActivity" />
     </application>
 
 </manifest>

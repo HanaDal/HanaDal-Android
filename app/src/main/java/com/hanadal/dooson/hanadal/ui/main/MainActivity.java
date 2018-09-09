@@ -1,27 +1,39 @@
 package com.hanadal.dooson.hanadal.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import com.hanadal.dooson.hanadal.R;
+import com.hanadal.dooson.hanadal.TestFragment;
 import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
-import com.hanadal.dooson.hanadal.ui.change_skin.ChangeSkinActivity;
-import com.hanadal.dooson.hanadal.ui.qna.QnaActivity;
-import com.hanadal.dooson.hanadal.ui.store.StoreActivity;
-import com.hanadal.dooson.hanadal.ui.trending.TrendingActivity;
+import com.hanadal.dooson.hanadal.ui.trending.TrendingFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, TextWatcher {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    ViewPager viewPager;
+    MainViewPagerAdapter mainViewPagerAdapter;
+    TabLayout tabLayout;
+    EditText editText;
 
+    boolean isSearch = false;
+
+
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +41,29 @@ public class MainActivity extends AppCompatActivity
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        viewPager = findViewById(R.id.main_view_pager);
+        tabLayout = findViewById(R.id.main_tab);
+        editText = findViewById(R.id.search_edit);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        mainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
+        mainViewPagerAdapter.addFragment(new TestFragment());
+        mainViewPagerAdapter.addFragment(new TestFragment());
+        mainViewPagerAdapter.addFragment(new TestFragment());
+        mainViewPagerAdapter.addFragment(new TestFragment());
+        mainViewPagerAdapter.addFragment(new TestFragment());
+
+        viewPager.setAdapter(mainViewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setText("내 도전");
+        tabLayout.getTabAt(1).setText("트렌딩");
+        tabLayout.getTabAt(2).setText("Q&A");
+        tabLayout.getTabAt(3).setText("아이템");
+        tabLayout.getTabAt(4).setText("상점");
+
+        editText.addTextChangedListener(this);
     }
 
     @Override
@@ -47,23 +80,28 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.nav_hart:
-                startActivity(new Intent(getApplicationContext(), TrendingActivity.class));
-                break;
             case R.id.nav_my_challenge:
-                startActivity(new Intent(getApplicationContext(), TrendingActivity.class));
+                viewPager.setCurrentItem(0);
+                break;
+            case R.id.nav_trending:
+                viewPager.setCurrentItem(1);
                 break;
             case R.id.nav_question:
-                startActivity(new Intent(getApplicationContext(), QnaActivity.class));
+                viewPager.setCurrentItem(2);
                 break;
             case R.id.nav_skin:
-                startActivity(new Intent(getApplicationContext(), ChangeSkinActivity.class));
+                viewPager.setCurrentItem(3);
+                break;
+            case R.id.nav_shop:
+                viewPager.setCurrentItem(4);
+                break;
+            case R.id.nav_hart:
+                startActivity(new Intent(getApplicationContext(), TrendingFragment.class));
                 break;
             case R.id.nav_info:
                 startActivity(new Intent(getApplicationContext(), AppInfoActivity.class));
                 break;
         }
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -71,10 +109,28 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.search_edit :
+                isSearch = true;
+                editText.setHint("편린&QnA 검색");
+                break;
             case R.id.nav_btn :
                 if(!drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.shop_btn : startActivity(new Intent(getApplicationContext(), StoreActivity.class));
         }
     }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        editText.setHint("HanaDal");
+    }
+
+
 }

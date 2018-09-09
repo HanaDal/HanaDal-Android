@@ -4,21 +4,30 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_hart"
-            android:icon="@drawable/nav_favorite"
-            android:title="공감한 편린들" />
-        <item
             android:id="@+id/nav_my_challenge"
-            android:icon="@drawable/nav_whatshot"
-            android:title="나의 편린" />
+            android:icon="@drawable/nav_my_challenge"
+            android:title="내 도전" />
+        <item
+            android:id="@+id/nav_trending"
+            android:icon="@drawable/nav_trending"
+            android:title="트렌딩"/>
+
         <item
             android:id="@+id/nav_question"
             android:icon="@drawable/nav_question_answer"
-            android:title="나의 질문/답변" />
+            android:title="Q&amp;A" />
         <item
             android:id="@+id/nav_skin"
             android:icon="@drawable/nav_gallery"
-            android:title="스킨/훈장 변경" />
+            android:title="아이템" />
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/nav_shop"
+            android:title="상점" />
+        <item
+            android:id="@+id/nav_hart"
+            android:icon="@drawable/nav_favorite"
+            android:title="공감한 편린들" />
         <item
             android:id="@+id/nav_info"
             android:icon="@drawable/nav_info"
