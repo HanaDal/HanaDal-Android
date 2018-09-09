@@ -29,6 +29,8 @@
         <activity android:name=".ui.challenge_info.ChallengeInfoActivity" />
         <activity android:name=".ui.request.RequestActivity" />
         <activity android:name=".ui.view_book.ViewBookActivity" />
+
+        <activity android:name=".TestActivity"/>
     </application>
 
 </manifest>

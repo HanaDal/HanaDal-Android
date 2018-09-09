@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.ui.main;
+package com.hanadal.dooson.hanadal.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainViewPagerAdapter extends FragmentPagerAdapter{
+public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragments = new ArrayList<>();
 
-    public MainViewPagerAdapter(FragmentManager fm) {
+    public FragmentViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 

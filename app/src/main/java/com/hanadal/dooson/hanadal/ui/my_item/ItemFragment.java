@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.ui.trending;
+package com.hanadal.dooson.hanadal.ui.my_item;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,7 +14,8 @@ import com.hanadal.dooson.hanadal.TestFragment;
 import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
-public class TrendingFragment extends Fragment {
+
+public class ItemFragment extends Fragment {
 
     TabLayout tabLayout;
     FragmentViewPagerAdapter fragmentViewPagerAdapter;
@@ -24,8 +25,8 @@ public class TrendingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewPager = view.getRootView().findViewById(R.id.trending_view_pager);
-        tabLayout = view.getRootView().findViewById(R.id.trending_tab);
+        viewPager = view.getRootView().findViewById(R.id.my_item_view_pager);
+        tabLayout = view.getRootView().findViewById(R.id.my_item_tab);
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
         fragmentViewPagerAdapter.addFragment(new TestFragment());
@@ -35,14 +36,13 @@ public class TrendingFragment extends Fragment {
         viewPager.setPagingEnabled(false);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setText("도전");
-        tabLayout.getTabAt(1).setText("책");
+        tabLayout.getTabAt(0).setText("스킨");
+        tabLayout.getTabAt(1).setText("훈장");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trending, container, false);
+        return inflater.inflate(R.layout.fragment_my_item, container, false);
     }
 }
-
