@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.TestActivity;
 import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
 import com.hanadal.dooson.hanadal.ui.my_item.ItemFragment;
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity
     TabLayout tabLayout;
     EditText editText;
 
-    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
