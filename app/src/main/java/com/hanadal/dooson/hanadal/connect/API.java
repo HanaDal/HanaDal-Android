@@ -1,6 +1,9 @@
 package com.hanadal.dooson.hanadal.connect;
 
 import com.google.gson.Gson;
+import com.hanadal.dooson.hanadal.data.*;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -18,7 +21,7 @@ public interface API {
 
     // 로그인
     @POST("user/login")
-    Call<Gson> login(@Field("userId") String userId);
+    Call<Login> login(@Field("userId") String userId);
 
     // 회원가입
     @POST("user/login")
@@ -27,7 +30,7 @@ public interface API {
     // 프로필 정보 얻기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/profile")
-    Call<Gson> getProfile(@Header("X-Access-Token") String jwt);
+    Call<Profile> getProfile(@Header("X-Access-Token") String jwt);
 
     // 프로필 정보 변경
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -37,7 +40,7 @@ public interface API {
     // 공감한 편린들
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/cheering")
-    Call<Gson> getCheering(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<Cheering>> getCheering(@Header("X-Access-Token") String jwt);
 
     // 편린에 공감하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -47,7 +50,7 @@ public interface API {
     // 보유 아이템 확인
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/item")
-    Call<Gson> getItem(@Header("X-Access-Token") String jwt);
+    Call<Item> getItem(@Header("X-Access-Token") String jwt);
 
     // 아이템 구매
     @Headers({"Content-Type: application/json;charset=UTF-8"})
