@@ -55,19 +55,19 @@ public interface API {
     // 아이템 구매
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("user/item")
-    Call<Gson> buyItem(@Header("X-Access-Token") String jwt, @Field("id") String id);
+    Call<BuyItem> buyItem(@Header("X-Access-Token") String jwt, @Field("id") String id);
 
     // 상점
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/store")
-    Call<Gson> getStore(@Header("X-Access-Token") String jwt);
+    Call<Store> getStore(@Header("X-Access-Token") String jwt);
 
     /** Challenge **/
 
     // 내 도전 조회하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("challenge")
-    Call<Gson> getMyChallenge(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<MyChallenge>> getMyChallenge(@Header("X-Access-Token") String jwt);
 
     // 도전 만들기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -82,7 +82,7 @@ public interface API {
     // 도전 상세보기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("challenge/{id}")
-    Call<Gson> showChallenge(@Header("X-Access-Token") String jwt, @Path("id") String id);
+    Call<ShowChallenge> showChallenge(@Header("X-Access-Token") String jwt, @Path("id") String id);
 
     // 도전 다어이리 작성하기     다이어리 내용------------ 김원준!!!!!!!!!!!!!!!!!
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -91,7 +91,7 @@ public interface API {
 
     // 도전 의견 확인하기
     @GET("challenge/{id}/comment")
-    Call<Gson> getComment(@Path("id") String id);
+    Call<ArrayList<ChallengeComment>> getComment(@Path("id") String id);
 
     // 도전에 의견 달기         의견 내용 ````````` 김원준!!!!!
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -100,7 +100,7 @@ public interface API {
 
     // 도전 정보
     @GET("challenge/{id}/info")
-    Call<Gson> GetChallengeInfo(@Path("id") String id);
+    Call<ChallengeInfo> GetChallengeInfo(@Path("id") String id);
 
     // 도전에 대한 정보 수정       정보 내용 `````````````` 김원준!!!!!!!!!!
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -114,7 +114,7 @@ public interface API {
     // 내 책 조회하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("book")
-    Call<Gson> getBook(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<BookList>> getBook(@Header("X-Access-Token") String jwt);
 
     // 책 상세 보기      책 내용 부분 을 더 상의 필요 ------------ 김원준!!!!!
     @GET("book/{id}")
@@ -124,17 +124,17 @@ public interface API {
 
     // 트렌딩 도전
     @GET("trending/challenge")
-    Call<Gson> getTredingChallenge();
+    Call<ArrayList<TrendingChallenge>> getTredingChallenge();
 
     // 트렌딩 책
     @GET("trending/book")
-    Call<Gson> getTredingBook();
+    Call<ArrayList<TrendingBook>> getTredingBook();
 
     /** QnA **/
 
     // QnA들 가져오기
     @GET("qna")
-    Call<Gson> getQnA();
+    Call<ArrayList<QnaList>> getQnA();
 
     // QnA 작성
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -148,7 +148,7 @@ public interface API {
     @GET("qna/{id}")
     Call<Gson> shpwQnA(@Path("id") String id);
 
-    // QnA 에 댓글 달기
+    // QnA 에 댓글 달기   댓글 내용 없음!!!!!!!!! -------------김원준~~~~~~~~~~~
     @POST("qna/{id}")
     Call<Gson> addQnAComment(@Header("X-Access-Token") String jwt, @Path("id") String id);
 
@@ -165,5 +165,5 @@ public interface API {
 
     // 도전, QnA 검색
     @GET("search")
-    Call<Gson> searching(@Query("query") String query);
+    Call<Search> searching(@Query("query") String query);
 }
