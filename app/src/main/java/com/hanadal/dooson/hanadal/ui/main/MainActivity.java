@@ -24,27 +24,29 @@ import com.hanadal.dooson.hanadal.ui.shop.ShopFragment;
 import com.hanadal.dooson.hanadal.ui.trending.TrendingFragment;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
-/** TODO
- *
- *  액티비티와 프래그먼트간 데이터 전달 방법 찾기
- *  플래그먼트간 데이터 전달 방법 찾기
- *
- *  매인 액티비티에서 모든 데이터를 서버에서 다 가져와서 플래그먼트에서 데이터를 주어도 상관 없을까?
- *  아니면 플래그먼트에서 서버에서 데이터를 가져와서 사용하는게 좋을까?
- *
- *  액션바 숨기는 방법 찾기
- *
- * **/
+/**
+ * TODO
+ * <p>
+ * 액티비티와 프래그먼트간 데이터 전달 방법 찾기
+ * 플래그먼트간 데이터 전달 방법 찾기
+ * <p>
+ * 매인 액티비티에서 모든 데이터를 서버에서 다 가져와서 플래그먼트에서 데이터를 주어도 상관 없을까?
+ * 아니면 플래그먼트에서 서버에서 데이터를 가져와서 사용하는게 좋을까?
+ * <p>
+ * 액션바 숨기는 방법 찾기
+ **/
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, TextWatcher {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, TextWatcher, TabLayout.OnTabSelectedListener{
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    DoNotSwipeViewPager viewPager;
-    FragmentViewPagerAdapter mainViewPagerAdapter;
-    TabLayout tabLayout;
-    EditText editText;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private DoNotSwipeViewPager viewPager;
+    private FragmentViewPagerAdapter mainViewPagerAdapter;
+    private TabLayout tabLayout;
+    private EditText editText;
+
+    private int lastPagerNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +80,18 @@ public class MainActivity extends AppCompatActivity
         tabLayout.getTabAt(3).setText("아이템");
         tabLayout.getTabAt(4).setText("상점");
 
+        tabLayout.addOnTabSelectedListener(this);
         editText.addTextChangedListener(this);
     }
 
     @Override
     public void onBackPressed() {
+        if (viewPager.getCurrentItem() == 5) {
+            tabLayout.setVisibility(View.VISIBLE);
+            viewPager.setCurrentItem(lastPagerNum);
+            return;
+        }
+
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
@@ -96,18 +105,23 @@ public class MainActivity extends AppCompatActivity
 
         switch (item.getItemId()) {
             case R.id.nav_my_challenge:
+                lastPagerNum = 0;
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.nav_trending:
+                lastPagerNum = 1;
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.nav_question:
+                lastPagerNum = 2;
                 viewPager.setCurrentItem(2);
                 break;
             case R.id.nav_skin:
+                lastPagerNum = 3;
                 viewPager.setCurrentItem(3);
                 break;
             case R.id.nav_shop:
+                lastPagerNum = 4;
                 viewPager.setCurrentItem(4);
                 break;
             case R.id.nav_hart:
@@ -125,9 +139,12 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_edit:
-                // TODO 메인 탭뷰 숨기기
-                editText.setHint("편린&QnA 검색");
-                viewPager.setCurrentItem(5);
+                if (lastPagerNum != 5) {
+                    lastPagerNum = viewPager.getCurrentItem();
+                    tabLayout.setVisibility(View.GONE);
+                    editText.setHint("편린&QnA 검색");
+                    viewPager.setCurrentItem(5);
+                }
                 break;
             case R.id.nav_btn:
                 if (!drawerLayout.isDrawerOpen(GravityCompat.START))
@@ -148,4 +165,18 @@ public class MainActivity extends AppCompatActivity
     public void afterTextChanged(Editable s) {
     }
 
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        lastPagerNum =  tab.getPosition();
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
 }
