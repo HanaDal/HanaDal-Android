@@ -25,7 +25,7 @@ public class TestActivity extends AppCompatActivity {
 
         UtilClass.Toast(getApplicationContext(), "Test");
 
-        Connector.api.getUserRepositories("SeungYongSon").enqueue(new Res<JsonArray>(getApplicationContext()) {
+/*        Connector.api.getUserRepositories("SeungYongSon").enqueue(new Res<JsonArray>(getApplicationContext()) {
 
             @Override
             public void callback(int code, JsonArray body) {
@@ -35,7 +35,7 @@ public class TestActivity extends AppCompatActivity {
                     binding.textTest.setText(body.toString());
                 }
             }
-        });
+        });*/
     }
 
     public void onButtonClick(View view){
