@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -10,80 +9,108 @@
         tools:context=".ui.main.MainActivity">
 
         <android.support.design.widget.AppBarLayout
+            android:id="@+id/main_app_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
 
-            <android.support.constraint.ConstraintLayout
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/main_collapsing"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/main_toolbar"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="62dp"
-                    android:background="@color/colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    app:contentInsetStart="0dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_collapseMode="parallax">
 
-                    <android.support.constraint.ConstraintLayout
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/main_toolbar"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/main_bar_background">
+                        android:layout_height="62dp"
+                        android:background="@color/colorPrimary"
+                        app:contentInsetStart="0dp">
 
-                        <ImageView
-                            android:id="@+id/nav_btn"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@drawable/main_bar_dehaze"
-                            android:onClick="onClick"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <EditText
-                            android:onClick="onClick"
-                            android:id="@+id/search_edit"
-                            android:layout_width="0dp"
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@android:color/white"
-                            android:inputType="text"
-                            android:paddingEnd="8dp"
-                            android:paddingStart="8dp"
-                            android:textSize="18sp"
-                            android:hint="@string/hanadal"
-                            android:gravity="center_vertical"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/nav_btn"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="RtlSymmetry"
-                            android:singleLine="true"
-                            android:cursorVisible="false"/>
-                    </android.support.constraint.ConstraintLayout>
-                </android.support.v7.widget.Toolbar>
+                            android:layout_margin="8dp"
+                            android:background="@drawable/main_bar_background">
 
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/main_tab"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    app:tabTextColor="#55ffffff"
-                    app:tabSelectedTextColor="@android:color/white"/>
-            </android.support.constraint.ConstraintLayout>
+                            <ImageView
+                                android:id="@+id/nav_btn"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/main_bar_dehaze"
+                                android:onClick="onClick"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/search_edit"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@android:color/white"
+                                android:cursorVisible="false"
+                                android:gravity="center_vertical"
+                                android:hint="@string/hanadal"
+                                android:inputType="text"
+                                android:onClick="onClick"
+                                android:paddingEnd="8dp"
+                                android:paddingStart="8dp"
+                                android:singleLine="true"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/nav_btn"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="RtlSymmetry" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.v7.widget.Toolbar>
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/main_tab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        app:layout_collapseMode="parallax"
+                        app:tabSelectedTextColor="@android:color/white"
+                        app:tabTextColor="#55ffffff" />
+                </LinearLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/main_nested"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_app_bar_layout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager
+                    android:id="@+id/main_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 </layout>
