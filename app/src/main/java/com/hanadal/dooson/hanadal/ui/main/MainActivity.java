@@ -7,8 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -27,24 +25,18 @@ import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 /**
  * TODO
  * <p>
- * 액티비티와 프래그먼트간 데이터 전달 방법 찾기
- * 플래그먼트간 데이터 전달 방법 찾기
- * <p>
  * 매인 액티비티에서 모든 데이터를 서버에서 다 가져와서 플래그먼트에서 데이터를 주어도 상관 없을까?
  * 아니면 플래그먼트에서 서버에서 데이터를 가져와서 사용하는게 좋을까?
- * <p>
- * 액션바 숨기는 방법 찾기
  **/
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, TextWatcher, TabLayout.OnTabSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener,
+        View.OnClickListener, TabLayout.OnTabSelectedListener{
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
     private DoNotSwipeViewPager viewPager;
-    private FragmentViewPagerAdapter mainViewPagerAdapter;
     private TabLayout tabLayout;
-    private EditText editText;
+    public EditText editText;
 
     private int lastPagerNum;
 
@@ -53,15 +45,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
         viewPager = findViewById(R.id.main_view_pager);
         tabLayout = findViewById(R.id.main_tab);
         editText = findViewById(R.id.search_edit);
 
-        navigationView.setNavigationItemSelectedListener(this);
-
-        mainViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
+        FragmentViewPagerAdapter mainViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new MyChallengeListFragment());
         mainViewPagerAdapter.addFragment(new TrendingFragment());
         mainViewPagerAdapter.addFragment(new QnaFragment());
@@ -80,8 +70,8 @@ public class MainActivity extends AppCompatActivity
         tabLayout.getTabAt(3).setText("아이템");
         tabLayout.getTabAt(4).setText("상점");
 
+        navigationView.setNavigationItemSelectedListener(this);
         tabLayout.addOnTabSelectedListener(this);
-        editText.addTextChangedListener(this);
     }
 
     @Override
@@ -151,18 +141,6 @@ public class MainActivity extends AppCompatActivity
                     drawerLayout.openDrawer(GravityCompat.START);
                 break;
         }
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
     }
 
     @Override
