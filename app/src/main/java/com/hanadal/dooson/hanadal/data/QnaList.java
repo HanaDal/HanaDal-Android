@@ -14,9 +14,9 @@ public class QnaList {
     @SerializedName("tags")
     @Expose
     public String tags;
-    @SerializedName("authorPicutreUrl")
+    @SerializedName("authorPictureUrl")
     @Expose
-    public String authorPicutreUrl;
+    public String authorPictureUrl;
     @SerializedName("author")
     @Expose
     public String author;

@@ -116,7 +116,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
                     app:layout_constraintVertical_bias="0.85" />
 
-
                 <ImageView
                     android:id="@+id/challenge_fork"
                     android:layout_width="wrap_content"

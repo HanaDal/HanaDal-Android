@@ -21,11 +21,13 @@ public interface API {
 
     // 로그인
     @POST("user/login")
-    Call<Login> login(@Field("userId") String userId);
+    Call<Login> login(@Field("id") String id);
 
     // 회원가입
     @POST("user/login")
-    Call<Gson> resister(@Field("userId") String userId, @Field("userName") String userName, @Field("userTags") String userTags);
+    Call<Gson> resister(@Field("id") String id,
+                        @Field("name") String name,
+                        @Field("tags") String tags);
 
     // 프로필 정보 얻기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -35,7 +37,9 @@ public interface API {
     // 프로필 정보 변경
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @PUT("user/profile")
-    Call<Gson> modifyProfile(@Header("X-Access-Token") String jwt, @Field("profileName") String profileName, @Field("profileTags") String profileTags);
+    Call<Gson> modifyProfile(@Header("X-Access-Token") String jwt,
+                             @Field("profileName") String profileName,
+                             @Field("profileTags") String profileTags);
 
     // 공감한 편린들
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -55,7 +59,7 @@ public interface API {
     // 아이템 구매
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("user/item")
-    Call<BuyItem> buyItem(@Header("X-Access-Token") String jwt, @Field("id") String id);
+    Call<Gson> buyItem(@Header("X-Access-Token") String jwt, @Field("id") String id);
 
     // 상점
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -73,7 +77,7 @@ public interface API {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("challenge")
     Call<Gson> makeMyChallenge(@Header("X-Access-Token") String jwt,
-                               @Field("name") String name,
+                               @Field("title") String title,
                                @Field("description") String description,
                                @Field("isPublic") Boolean isPublic,
                                @Field("isStrict") Boolean isStrict,
@@ -84,28 +88,56 @@ public interface API {
     @GET("challenge/{id}")
     Call<ShowChallenge> showChallenge(@Header("X-Access-Token") String jwt, @Path("id") String id);
 
-    // 도전 다어이리 작성하기     다이어리 내용------------ 김원준!!!!!!!!!!!!!!!!!
+    // 도전 다어이리 작성하기
+    @POST("challenge/{id}/diary/{day}")
+    Call<Gson> writeDiary(@Path("id") String id,
+                          @Path("day") String day,
+                          @Field("title") String title,
+                          @Field("content") String content);
+
+    // 도전 다이어리 작성하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
-    @POST("challenge/{id}")
-    Call<Gson> writeDiary(@Header("X-Access-Token") String jwt, @Path("id") String id);
+    @POST("challenge/{id}/todo/{day}")
+    Call<Gson> writeTodo(@Path("id") String id,
+                         @Path("day") String day,
+                         @Field("content") String content);
 
     // 도전 의견 확인하기
     @GET("challenge/{id}/comment")
-    Call<ArrayList<ChallengeComment>> getComment(@Path("id") String id);
+    Call<ArrayList<ChallengeComment>> getCommentList(@Path("id") String id);
 
-    // 도전에 의견 달기         의견 내용 ````````` 김원준!!!!!
+    // 도전 의견 달기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("challenge/{id}/comment")
-    Call<Gson> writeComment(@Header("X-Access-Token") String jwt, @Path("id") String id);
+    Call<ArrayList<ChallengeComment>> writeComment(@Header("X-Access-Token") String jwt,
+                                                   @Path("id") String id,
+                                                   @Field("title ") String title,
+                                                   @Field("content") String content);
+
+    // 도전 의견 상세 보기
+    @GET("challenge/{id}/comment/{no}")
+    Call<Gson> showComment(@Path("id") String id, @Path("no") String no);
+
+    // 도전 의견에 댓글 달기
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    @POST("challenge/{id}/comment/{no}")
+    Call<Gson> writeCommentFromComment(@Header("X-Access-Token") String jwt,
+                                       @Path("id") String id,
+                                       @Path("no") String no,
+                                       @Field("content") String content);
 
     // 도전 정보
     @GET("challenge/{id}/info")
     Call<ChallengeInfo> GetChallengeInfo(@Path("id") String id);
 
-    // 도전에 대한 정보 수정       정보 내용 `````````````` 김원준!!!!!!!!!!
+    // 도전에 대한 정보 수정
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @PUT("challenge/{id}/info")
-    Call<Gson> modifyChallengeInfo(@Header("X-Access-Token") String jwt, @Path("id") String id);
+    Call<Gson> modifyChallengeInfo(@Header("X-Access-Token") String jwt,
+                                   @Path("id") String id,
+                                   @Field("title") String title,
+                                   @Field("description") String description,
+                                   @Field("tags") String tags);
 
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @PUT("challenge/{id}/fork")
@@ -144,19 +176,21 @@ public interface API {
                         @Field("tags") String tags,
                         @Field("content") String content);
 
-    // QnA 상세 보기     QnA 가 자기꺼 인지 확인할 필요 있지 않나? ---------- 김원준~~~~~
+    // QnA 상세 보기
     @GET("qna/{id}")
-    Call<Gson> shpwQnA(@Path("id") String id);
+    Call<Qna> shpwQnA(@Path("id") String id);
 
-    // QnA 에 댓글 달기   댓글 내용 없음!!!!!!!!! -------------김원준~~~~~~~~~~~
+    // QnA 에 댓글 달기
     @POST("qna/{id}")
-    Call<Gson> addQnAComment(@Header("X-Access-Token") String jwt, @Path("id") String id);
+    Call<Gson> addQnAComment(@Header("X-Access-Token") String jwt,
+                             @Path("id") String id,
+                             @Field("content") String content);
 
     // QnA 수정
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @PUT("qna/{id}")
-    Call<Gson> modifyQnA(@Path("id") String id,
-                         @Header("X-Access-Token") String jwt,
+    Call<Gson> modifyQnA(@Header("X-Access-Token") String jwt,
+                         @Path("id") String id,
                          @Field("title") String title,
                          @Field("tags") String tags,
                          @Field("content") String content);

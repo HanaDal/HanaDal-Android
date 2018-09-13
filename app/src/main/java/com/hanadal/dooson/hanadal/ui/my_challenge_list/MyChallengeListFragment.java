@@ -28,7 +28,7 @@ public class MyChallengeListFragment extends Fragment {
         tabLayout = view.getRootView().findViewById(R.id.my_challenge_list_tab);
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
-        fragmentViewPagerAdapter.addFragment(new TestFragment());
+        fragmentViewPagerAdapter.addFragment(new ChallengeListFragment());
         fragmentViewPagerAdapter.addFragment(new TestFragment());
 
         viewPager.setAdapter(fragmentViewPagerAdapter);

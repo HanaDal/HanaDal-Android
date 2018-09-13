@@ -22,6 +22,9 @@ public class ShowChallenge {
     @SerializedName("diary")
     @Expose
     public List<Diary> diary = null;
+    @SerializedName("todo")
+    @Expose
+    public List<String> todo = null;
 
     public class Diary {
 
@@ -31,9 +34,6 @@ public class ShowChallenge {
         @SerializedName("content")
         @Expose
         public String content;
-        @SerializedName("todo")
-        @Expose
-        public List<String> todo = null;
 
     }
 }
