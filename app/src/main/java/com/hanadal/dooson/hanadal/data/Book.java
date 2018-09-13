@@ -3,25 +3,24 @@ package com.hanadal.dooson.hanadal.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class QnaList {
+public class Book {
 
     @SerializedName("id")
     @Expose
     public String id;
-    @SerializedName("title")
+    @SerializedName("pictureUrl")
     @Expose
-    public String title;
-    @SerializedName("tags")
+    public String pictureUrl;
+    @SerializedName("name")
     @Expose
-    public String tags;
-    @SerializedName("authorPictureUrl")
-    @Expose
-    public String authorPictureUrl;
+    public String name;
     @SerializedName("author")
     @Expose
     public String author;
-    @SerializedName("answerCount")
+    @SerializedName("achievementRate")
     @Expose
-    public Integer answerCount;
-
+    public Integer achievementRate;
+    @SerializedName("date")
+    @Expose
+    public String date;
 }

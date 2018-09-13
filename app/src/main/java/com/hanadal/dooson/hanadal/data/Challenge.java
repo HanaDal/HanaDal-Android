@@ -3,7 +3,9 @@ package com.hanadal.dooson.hanadal.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookList {
+import java.util.List;
+
+public class Challenge {
 
     @SerializedName("id")
     @Expose
@@ -14,13 +16,20 @@ public class BookList {
     @SerializedName("name")
     @Expose
     public String name;
-    @SerializedName("author")
+    @SerializedName("tags")
     @Expose
-    public String author;
+    public List<String> tags = null;
     @SerializedName("achievementRate")
     @Expose
     public Integer achievementRate;
-    @SerializedName("date")
+    @SerializedName("authorPictureUrl")
     @Expose
-    public String date;
+    public String authorPictureUrl;
+    @SerializedName("author")
+    @Expose
+    public String author;
+    @SerializedName("isPressed")
+    @Expose
+    public Boolean isPressed;
+
 }

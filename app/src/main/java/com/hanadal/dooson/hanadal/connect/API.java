@@ -44,7 +44,7 @@ public interface API {
     // 공감한 편린들
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/cheering")
-    Call<ArrayList<Cheering>> getCheering(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<Challenge>> getCheering(@Header("X-Access-Token") String jwt);
 
     // 편린에 공감하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -71,7 +71,7 @@ public interface API {
     // 내 도전 조회하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("challenge")
-    Call<ArrayList<MyChallenge>> getMyChallenge(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<Challenge>> getMyChallenge(@Header("X-Access-Token") String jwt);
 
     // 도전 만들기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -104,7 +104,7 @@ public interface API {
 
     // 도전 의견 확인하기
     @GET("challenge/{id}/comment")
-    Call<ArrayList<ChallengeComment>> getCommentList(@Path("id") String id);
+    Call<ArrayList<QnAnCommentList>> getCommentList(@Path("id") String id);
 
     // 도전 의견 달기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -116,7 +116,7 @@ public interface API {
 
     // 도전 의견 상세 보기
     @GET("challenge/{id}/comment/{no}")
-    Call<Gson> showComment(@Path("id") String id, @Path("no") String no);
+    Call<QnAnComment> showComment(@Path("id") String id, @Path("no") String no);
 
     // 도전 의견에 댓글 달기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -146,7 +146,7 @@ public interface API {
     // 내 책 조회하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("book")
-    Call<ArrayList<BookList>> getBook(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<Book>> getBook(@Header("X-Access-Token") String jwt);
 
     // 책 상세 보기      책 내용 부분 을 더 상의 필요 ------------ 김원준!!!!!
     @GET("book/{id}")
@@ -156,17 +156,17 @@ public interface API {
 
     // 트렌딩 도전
     @GET("trending/challenge")
-    Call<ArrayList<TrendingChallenge>> getTredingChallenge();
+    Call<ArrayList<Challenge>> getTredingChallenge();
 
     // 트렌딩 책
     @GET("trending/book")
-    Call<ArrayList<TrendingBook>> getTredingBook();
+    Call<ArrayList<Book>> getTredingBook();
 
     /** QnA **/
 
     // QnA들 가져오기
     @GET("qna")
-    Call<ArrayList<QnaList>> getQnA();
+    Call<ArrayList<QnAnCommentList>> getQnA();
 
     // QnA 작성
     @Headers({"Content-Type: application/json;charset=UTF-8"})
@@ -178,7 +178,7 @@ public interface API {
 
     // QnA 상세 보기
     @GET("qna/{id}")
-    Call<Qna> shpwQnA(@Path("id") String id);
+    Call<QnAnComment> shpwQnA(@Path("id") String id);
 
     // QnA 에 댓글 달기
     @POST("qna/{id}")
