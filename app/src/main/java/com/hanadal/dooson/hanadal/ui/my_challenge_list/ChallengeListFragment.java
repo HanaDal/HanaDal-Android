@@ -26,20 +26,36 @@ public class ChallengeListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        challengeList = view.getRootView().findViewById(R.id.fragment_recycler);
-        adapter = new ChallengeListAdapter(arrayList, getContext());
 
-        challengeList.setHasFixedSize(false);
-        challengeList.setAdapter(adapter);
-        challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
-        challengeList.setItemAnimator(new DefaultItemAnimator());
-
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
         adapter.add(new Challenge());
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recycler, container, false);
+        View v = inflater.inflate(R.layout.fragment_recycler, container, false);
+
+        challengeList = v.getRootView().findViewById(R.id.fragment_recycler);
+        adapter = new ChallengeListAdapter(arrayList, getContext());
+
+        challengeList.setHasFixedSize(false);
+        challengeList.setAdapter(adapter);
+        challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
+        challengeList.setItemAnimator(new DefaultItemAnimator());
+        return v;
     }
 }
