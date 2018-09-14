@@ -31,9 +31,9 @@ public class QnAnComment {
 
     public class Answer {
 
-        @SerializedName("authorPcitureUrl")
+        @SerializedName("authorPictureUrl")
         @Expose
-        public String authorPcitureUrl;
+        public String authorPictureUrl;
         @SerializedName("author")
         @Expose
         public String author;

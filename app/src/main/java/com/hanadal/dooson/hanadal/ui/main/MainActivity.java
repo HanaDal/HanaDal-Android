@@ -22,13 +22,6 @@ import com.hanadal.dooson.hanadal.ui.shop.ShopFragment;
 import com.hanadal.dooson.hanadal.ui.trending.TrendingFragment;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
-/**
- * TODO
- * <p>
- * 매인 액티비티에서 모든 데이터를 서버에서 다 가져와서 플래그먼트에서 데이터를 주어도 상관 없을까?
- * 아니면 플래그먼트에서 서버에서 데이터를 가져와서 사용하는게 좋을까?
- **/
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener, TabLayout.OnTabSelectedListener{
@@ -97,22 +90,27 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.nav_my_challenge:
                 lastPagerNum = 0;
+                tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.nav_trending:
                 lastPagerNum = 1;
+                tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.nav_question:
                 lastPagerNum = 2;
+                tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(2);
                 break;
             case R.id.nav_skin:
                 lastPagerNum = 3;
+                tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(3);
                 break;
             case R.id.nav_shop:
                 lastPagerNum = 4;
+                tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(4);
                 break;
             case R.id.nav_hart:
@@ -150,12 +148,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
+    public void onTabUnselected(TabLayout.Tab tab) { }
 
     @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
-    }
+    public void onTabReselected(TabLayout.Tab tab) { }
 }

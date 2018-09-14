@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TrendingChallenge {
 
-    @SerializedName("id")
+    @SerializedName("_id")
     @Expose
     public String id;
     @SerializedName("pictureUrl")

@@ -26,15 +26,15 @@ public class TrendingFragment extends Fragment {
 
         viewPager = view.getRootView().findViewById(R.id.trending_view_pager);
         tabLayout = view.getRootView().findViewById(R.id.trending_tab);
-        fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
-        fragmentViewPagerAdapter.addFragment(new TestFragment());
+        fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
+        fragmentViewPagerAdapter.addFragment(new TrendingChallengeFragment());
         fragmentViewPagerAdapter.addFragment(new TestFragment());
 
         viewPager.setAdapter(fragmentViewPagerAdapter);
         viewPager.setPagingEnabled(false);
-        tabLayout.setupWithViewPager(viewPager);
 
+        tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setText("도전");
         tabLayout.getTabAt(1).setText("책");
     }

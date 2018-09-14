@@ -19,6 +19,9 @@ public class Store {
 
     public class Skin {
 
+        @SerializedName("_id")
+        @Expose
+        public String id;
         @SerializedName("picture")
         @Expose
         public String picture;

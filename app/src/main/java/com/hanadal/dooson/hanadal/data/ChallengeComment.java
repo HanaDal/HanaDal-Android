@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ChallengeComment {
 
-    @SerializedName("id")
+    @SerializedName("_id")
     @Expose
     public String id;
     @SerializedName("title")

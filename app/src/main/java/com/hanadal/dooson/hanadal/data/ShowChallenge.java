@@ -10,7 +10,7 @@ public class ShowChallenge {
     @SerializedName("result")
     @Expose
     public String result;
-    @SerializedName("id")
+    @SerializedName("_id")
     @Expose
     public String id;
     @SerializedName("isMine")

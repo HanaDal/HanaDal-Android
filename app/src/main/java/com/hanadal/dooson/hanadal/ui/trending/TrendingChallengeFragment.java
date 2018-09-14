@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.ui.my_challenge_list;
+package com.hanadal.dooson.hanadal.ui.trending;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,36 +17,43 @@ import com.hanadal.dooson.hanadal.data.Challenge;
 
 import java.util.ArrayList;
 
-public class ChallengeListFragment extends Fragment {
+public class TrendingChallengeFragment extends Fragment {
 
     RecyclerView challengeList;
     ChallengeListAdapter adapter;
     ArrayList<Challenge> arrayList = new ArrayList<>();
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        challengeList = view.getRootView().findViewById(R.id.fragment_recycler_view);
-        adapter = new ChallengeListAdapter(arrayList, getContext());
-
-        challengeList.setHasFixedSize(false);
-        challengeList.setAdapter(adapter);
-        challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
-        challengeList.setItemAnimator(new DefaultItemAnimator());
-
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recycler, container, false);
+        View view = inflater.inflate(R.layout.fragment_recycler, container, false);
+        challengeList = view.findViewById(R.id.fragment_recycler_view);
+
+        adapter = new ChallengeListAdapter(arrayList, getContext());
+        challengeList.setHasFixedSize(false);
+        challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
+        challengeList.setItemAnimator(new DefaultItemAnimator());
+        challengeList.setAdapter(adapter);
+
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+        adapter.add(new Challenge());
+
+        return view;
     }
 }

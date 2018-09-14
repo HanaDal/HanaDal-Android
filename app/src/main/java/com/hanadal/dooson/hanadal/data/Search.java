@@ -19,7 +19,7 @@ public class Search {
 
     public class Challenge {
 
-        @SerializedName("id")
+        @SerializedName("_id")
         @Expose
         public String id;
         @SerializedName("pictureUrl")
@@ -48,7 +48,7 @@ public class Search {
 
     public class Qna {
 
-        @SerializedName("id")
+        @SerializedName("_id")
         @Expose
         public String id;
         @SerializedName("title")
