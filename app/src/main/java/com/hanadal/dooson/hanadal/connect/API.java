@@ -146,7 +146,7 @@ public interface API {
     // 내 책 조회하기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("book")
-    Call<ArrayList<Book>> getBook(@Header("X-Access-Token") String jwt);
+    Call<ArrayList<BookList>> getBook(@Header("X-Access-Token") String jwt);
 
     // 책 상세 보기      책 내용 부분 을 더 상의 필요 ------------ 김원준!!!!!
     @GET("book/{id}")
@@ -160,7 +160,7 @@ public interface API {
 
     // 트렌딩 책
     @GET("trending/book")
-    Call<ArrayList<Book>> getTredingBook();
+    Call<ArrayList<BookList>> getTredingBook();
 
     /** QnA **/
 

@@ -1,9 +1,11 @@
 package com.hanadal.dooson.hanadal.ui.main;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -58,11 +60,25 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.removeTabAt(5);
-        tabLayout.getTabAt(0).setText("내 도전");
+        tabLayout.getTabAt(0).setIcon(R.drawable.tab_my_challenge);
+        tabLayout.getTabAt(1).setIcon(R.drawable.tab_trending);
+        tabLayout.getTabAt(1).getIcon().setColorFilter(
+                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(2).setIcon(R.drawable.tab_question_answer);
+        tabLayout.getTabAt(2).getIcon().setColorFilter(
+                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(3).setIcon(R.drawable.tab_gallery);
+        tabLayout.getTabAt(3).getIcon().setColorFilter(
+                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(4).setIcon(R.drawable.tab_shop);
+        tabLayout.getTabAt(4).getIcon().setColorFilter(
+                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
+
+/*        tabLayout.getTabAt(0).setText("내 도전");
         tabLayout.getTabAt(1).setText("트렌딩");
         tabLayout.getTabAt(2).setText("Q&A");
         tabLayout.getTabAt(3).setText("아이템");
-        tabLayout.getTabAt(4).setText("상점");
+        tabLayout.getTabAt(4).setText("상점");*/
 
         navigationView.setNavigationItemSelectedListener(this);
         tabLayout.addOnTabSelectedListener(this);
@@ -145,10 +161,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         lastPagerNum =  tab.getPosition();
+        int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.white);
+        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
     }
 
     @Override
-    public void onTabUnselected(TabLayout.Tab tab) { }
+    public void onTabUnselected(TabLayout.Tab tab) {
+        int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.weekWhite);
+        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+    }
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) { }

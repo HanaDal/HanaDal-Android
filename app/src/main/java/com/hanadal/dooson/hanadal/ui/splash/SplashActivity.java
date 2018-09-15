@@ -40,12 +40,9 @@ public class SplashActivity extends AppCompatActivity{
         set1.addAnimation(anim3);
         set1.startNow();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(getApplicationContext(), SignActivity.class));
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(getApplicationContext(), SignActivity.class));
+            finish();
         }, 3000);
     }
 

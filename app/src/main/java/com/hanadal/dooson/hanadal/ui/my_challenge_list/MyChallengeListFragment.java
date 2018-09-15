@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.TestFragment;
 import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
@@ -29,19 +28,19 @@ public class MyChallengeListFragment extends Fragment {
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
         fragmentViewPagerAdapter.addFragment(new ChallengeListFragment());
-        fragmentViewPagerAdapter.addFragment(new TestFragment());
+        fragmentViewPagerAdapter.addFragment(new BookListFragment());
 
         viewPager.setAdapter(fragmentViewPagerAdapter);
         viewPager.setPagingEnabled(false);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setText("진행중인 도전");
-        tabLayout.getTabAt(1).setText("책");
+        tabLayout.getTabAt(1).setText("만든 책");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_challenge_list, container, false);
+        return inflater.inflate(R.layout.fragment_my_challenge, container, false);
     }
 }

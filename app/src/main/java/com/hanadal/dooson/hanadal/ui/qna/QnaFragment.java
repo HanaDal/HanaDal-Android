@@ -28,7 +28,7 @@ public class QnaFragment extends Fragment {
         tabLayout = view.getRootView().findViewById(R.id.qna_tab);
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
-        fragmentViewPagerAdapter.addFragment(new TestFragment());
+        fragmentViewPagerAdapter.addFragment(new QnaListFragment());
         fragmentViewPagerAdapter.addFragment(new TestFragment());
 
         viewPager.setAdapter(fragmentViewPagerAdapter);

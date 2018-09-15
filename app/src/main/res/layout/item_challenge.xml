@@ -2,142 +2,136 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="6dp">
+    android:layout_height="300dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="2dp">
 
-    <android.support.v7.widget.CardView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:cardCornerRadius="8dp">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/challenge_image"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:src="#999595"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challenge_image">
 
-            <ImageView
-                android:id="@+id/challenge_image"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:src="#999595"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-                app:layout_constraintEnd_toEndOf="parent"
+            <TextView
+                android:id="@+id/challenge_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="자바 팀프"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <TextView
+                android:id="@+id/challenge_achieve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
+                android:text="달성률 : 96%"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_name" />
+
+            <ImageView
+                android:id="@+id/challenge_user_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_achieve"
+                app:layout_constraintVertical_bias="0.162" />
+
+            <TextView
+                android:id="@+id/challenge_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="8dp"
+                android:text="손승용"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/challenge_image">
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/challenge_user_image"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_achieve" />
 
-                <TextView
-                    android:id="@+id/challenge_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="자바 팀프"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/challenge_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:text="#끝내자 #화이팅"
+                app:layout_constraintBottom_toTopOf="@+id/challenge_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_name"
+                app:layout_constraintVertical_bias="0.413" />
 
-                <TextView
-                    android:id="@+id/challenge_achieve"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="6dp"
-                    android:text="달성률 : 96%"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_name" />
+            <ImageView
+                android:id="@+id/challenge_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/challenge_favorite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/challenge_tag"
+                app:layout_constraintHorizontal_bias="0.7"
+                app:layout_constraintStart_toEndOf="@+id/challenge_tag"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
+                app:layout_constraintVertical_bias="0.85" />
 
-                <ImageView
-                    android:id="@+id/challenge_user_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@mipmap/ic_launcher_round"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_achieve"
-                    app:layout_constraintVertical_bias="0.162" />
+            <ImageView
+                android:id="@+id/challenge_fork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/challenge_fork"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/challenge_share"
+                app:layout_constraintStart_toEndOf="@+id/challenge_favorite"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
+                app:layout_constraintVertical_bias="0.85" />
 
-                <TextView
-                    android:id="@+id/challenge_user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="16dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginTop="8dp"
-                    android:text="손승용"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.03"
-                    app:layout_constraintStart_toEndOf="@+id/challenge_user_image"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_achieve" />
-
-                <TextView
-                    android:id="@+id/challenge_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="40dp"
-                    android:text="#끝내자 #화이팅"
-                    app:layout_constraintBottom_toTopOf="@+id/challenge_name"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_name"
-                    app:layout_constraintVertical_bias="0.413" />
-
-                <ImageView
-                    android:id="@+id/challenge_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:src="@drawable/challenge_favorite"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/challenge_tag"
-                    app:layout_constraintHorizontal_bias="0.7"
-                    app:layout_constraintStart_toEndOf="@+id/challenge_tag"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
-                    app:layout_constraintVertical_bias="0.85" />
-
-                <ImageView
-                    android:id="@+id/challenge_fork"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="4dp"
-                    android:src="@drawable/challenge_fork"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/challenge_share"
-                    app:layout_constraintStart_toEndOf="@+id/challenge_favorite"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
-                    app:layout_constraintVertical_bias="0.85" />
-
-                <ImageView
-                    android:id="@+id/challenge_share"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="4dp"
-                    android:src="@drawable/challenge_share"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
-                    app:layout_constraintVertical_bias="0.85" />
-            </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/challenge_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/challenge_share"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/challenge_tag"
+                app:layout_constraintVertical_bias="0.85" />
         </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

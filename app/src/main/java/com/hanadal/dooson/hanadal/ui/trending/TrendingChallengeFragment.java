@@ -23,20 +23,10 @@ public class TrendingChallengeFragment extends Fragment {
     ChallengeListAdapter adapter;
     ArrayList<Challenge> arrayList = new ArrayList<>();
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recycler, container, false);
+        View view = inflater.inflate(R.layout.challenge_recycler, container, false);
         challengeList = view.findViewById(R.id.fragment_recycler_view);
 
         adapter = new ChallengeListAdapter(arrayList, getContext());

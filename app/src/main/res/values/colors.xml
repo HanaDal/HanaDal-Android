@@ -3,4 +3,6 @@
     <color name="colorPrimary">#4e4f95</color>
     <color name="colorPrimaryDark">#1d2767</color>
     <color name="colorAccent">#7e7bc6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="weekWhite">#55ffffff</color>
 </resources>

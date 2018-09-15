@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class QnAnCommentList {
 
-    @SerializedName("_id")
+    @SerializedName("id")
     @Expose
     public String id;
     @SerializedName("title")

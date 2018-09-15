@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/qna_tab"
+        android:id="@+id/my_challenge_list_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
@@ -16,13 +16,13 @@
         app:tabIndicatorColor="#ffcf00" />
 
     <com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager
-        android:id="@+id/qna_view_pager"
+        android:id="@+id/my_challenge_list_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qna_tab" />
+        app:layout_constraintTop_toBottomOf="@+id/my_challenge_list_tab" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bottom_bar"
@@ -53,9 +53,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/add_challenge"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/qna_view_pager"
+        app:layout_constraintBottom_toBottomOf="@+id/my_challenge_list_view_pager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottom_bar" />
-
 </android.support.constraint.ConstraintLayout>
