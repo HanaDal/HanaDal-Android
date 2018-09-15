@@ -1,28 +1,27 @@
-package com.hanadal.dooson.hanadal.ui.trending;
+package com.hanadal.dooson.hanadal.ui.qna;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.adapter.BookListAdapter;
-import com.hanadal.dooson.hanadal.data.BookList;
-import com.hanadal.dooson.hanadal.data.Challenge;
+import com.hanadal.dooson.hanadal.adapter.QnaListAdapter;
+import com.hanadal.dooson.hanadal.data.QnAnCommentList;
 
 import java.util.ArrayList;
 
-public class TredingBookListFragment extends Fragment {
+public class MyQnaListFragment extends Fragment {
 
     RecyclerView challengeList;
-    BookListAdapter adapter;
-    ArrayList<BookList> arrayList = new ArrayList<>();
+    QnaListAdapter adapter;
+    ArrayList<QnAnCommentList> arrayList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -30,20 +29,20 @@ public class TredingBookListFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler, container, false);
         challengeList = view.findViewById(R.id.fragment_recycler_view);
 
-        adapter = new BookListAdapter(arrayList, getContext());
+        adapter = new QnaListAdapter(arrayList, getContext());
         challengeList.setHasFixedSize(false);
-        challengeList.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
 
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
+        adapter.add(new QnAnCommentList());
 
         return view;
     }

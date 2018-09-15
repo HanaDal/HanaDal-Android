@@ -1,8 +1,9 @@
-package com.hanadal.dooson.hanadal.ui.my_challenge_list;
+package com.hanadal.dooson.hanadal.ui.my_challenge;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,18 +14,22 @@ import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
-public class MyChallengeListFragment extends Fragment {
+public class MyChallengeFragment extends Fragment implements View.OnClickListener{
 
     TabLayout tabLayout;
     FragmentViewPagerAdapter fragmentViewPagerAdapter;
     DoNotSwipeViewPager viewPager;
+    FloatingActionButton floatingActionButton;
 
+    @Nullable
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_my_challenge, container, false);
 
         viewPager = view.getRootView().findViewById(R.id.my_challenge_list_view_pager);
         tabLayout = view.getRootView().findViewById(R.id.my_challenge_list_tab);
+        floatingActionButton = view.getRootView().findViewById(R.id.my_challenge_floating);
+
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
         fragmentViewPagerAdapter.addFragment(new ChallengeListFragment());
@@ -36,11 +41,15 @@ public class MyChallengeListFragment extends Fragment {
 
         tabLayout.getTabAt(0).setText("진행중인 도전");
         tabLayout.getTabAt(1).setText("만든 책");
+        return view;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_challenge, container, false);
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.qna_floating:{
+
+            }
+        }
     }
 }

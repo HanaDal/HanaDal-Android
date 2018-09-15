@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.ui.trending;
+package com.hanadal.dooson.hanadal.ui.my_challenge;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,11 +14,10 @@ import android.view.ViewGroup;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.BookListAdapter;
 import com.hanadal.dooson.hanadal.data.BookList;
-import com.hanadal.dooson.hanadal.data.Challenge;
 
 import java.util.ArrayList;
 
-public class TredingBookListFragment extends Fragment {
+public class BookListFragment extends Fragment {
 
     RecyclerView challengeList;
     BookListAdapter adapter;

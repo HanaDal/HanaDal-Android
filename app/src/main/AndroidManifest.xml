@@ -23,9 +23,9 @@
         <activity android:name=".ui.main.MainActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.app_info.AppInfoActivity" />
-        <activity android:name=".ui.make_my_challenge.MakeMyChallengeActivity" />
+        <activity android:name=".ui.make_challenge.MakeChallengeActivity" />
         <activity android:name=".ui.view_challenge.ViewChallengeActivity" />
-        <activity android:name=".ui.write_my_diary.WriteMyDiaryActivity" />
+        <activity android:name=".ui.write_diary.WriteDiaryActivity" />
         <activity android:name=".ui.challenge_info.ChallengeInfoActivity" />
         <activity android:name=".ui.request.RequestActivity" />
         <activity android:name=".ui.view_book.ViewBookActivity" />

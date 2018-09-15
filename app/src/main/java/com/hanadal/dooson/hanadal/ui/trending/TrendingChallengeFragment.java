@@ -26,7 +26,7 @@ public class TrendingChallengeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.challenge_recycler, container, false);
+        View view = inflater.inflate(R.layout.recycler, container, false);
         challengeList = view.findViewById(R.id.fragment_recycler_view);
 
         adapter = new ChallengeListAdapter(arrayList, getContext());

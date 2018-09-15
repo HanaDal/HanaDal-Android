@@ -17,7 +17,7 @@ import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
 import com.hanadal.dooson.hanadal.ui.my_item.ItemFragment;
-import com.hanadal.dooson.hanadal.ui.my_challenge_list.MyChallengeListFragment;
+import com.hanadal.dooson.hanadal.ui.my_challenge.MyChallengeFragment;
 import com.hanadal.dooson.hanadal.ui.qna.QnaFragment;
 import com.hanadal.dooson.hanadal.ui.search.SearchFragment;
 import com.hanadal.dooson.hanadal.ui.shop.ShopFragment;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         editText = findViewById(R.id.search_edit);
 
         FragmentViewPagerAdapter mainViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
-        mainViewPagerAdapter.addFragment(new MyChallengeListFragment());
+        mainViewPagerAdapter.addFragment(new MyChallengeFragment());
         mainViewPagerAdapter.addFragment(new TrendingFragment());
         mainViewPagerAdapter.addFragment(new QnaFragment());
         mainViewPagerAdapter.addFragment(new ItemFragment());
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity
         viewPager.setAdapter(mainViewPagerAdapter);
         viewPager.setPagingEnabled(false);
         viewPager.setOffscreenPageLimit(6);
-        tabLayout.setupWithViewPager(viewPager);
 
+        tabLayout.setupWithViewPager(viewPager);
         tabLayout.removeTabAt(5);
         tabLayout.getTabAt(0).setIcon(R.drawable.tab_my_challenge);
         tabLayout.getTabAt(1).setIcon(R.drawable.tab_trending);
