@@ -41,6 +41,9 @@ public class MyChallengeFragment extends Fragment implements View.OnClickListene
 
         tabLayout.getTabAt(0).setText("진행중인 도전");
         tabLayout.getTabAt(1).setText("만든 책");
+
+        floatingActionButton.setOnClickListener(this);
+
         return view;
     }
 
