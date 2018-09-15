@@ -1,6 +1,7 @@
 package com.hanadal.dooson.hanadal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.Challenge;
+import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         holder.challengeFavorite.setOnClickListener(this);
         holder.challengeFork.setOnClickListener(this);
         holder.challengeShare.setOnClickListener(this);
+        holder.thisItemView.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +66,8 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
             case R.id.challenge_share:{
                 break;
             }
+            default:
+                v.getContext().startActivity(new Intent(context, ShowChallengeActivity.class));
         }
     }
 
@@ -79,8 +84,13 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         ImageView challengeFork;
         ImageView challengeShare;
 
+        View thisItemView;
+
         public ViewHolder(View itemView) {
             super(itemView);
+
+            thisItemView = itemView;
+
             challengeName = itemView.findViewById(R.id.challenge_name);
             challengeAchieve = itemView.findViewById(R.id.challenge_achieve);
             challengeUserName = itemView.findViewById(R.id.challenge_user_name);

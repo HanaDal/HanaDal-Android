@@ -1,17 +1,17 @@
 package com.hanadal.dooson.hanadal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.BookList;
-import com.hanadal.dooson.hanadal.data.Challenge;
+import com.hanadal.dooson.hanadal.ui.show_book.ShowBookActivity;
 
 import java.util.ArrayList;
 
@@ -42,6 +42,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.thisItemView.setOnClickListener(this);
     }
 
     @Override
@@ -51,17 +52,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.challenge_favorite:{
-                break;
-            }
-            case R.id.challenge_fork:{
-                break;
-            }
-            case R.id.challenge_share:{
-                break;
-            }
-        }
+        v.getContext().startActivity(new Intent(context, ShowBookActivity.class));
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -69,9 +60,11 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         TextView challengeName;
         TextView challengeAchieve;
         TextView challengeUserName;
+        View thisItemView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            thisItemView = itemView;
             challengeName = itemView.findViewById(R.id.challenge_name);
             challengeAchieve = itemView.findViewById(R.id.challenge_achieve);
             challengeUserName = itemView.findViewById(R.id.challenge_user_name);

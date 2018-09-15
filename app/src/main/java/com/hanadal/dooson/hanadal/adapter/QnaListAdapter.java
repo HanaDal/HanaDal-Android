@@ -1,6 +1,7 @@
 package com.hanadal.dooson.hanadal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.QnAnCommentList;
+import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;
+import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,7 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.thisItemView.setOnClickListener(this);
     }
 
     @Override
@@ -49,17 +53,7 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.challenge_favorite:{
-                break;
-            }
-            case R.id.challenge_fork:{
-                break;
-            }
-            case R.id.challenge_share:{
-                break;
-            }
-        }
+        v.getContext().startActivity(new Intent(context, ShowQnaActivity.class));
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -67,9 +61,13 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
         TextView qnaName;
         TextView commentCount;
         TextView qnaUserName;
+        View thisItemView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+            thisItemView = itemView;
+
             qnaName = itemView.findViewById(R.id.qna_name);
             commentCount = itemView.findViewById(R.id.comment_count);
             qnaUserName = itemView.findViewById(R.id.qna_user_name);
