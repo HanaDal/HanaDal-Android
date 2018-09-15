@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
+import com.hanadal.dooson.hanadal.ui.favorite.FavoriteActivity;
 import com.hanadal.dooson.hanadal.ui.my_item.ItemFragment;
 import com.hanadal.dooson.hanadal.ui.my_challenge.MyChallengeFragment;
 import com.hanadal.dooson.hanadal.ui.qna.QnaFragment;
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity
                 viewPager.setCurrentItem(4);
                 break;
             case R.id.nav_hart:
-                //startActivity(new Intent(getApplicationContext(), TestActivity.class));
+                startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
                 break;
             case R.id.nav_info:
                 startActivity(new Intent(getApplicationContext(), AppInfoActivity.class));
