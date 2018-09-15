@@ -31,7 +31,8 @@
         <activity android:name=".ui.request.RequestActivity" />
         <activity android:name=".ui.show_book.ShowBookActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".ui.show_qna.ShowQnaActivity"></activity>
+        <activity android:name=".ui.show_qna.ShowQnaActivity" />
+        <activity android:name=".ui.make_qna.MakeQnaActivity"></activity>
     </application>
 
 </manifest>

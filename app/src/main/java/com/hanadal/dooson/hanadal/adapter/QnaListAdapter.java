@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.QnAnCommentList;
-import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;
 import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
 
 import java.util.ArrayList;
