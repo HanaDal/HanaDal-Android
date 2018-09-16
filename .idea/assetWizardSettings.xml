@@ -34,9 +34,11 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
+                            <entry key="height" value="42" />
                             <entry key="outputName" value="back" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Seungyong Son" />
+                            <entry key="width" value="42" />
                           </map>
                         </option>
                       </PersistentState>

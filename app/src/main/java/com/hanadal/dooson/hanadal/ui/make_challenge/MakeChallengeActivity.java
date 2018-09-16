@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.hanadal.dooson.hanadal.R;
@@ -20,6 +21,7 @@ public class MakeChallengeActivity extends AppCompatActivity
     RadioButton radioPerfect;
     RadioButton radioNotPerfect;
     Button btnStartChallenge;
+    ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +35,28 @@ public class MakeChallengeActivity extends AppCompatActivity
         radioPerfect = findViewById(R.id.radio_perfect);
         radioNotPerfect = findViewById(R.id.radio_not_perfect);
         btnStartChallenge = findViewById(R.id.btn_start_challenge);
+        btnBack = findViewById(R.id.btn_back);
 
         btnStartChallenge.setOnClickListener(this);
         radioPublic.setOnCheckedChangeListener(this);
         radioNotPublic.setOnCheckedChangeListener(this);
         radioPerfect.setOnCheckedChangeListener(this);
         radioNotPerfect.setOnCheckedChangeListener(this);
+        btnBack.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_start_challenge:{
 
+                break;
+            }
+            case R.id.btn_back:{
+                finish();
+                break;
+            }
+        }
     }
 
     @Override
