@@ -280,7 +280,6 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-
     <Button
         android:id="@+id/btn_start_challenge"
         android:layout_width="match_parent"
