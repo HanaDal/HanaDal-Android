@@ -45,6 +45,7 @@
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
+        android:id="@+id/scrollView"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -566,6 +567,7 @@
         android:background="@color/colorPrimary"
         android:text="다이어리 작성하기+"
         android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
