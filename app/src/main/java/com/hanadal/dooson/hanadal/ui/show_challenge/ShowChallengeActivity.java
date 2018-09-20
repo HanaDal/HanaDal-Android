@@ -10,6 +10,7 @@ import java.io.File;
 import br.tiagohm.markdownview.MarkdownView;
 import br.tiagohm.markdownview.css.styles.Github;
 
+// Todo("UI 기능 구현")
 public class ShowChallengeActivity extends AppCompatActivity {
 
     MarkdownView markdownView;

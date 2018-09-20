@@ -25,6 +25,9 @@ import com.hanadal.dooson.hanadal.ui.shop.ShopFragment;
 import com.hanadal.dooson.hanadal.ui.trending.TrendingFragment;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
+//ToDo("스토어 스킨/훈장 기능 삭제")
+//ToDo("프로필 정보/ 공감한 편린들 구현하고 위에거 대신으로 대체")
+//ToDo("섭통")
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener, TabLayout.OnTabSelectedListener{

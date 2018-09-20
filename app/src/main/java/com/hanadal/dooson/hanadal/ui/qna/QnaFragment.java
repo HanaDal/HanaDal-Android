@@ -18,6 +18,7 @@ import com.hanadal.dooson.hanadal.ui.make_challenge.MakeChallengeActivity;
 import com.hanadal.dooson.hanadal.ui.make_qna.MakeQnaActivity;
 import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
 
+// Todo("QnA 만들기 기능 구현")
 public class QnaFragment extends Fragment
         implements View.OnClickListener, TabLayout.OnTabSelectedListener{
 
