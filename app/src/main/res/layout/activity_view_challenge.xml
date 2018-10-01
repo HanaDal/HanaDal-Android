@@ -73,275 +73,363 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/day_1"
                     android:layout_column="0"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="0"
-                    android:background="@drawable/purple_circle"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="1"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_2"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="0"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="2"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_3"
                     android:layout_column="2"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="0"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="3"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_4"
                     android:layout_column="3"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="0"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="4"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_5"
                     android:layout_column="4"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="0"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="5"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_6"
                     android:layout_column="0"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="1"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="6"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_7"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="1"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="7"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_8"
                     android:layout_column="2"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="1"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="8"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_9"
                     android:layout_column="3"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="1"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="9"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_10"
                     android:layout_column="4"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="1"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="10"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_11"
                     android:layout_column="0"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="2"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="11"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_12"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="2"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="12"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_13"
                     android:layout_column="2"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="2"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="13"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_14"
                     android:layout_column="3"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="2"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="14"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_15"
                     android:layout_column="4"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="2"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="15"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_16"
                     android:layout_column="0"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="3"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="16"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_17"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="3"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="17"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_18"
                     android:layout_column="2"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="3"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="18"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_19"
                     android:layout_column="3"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="3"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="19"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_20"
                     android:layout_column="4"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="3"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="20"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_21"
                     android:layout_column="0"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="4"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="21"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_22"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="4"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="22"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_23"
                     android:layout_column="2"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="4"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="23"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_24"
                     android:layout_column="3"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="4"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="24"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_25"
                     android:layout_column="4"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="4"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="25"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_26"
                     android:layout_column="0"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="5"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="26"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_27"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="5"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="27"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_28"
                     android:layout_column="2"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="5"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="28"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_29"
                     android:layout_column="3"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="5"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="29"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
 
                 <TextView
+                    android:id="@+id/day_30"
                     android:layout_column="4"
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:layout_row="5"
                     android:gravity="center"
+                    android:background="@drawable/white_circle"
                     android:text="30"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:onClick="onDaysClick"/>
             </GridLayout>
 
             <TextView

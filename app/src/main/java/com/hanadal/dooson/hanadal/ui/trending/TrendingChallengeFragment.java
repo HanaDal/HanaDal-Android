@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.ChallengeListAdapter;
+import com.hanadal.dooson.hanadal.connect.Connector;
+import com.hanadal.dooson.hanadal.connect.Res;
+import com.hanadal.dooson.hanadal.data.BookList;
 import com.hanadal.dooson.hanadal.data.Challenge;
 
 import java.util.ArrayList;
@@ -22,6 +25,21 @@ public class TrendingChallengeFragment extends Fragment {
     RecyclerView challengeList;
     ChallengeListAdapter adapter;
     ArrayList<Challenge> arrayList = new ArrayList<>();
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Connector.api.getTredingChallenge().enqueue(new Res<ArrayList<Challenge>>(getContext()) {
+            @Override
+            public void callback(int code, ArrayList<Challenge> body) {
+                if(code == 200){
+                    for(Challenge c : body){
+                        adapter.add(c);
+                    }
+                }
+            }
+        });
+    }
 
     @Nullable
     @Override
@@ -34,15 +52,6 @@ public class TrendingChallengeFragment extends Fragment {
         challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
-
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
 
         return view;
     }

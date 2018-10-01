@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.ChallengeListAdapter;
+import com.hanadal.dooson.hanadal.connect.Connector;
+import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.Challenge;
 
 import java.util.ArrayList;
@@ -22,6 +24,30 @@ public class ChallengeListFragment extends Fragment {
     RecyclerView challengeList;
     ChallengeListAdapter adapter;
     ArrayList<Challenge> arrayList = new ArrayList<>();
+
+    String token =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViOWFlNmJjMzY1ZjBlMTNhODVhMTQ0YSIsImlhdCI6MTUzODAyNTcwMSwiZXhwIjoxNTQwNjE3NzAxLCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.9Ar-ElYJYpe_h9jet6TP3egDmr7vSpwuaz8mh-rr5Nc";
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.remove();
+        Connector.api.getMyChallenge(token).enqueue(new Res<ArrayList<Challenge>>(getContext()) {
+            @Override
+            public void callback(int code, ArrayList<Challenge> body) {
+                if(code == 200){
+                    for(Challenge c : body){
+                        adapter.add(c);
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -34,16 +60,6 @@ public class ChallengeListFragment extends Fragment {
         challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
-
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-        adapter.add(new Challenge());
-
         return view;
     }
 }

@@ -9,7 +9,7 @@ public final class Connector {
 
     static {
         //String TEST_URL = "https://api.github.com/";
-        String URL = "URL HERE";
+        String URL = "http://hanadal-server.herokuapp.com/api/";
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(new OkHttpClient.Builder().build())

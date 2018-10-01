@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.QnaListAdapter;
+import com.hanadal.dooson.hanadal.connect.Connector;
+import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.QnAnCommentList;
 
 import java.util.ArrayList;
@@ -35,14 +37,14 @@ public class MyQnaListFragment extends Fragment {
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
 
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
+        Connector.api.getQnA().enqueue(new Res<ArrayList<QnAnCommentList>>(getContext()) {
+            @Override
+            public void callback(int code, ArrayList<QnAnCommentList> body) {
+                if(code == 200){
+                    for(QnAnCommentList q : body) adapter.add(q);
+                }
+            }
+        });
 
         return view;
     }

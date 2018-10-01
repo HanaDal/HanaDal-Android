@@ -1,24 +1,31 @@
 package com.hanadal.dooson.hanadal.ui.show_challenge;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 
-import java.io.File;
+import java.util.ArrayList;
 
 import br.tiagohm.markdownview.MarkdownView;
 import br.tiagohm.markdownview.css.styles.Github;
 
 // Todo("UI 기능 구현")
-public class ShowChallengeActivity extends AppCompatActivity {
+public class ShowChallengeActivity extends AppCompatActivity{
 
     MarkdownView markdownView;
+    ArrayList<TextView> days = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_challenge);
+
+        setDays();
 
         markdownView = findViewById(R.id.md_diary);
         markdownView.addStyleSheet(new Github());
@@ -168,5 +175,52 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 "See the License for the specific language governing permissions and\n" +
                 "limitations under the License.\n" +
                 "```\n");
+    }
+
+    public void onDaysClick(View v){
+        TextView tmp = (TextView)v;
+        for(TextView tv : days){
+            if(tv == tmp){
+                tv.setBackground(getResources().getDrawable(R.drawable.purple_circle, null));
+                tv.setTextColor(Color.WHITE);
+            }else{
+                tv.setBackground(getResources().getDrawable(R.drawable.white_circle, null));
+                tv.setTextColor(Color.argb(255,80,80,80));
+            }
+        }
+    }
+
+    @SuppressLint("FindViewByIdCast")
+    private void setDays(){
+        days.add(findViewById(R.id.day_1));
+        days.add(findViewById(R.id.day_2));
+        days.add(findViewById(R.id.day_3));
+        days.add(findViewById(R.id.day_4));
+        days.add(findViewById(R.id.day_5));
+        days.add(findViewById(R.id.day_6));
+        days.add(findViewById(R.id.day_7));
+        days.add(findViewById(R.id.day_8));
+        days.add(findViewById(R.id.day_9));
+        days.add(findViewById(R.id.day_10));
+        days.add(findViewById(R.id.day_11));
+        days.add(findViewById(R.id.day_12));
+        days.add(findViewById(R.id.day_13));
+        days.add(findViewById(R.id.day_14));
+        days.add(findViewById(R.id.day_15));
+        days.add(findViewById(R.id.day_16));
+        days.add(findViewById(R.id.day_17));
+        days.add(findViewById(R.id.day_18));
+        days.add(findViewById(R.id.day_19));
+        days.add(findViewById(R.id.day_20));
+        days.add(findViewById(R.id.day_21));
+        days.add(findViewById(R.id.day_22));
+        days.add(findViewById(R.id.day_23));
+        days.add(findViewById(R.id.day_24));
+        days.add(findViewById(R.id.day_25));
+        days.add(findViewById(R.id.day_26));
+        days.add(findViewById(R.id.day_27));
+        days.add(findViewById(R.id.day_28));
+        days.add(findViewById(R.id.day_29));
+        days.add(findViewById(R.id.day_30));
     }
 }

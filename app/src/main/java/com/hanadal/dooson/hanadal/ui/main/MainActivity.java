@@ -54,16 +54,16 @@ public class MainActivity extends AppCompatActivity
         mainViewPagerAdapter.addFragment(new MyChallengeFragment());
         mainViewPagerAdapter.addFragment(new TrendingFragment());
         mainViewPagerAdapter.addFragment(new QnaFragment());
-        mainViewPagerAdapter.addFragment(new ItemFragment());
-        mainViewPagerAdapter.addFragment(new ShopFragment());
+/*        mainViewPagerAdapter.addFragment(new ItemFragment());
+        mainViewPagerAdapter.addFragment(new ShopFragment());*/
         mainViewPagerAdapter.addFragment(new SearchFragment());
 
         viewPager.setAdapter(mainViewPagerAdapter);
         viewPager.setPagingEnabled(false);
-        viewPager.setOffscreenPageLimit(6);
+        viewPager.setOffscreenPageLimit(4);
 
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.removeTabAt(5);
+        tabLayout.removeTabAt(3);
         tabLayout.getTabAt(0).setIcon(R.drawable.tab_my_challenge);
         tabLayout.getTabAt(1).setIcon(R.drawable.tab_trending);
         tabLayout.getTabAt(1).getIcon().setColorFilter(
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity
         tabLayout.getTabAt(2).setIcon(R.drawable.tab_question_answer);
         tabLayout.getTabAt(2).getIcon().setColorFilter(
                 ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(3).setIcon(R.drawable.tab_gallery);
+/*        tabLayout.getTabAt(3).setIcon(R.drawable.tab_gallery);
         tabLayout.getTabAt(3).getIcon().setColorFilter(
                 ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(4).setIcon(R.drawable.tab_shop);
         tabLayout.getTabAt(4).getIcon().setColorFilter(
-                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
+                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);*/
 
 /*        tabLayout.getTabAt(0).setText("내 도전");
         tabLayout.getTabAt(1).setText("트렌딩");
@@ -148,11 +148,11 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_edit:
-                if (lastPagerNum != 5) {
+                if (lastPagerNum != 3) {
                     lastPagerNum = viewPager.getCurrentItem();
                     tabLayout.setVisibility(View.GONE);
                     editText.setHint("편린&QnA 검색");
-                    viewPager.setCurrentItem(5);
+                    viewPager.setCurrentItem(3);
                 }
                 break;
             case R.id.nav_btn:

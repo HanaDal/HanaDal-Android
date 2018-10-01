@@ -2,6 +2,7 @@ package com.hanadal.dooson.hanadal.connect;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.hanadal.dooson.hanadal.util.UtilClass;
 
@@ -23,6 +24,7 @@ public abstract class Res<T> implements Callback<T> {
 
     @Override
     public void onFailure(@NonNull Call call, @NonNull Throwable t) {
+        Log.e("어림없는 볼", "부끄러운줄 알아야지");
         UtilClass.Toast(context, "네트워크 연결이 필요합니다.");
     }
 

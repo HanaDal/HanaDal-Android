@@ -36,13 +36,6 @@ public class MyQnaCommentListFragment extends Fragment {
         challengeList.setAdapter(adapter);
 
         adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
-        adapter.add(new QnAnCommentList());
 
         return view;
     }

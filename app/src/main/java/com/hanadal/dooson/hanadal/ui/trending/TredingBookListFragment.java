@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.BookListAdapter;
+import com.hanadal.dooson.hanadal.connect.Connector;
+import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.BookList;
 import com.hanadal.dooson.hanadal.data.Challenge;
 
@@ -23,6 +25,21 @@ public class TredingBookListFragment extends Fragment {
     RecyclerView challengeList;
     BookListAdapter adapter;
     ArrayList<BookList> arrayList = new ArrayList<>();
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Connector.api.getTredingBook().enqueue(new Res<ArrayList<BookList>>(getContext()) {
+            @Override
+            public void callback(int code, ArrayList<BookList> body) {
+                if(code == 200){
+                    for(BookList b : body){
+                        adapter.add(b);
+                    }
+                }
+            }
+        });
+    }
 
     @Nullable
     @Override
@@ -35,15 +52,6 @@ public class TredingBookListFragment extends Fragment {
         challengeList.setLayoutManager(new GridLayoutManager(getContext(), 2));
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
-
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
-        adapter.add(new BookList());
 
         return view;
     }

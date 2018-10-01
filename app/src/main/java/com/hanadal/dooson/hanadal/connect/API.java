@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -74,7 +75,7 @@ public interface API {
     Call<ArrayList<Challenge>> getMyChallenge(@Header("X-Access-Token") String jwt);
 
     // 도전 만들기
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    @FormUrlEncoded
     @POST("challenge")
     Call<Gson> makeMyChallenge(@Header("X-Access-Token") String jwt,
                                @Field("title") String title,
@@ -140,7 +141,7 @@ public interface API {
                                    @Field("tags") String tags);
 
     @Headers({"Content-Type: application/json;charset=UTF-8"})
-    @PUT("challenge/{id}/fork")
+    @PUT("challenge/challenge/{id}/fork")
     Call<Gson> forkChallenge(@Header("X-Access-Token") String jwt, @Path("id") String id);
 
     // 내 책 조회하기
@@ -149,7 +150,7 @@ public interface API {
     Call<ArrayList<BookList>> getBook(@Header("X-Access-Token") String jwt);
 
     // 책 상세 보기      책 내용 부분 을 더 상의 필요 ------------ 김원준!!!!!
-    @GET("book/{id}")
+    @GET("challenge/book/{id}")
     Call<Gson> showBook(@Path("id") String id);
 
     /** Trending **/
