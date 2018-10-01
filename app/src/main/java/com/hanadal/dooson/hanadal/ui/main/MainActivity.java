@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        if (viewPager.getCurrentItem() == 5) {
+        if (viewPager.getCurrentItem() == 3) {
             tabLayout.setVisibility(View.VISIBLE);
             viewPager.setCurrentItem(lastPagerNum);
             return;
