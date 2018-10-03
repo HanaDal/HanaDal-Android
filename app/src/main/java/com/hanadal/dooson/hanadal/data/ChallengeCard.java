@@ -3,9 +3,15 @@ package com.hanadal.dooson.hanadal.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Challenge {
+/*
+  GET /api/user/cheering
+  GET /api/challenge
+  GET /api/trending/challenge
+  GET /api/search
+*/
+public class ChallengeCard {
 
     @SerializedName("_id")
     @Expose
@@ -18,16 +24,13 @@ public class Challenge {
     public String name;
     @SerializedName("tags")
     @Expose
-    public List<String> tags = null;
+    public ArrayList<String> tags = null;
     @SerializedName("achievementRate")
     @Expose
     public Integer achievementRate;
-    @SerializedName("authorPictureUrl")
-    @Expose
-    public String authorPictureUrl;
     @SerializedName("author")
     @Expose
-    public String author;
+    public Author author;
     @SerializedName("isPressed")
     @Expose
     public Boolean isPressed;

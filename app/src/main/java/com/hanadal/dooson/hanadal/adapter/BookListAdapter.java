@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.data.BookList;
+import com.hanadal.dooson.hanadal.data.BookCard;
 import com.hanadal.dooson.hanadal.ui.show_book.ShowBookActivity;
 
 import java.util.ArrayList;
@@ -18,15 +18,20 @@ import java.util.ArrayList;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder>
         implements View.OnClickListener{
 
-    ArrayList<BookList> arrayList;
+    ArrayList<BookCard> arrayList;
     Context context;
 
-    public void add(BookList data){
+    public void add(BookCard data){
         arrayList.add(data);
         notifyDataSetChanged();
     }
 
-    public BookListAdapter(ArrayList<BookList> arrayList, Context context){
+    public void remove(){
+        arrayList.clear();
+        notifyDataSetChanged();
+    }
+
+    public BookListAdapter(ArrayList<BookCard> arrayList, Context context){
         this.arrayList = arrayList;
         this.context = context;
     }

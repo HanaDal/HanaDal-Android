@@ -3,7 +3,14 @@ package com.hanadal.dooson.hanadal.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ChallengeComment {
+import java.util.ArrayList;
+
+/*
+  GET /api/challenege/{id}/comment
+  GET /api/qna
+  GEt /api/search
+*/
+public class QnACard {
 
     @SerializedName("_id")
     @Expose
@@ -13,13 +20,10 @@ public class ChallengeComment {
     public String title;
     @SerializedName("tags")
     @Expose
-    public String tags;
-    @SerializedName("authorPictureUrl")
-    @Expose
-    public String authorPictureUrl;
+    public ArrayList<String> tags = null;
     @SerializedName("author")
     @Expose
-    public String author;
+    public Author author;
     @SerializedName("answerCount")
     @Expose
     public Integer answerCount;

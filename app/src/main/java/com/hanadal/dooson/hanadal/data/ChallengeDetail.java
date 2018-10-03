@@ -3,13 +3,11 @@ package com.hanadal.dooson.hanadal.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class ShowChallenge {
+// GET /api/callenge/{id}
+public class ChallengeDetail {
 
-    @SerializedName("result")
-    @Expose
-    public String result;
     @SerializedName("_id")
     @Expose
     public String id;
@@ -21,19 +19,9 @@ public class ShowChallenge {
     public Integer day;
     @SerializedName("diary")
     @Expose
-    public List<Diary> diary = null;
+    public ArrayList<Diary> diary = null;
     @SerializedName("todo")
     @Expose
-    public List<String> todo = null;
+    public ArrayList<String> todo = null;
 
-    public class Diary {
-
-        @SerializedName("title")
-        @Expose
-        public String title;
-        @SerializedName("content")
-        @Expose
-        public String content;
-
-    }
 }

@@ -3,19 +3,17 @@ package com.hanadal.dooson.hanadal.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
+// Challenege 나 QnA 에 들어가는 클래스
+public class Author {
 
-// GET /api/user/profile
-public class Profile {
-
+    @SerializedName("_id")
+    @Expose
+    public String id;
     @SerializedName("name")
     @Expose
     public String name;
-    @SerializedName("point")
+    @SerializedName("picture")
     @Expose
-    public Integer point;
-    @SerializedName("tags")
-    @Expose
-    public ArrayList<String> tags = null;
+    public String picture;
 
 }

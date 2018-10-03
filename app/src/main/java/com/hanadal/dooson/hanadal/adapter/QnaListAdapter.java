@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.data.QnAnCommentList;
+import com.hanadal.dooson.hanadal.data.QnACard;
 import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
 
 import java.util.ArrayList;
@@ -18,15 +18,20 @@ import java.util.ArrayList;
 public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHolder>
         implements View.OnClickListener{
 
-    ArrayList<QnAnCommentList> arrayList;
+    ArrayList<QnACard> arrayList;
     Context context;
 
-    public void add(QnAnCommentList data){
+    public void add(QnACard data){
         arrayList.add(data);
         notifyDataSetChanged();
     }
 
-    public QnaListAdapter(ArrayList<QnAnCommentList> arrayList, Context context){
+    public void remove(){
+        arrayList.clear();
+        notifyDataSetChanged();
+    }
+
+    public QnaListAdapter(ArrayList<QnACard> arrayList, Context context){
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -43,6 +48,8 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.thisItemView.setOnClickListener(this);
+        holder.qnaName.setText(arrayList.get(position).title);
+        holder.qnaUserName.setText(arrayList.get(position).author.name);
     }
 
     @Override

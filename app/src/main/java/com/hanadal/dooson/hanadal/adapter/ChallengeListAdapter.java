@@ -9,13 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.data.Challenge;
+import com.hanadal.dooson.hanadal.data.ChallengeCard;
 import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;
 
 import java.util.ArrayList;
@@ -23,10 +22,10 @@ import java.util.ArrayList;
 public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdapter.ViewHolder>
         implements View.OnClickListener{
 
-    ArrayList<Challenge> arrayList;
+    ArrayList<ChallengeCard> arrayList;
     Context context;
 
-    public void add(Challenge data){
+    public void add(ChallengeCard data){
         arrayList.add(data);
         notifyDataSetChanged();
     }
@@ -36,7 +35,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         notifyDataSetChanged();
     }
 
-    public ChallengeListAdapter(ArrayList<Challenge> arrayList, Context context){
+    public ChallengeListAdapter(ArrayList<ChallengeCard> arrayList, Context context){
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -56,11 +55,15 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         holder.challengeFavorite.setOnClickListener(this);
         holder.challengeFork.setOnClickListener(this);
         holder.challengeShare.setOnClickListener(this);
-        holder.thisItemView.setOnClickListener(this);
+        holder.thisItemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ShowChallengeActivity.class);
+            intent.putExtra("id", arrayList.get(position).id);
+            context.startActivity(intent);
+        });
 
         holder.challengeName.setText(arrayList.get(position).name);
         holder.challengeAchieve.setText("달성률 : " + arrayList.get(position).achievementRate + "%");
-        holder.challengeUserName.setText(arrayList.get(position).author);
+        holder.challengeUserName.setText(arrayList.get(position).author.name);
         //holder.challengeTag.setText(arrayList.get(position).tags);
 
         Glide.with(context).load(arrayList.get(position).pictureUrl).into(holder.challengeImage);
@@ -84,8 +87,6 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
             case R.id.challenge_share:{
                 break;
             }
-            default:
-                v.getContext().startActivity(new Intent(context, ShowChallengeActivity.class));
         }
     }
 

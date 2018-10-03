@@ -15,8 +15,7 @@ import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.BookListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
-import com.hanadal.dooson.hanadal.data.BookList;
-import com.hanadal.dooson.hanadal.data.Challenge;
+import com.hanadal.dooson.hanadal.data.BookCard;
 
 import java.util.ArrayList;
 
@@ -24,16 +23,16 @@ public class TredingBookListFragment extends Fragment {
 
     RecyclerView challengeList;
     BookListAdapter adapter;
-    ArrayList<BookList> arrayList = new ArrayList<>();
+    ArrayList<BookCard> arrayList = new ArrayList<>();
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Connector.api.getTredingBook().enqueue(new Res<ArrayList<BookList>>(getContext()) {
+        Connector.api.getTredingBook().enqueue(new Res<ArrayList<BookCard>>(getContext()) {
             @Override
-            public void callback(int code, ArrayList<BookList> body) {
+            public void callback(int code, ArrayList<BookCard> body) {
                 if(code == 200){
-                    for(BookList b : body){
+                    for(BookCard b : body){
                         adapter.add(b);
                     }
                 }

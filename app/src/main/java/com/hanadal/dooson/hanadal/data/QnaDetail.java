@@ -5,20 +5,29 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-// GET /api/challenege/{id}/info
-public class ChallengeInfo {
+/*
+  GET /api/qna/{id}
+  GET /api/challenege/{id}/comment/{no}
+*/
+public class QnaDetail {
 
+    @SerializedName("result")
+    @Expose
+    public String result;
     @SerializedName("title")
     @Expose
     public String title;
-    @SerializedName("description")
-    @Expose
-    public String description;
     @SerializedName("tags")
     @Expose
     public ArrayList<String> tags = null;
+    @SerializedName("content")
+    @Expose
+    public String content;
     @SerializedName("author")
     @Expose
     public Author author;
+    @SerializedName("answers")
+    @Expose
+    public ArrayList<Answer> answers = null;
 
 }
