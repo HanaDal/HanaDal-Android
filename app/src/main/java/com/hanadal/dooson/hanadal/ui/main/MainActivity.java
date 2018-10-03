@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity
                 tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(2);
                 break;
-            case R.id.nav_skin:
+/*            case R.id.nav_skin:
                 lastPagerNum = 3;
                 tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(3);
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity
                 lastPagerNum = 4;
                 tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(4);
-                break;
+                break;*/
             case R.id.nav_hart:
                 startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
                 break;
