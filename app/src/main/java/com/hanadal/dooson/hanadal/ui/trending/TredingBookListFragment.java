@@ -26,8 +26,8 @@ public class TredingBookListFragment extends Fragment {
     ArrayList<BookCard> arrayList = new ArrayList<>();
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
         Connector.api.getTredingBook().enqueue(new Res<ArrayList<BookCard>>(getContext()) {
             @Override
             public void callback(int code, ArrayList<BookCard> body) {

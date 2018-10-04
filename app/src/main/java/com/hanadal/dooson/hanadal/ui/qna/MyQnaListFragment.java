@@ -13,8 +13,6 @@ import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.adapter.QnaListAdapter;
-import com.hanadal.dooson.hanadal.connect.Connector;
-import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.QnACard;
 
 import java.util.ArrayList;
@@ -24,6 +22,11 @@ public class MyQnaListFragment extends Fragment {
     RecyclerView challengeList;
     QnaListAdapter adapter;
     ArrayList<QnACard> arrayList = new ArrayList<>();
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
     @Nullable
     @Override

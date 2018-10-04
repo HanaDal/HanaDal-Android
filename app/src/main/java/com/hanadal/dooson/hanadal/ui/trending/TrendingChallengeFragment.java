@@ -26,8 +26,8 @@ public class TrendingChallengeFragment extends Fragment {
     ArrayList<ChallengeCard> arrayList = new ArrayList<>();
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
         Connector.api.getTredingChallenge().enqueue(new Res<ArrayList<ChallengeCard>>(getContext()) {
             @Override
             public void callback(int code, ArrayList<ChallengeCard> body) {
