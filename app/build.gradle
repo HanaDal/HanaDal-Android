@@ -55,8 +55,7 @@ dependencies {
     //마크다운
     implementation 'com.github.tiagohm.MarkdownView:library:0.19.0'
 
-    // 콘텍스트 메뉴
-    implementation 'com.github.Yalantis:Context-Menu.Android:1.0.8'
+    implementation 'com.github.yalantis:Side-Menu.Android:1.0.1'
 
     // Facebook
     implementation 'com.facebook.android:facebook-android-sdk:4.37.0'

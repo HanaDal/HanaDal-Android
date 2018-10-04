@@ -200,4 +200,11 @@ public interface API {
     // 도전, QnA 검색
     @GET("search")
     Call<Search> searching(@Query("query") String query);
+
+
+    @GET("qna/my-question")
+    Call<ArrayList<QnACard>> getMyQuestion(@Header("X-Access-Token") String jwt);
+
+    @GET("qna/my-answer")
+    Call<ArrayList<QnACard>> getMyAnswer(@Header("X-Access-Token") String jwt);
 }
