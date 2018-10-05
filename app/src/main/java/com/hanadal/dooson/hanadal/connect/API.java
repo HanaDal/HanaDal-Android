@@ -86,9 +86,8 @@ public interface API {
                           @Field("title") String title,
                           @Field("content") String content);
 
-    // 도전 다이어리 작성하기
+    // ToDo 작성하기
     @FormUrlEncoded
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("challenge/{id}/todo/{day}")
     Call<Gson> writeTodo(@Path("id") String id,
                          @Path("day") String day,
@@ -167,7 +166,6 @@ public interface API {
 
     // QnA 작성
     @FormUrlEncoded
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("qna")
     Call<Gson> writeQnA(@Header("X-Access-Token") String jwt,
                         @Field("title") String title,

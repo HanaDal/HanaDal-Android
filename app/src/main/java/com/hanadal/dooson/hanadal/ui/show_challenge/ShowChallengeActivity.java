@@ -127,8 +127,8 @@ public class ShowChallengeActivity extends AppCompatActivity {
                         todoContent.toString()).enqueue(new Res<Gson>(getApplicationContext()) {
                     @Override
                     public void callback(int code, Gson body) {
-                        if (code == 200) UtilClass.Toast(getApplicationContext(), "ToDo가 수정되었습니다.");
-                        else Log.e("asdf", String.valueOf(code));
+                        if (code == 201) UtilClass.Toast(getApplicationContext(), "ToDo 가 수정되었습니다.");
+                        else UtilClass.Toast(getApplicationContext(), "ToDo 를 수정하지 못했습니다.");
                         finish();
                     }
                 });

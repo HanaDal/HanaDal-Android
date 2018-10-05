@@ -26,7 +26,7 @@ public class QnaDetail {
     @SerializedName("author")
     @Expose
     public Author author;
-    @SerializedName("answers")
+    @SerializedName("comment")
     @Expose
     public ArrayList<Answer> answers = null;
 

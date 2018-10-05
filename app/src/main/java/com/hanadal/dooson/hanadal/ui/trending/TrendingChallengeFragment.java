@@ -28,6 +28,7 @@ public class TrendingChallengeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        adapter.remove();
         Connector.api.getTredingChallenge().enqueue(new Res<ArrayList<ChallengeCard>>(getContext()) {
             @Override
             public void callback(int code, ArrayList<ChallengeCard> body) {

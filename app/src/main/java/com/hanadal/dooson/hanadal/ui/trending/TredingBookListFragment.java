@@ -26,7 +26,9 @@ public class TredingBookListFragment extends Fragment {
     ArrayList<BookCard> arrayList = new ArrayList<>();
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
+        adapter.remove();
         super.onStart();
         Connector.api.getTredingBook().enqueue(new Res<ArrayList<BookCard>>(getContext()) {
             @Override
