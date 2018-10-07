@@ -54,7 +54,7 @@ public class MakeQnaActivity extends AppCompatActivity
                     @Override
                     public void callback(int code, Gson body) {
                         if(code == 201){
-                            UtilClass.Toast(getApplicationContext(), "성공 ^오^;");
+                            UtilClass.Toast(getApplicationContext(), "QnA 가 등록 되었습니다.");
                             finish();
                         }
                     }

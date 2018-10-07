@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
 import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;
@@ -64,7 +65,9 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         holder.challengeName.setText(arrayList.get(position).name);
         holder.challengeAchieve.setText("달성률 : " + arrayList.get(position).achievementRate + "%");
         holder.challengeUserName.setText(arrayList.get(position).author.name);
-        //holder.challengeTag.setText(arrayList.get(position).tags);
+        StringBuilder tags = new StringBuilder();
+        for(String s : arrayList.get(position).tags) tags.append("#").append(s).append(" ");
+        holder.challengeTag.setText(tags);
 
         Glide.with(context).load(arrayList.get(position).pictureUrl).into(holder.challengeImage);
         Log.e("테스트", arrayList.get(position).achievementRate.toString());
@@ -100,9 +103,10 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         ImageView challengeUserImage;
         ImageView challengeImage;
 
-        ImageView challengeFavorite;
-        ImageView challengeFork;
-        ImageView challengeShare;
+        TextView challengeFavorite;
+        TextView challengeFork;
+        TextView challengeShare;
+
         TextView challengeTag;
 
         View thisItemView;

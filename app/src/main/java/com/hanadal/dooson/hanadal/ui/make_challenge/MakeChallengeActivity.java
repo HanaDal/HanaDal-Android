@@ -71,7 +71,7 @@ public class MakeChallengeActivity extends AppCompatActivity
                     @Override
                     public void callback(int code, Gson body) {
                         if(code == 201){
-                            UtilClass.Toast(getApplicationContext(), "성공 ^오^;");
+                            UtilClass.Toast(getApplicationContext(), "도전 추가 되었습니다.");
                             finish();
                         }
                     }
