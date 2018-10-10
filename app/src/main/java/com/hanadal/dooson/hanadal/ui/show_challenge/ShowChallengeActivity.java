@@ -34,6 +34,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
     private int day;
 
     private MarkdownView markdownView;
+    private TextView dayTextView;
     private ArrayList<TextView> days = new ArrayList<>();
     private ArrayList<EditText> todos = new ArrayList<>();
     private Button btnWriteDiary;
@@ -75,7 +76,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                                 }
                                 markdownView.loadMarkdown("# " + body.diary.get(body.day).title + "\n" + body.diary.get(body.day).content);
                             } catch (Exception ignored) {
-                                markdownView.loadMarkdown("");
+                                markdownView.loadMarkdown("\n\n# 다이어리가 \n# 작성되지 않았습니다.");
                             }finally {
                                 try{
                                     String[] todo = todoList.get(day).split(", ");
@@ -93,6 +94,8 @@ public class ShowChallengeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_challenge);
+
+        dayTextView = findViewById(R.id.will_work_text);
         btnWriteDiary = findViewById(R.id.btn_write_diary);
         btnWriteDiary.setVisibility(View.GONE);
 
@@ -141,6 +144,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void onDaysClick(View v) {
         TextView tmp = (TextView) v;
         int chooseDay = Integer.parseInt(tmp.getText().toString()) - 1;
@@ -155,9 +159,9 @@ public class ShowChallengeActivity extends AppCompatActivity {
                         if (diaryList.size() > 0)
                             markdownView.loadMarkdown("# " + diaryList.get(chooseDay).title
                                     + "\n" + diaryList.get(chooseDay).content);
-                        else markdownView.loadMarkdown("");
+                        else markdownView.loadMarkdown("\n\n# 다이어리가 \n# 작성되지 않았습니다.");
                     }catch (Exception ignored){
-                        markdownView.loadMarkdown("");
+                        markdownView.loadMarkdown("\n\n# 다이어리가 \n# 작성되지 않았습니다.");
                     }finally {
                         try{
                             String[] todo = todoList.get(chooseDay).split(", ");
@@ -183,6 +187,8 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 }
                 findViewById(R.id.scroll_view).requestLayout();
             }
+            if(chooseDay == day) dayTextView.setText("오늘의 할일");
+            else dayTextView.setText((chooseDay+1) + "째 날의 한일");
         } else {
             UtilClass.Toast(getApplicationContext(), "아직 진행되지 않은 Day 입니다.");
         }
