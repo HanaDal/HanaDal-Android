@@ -51,6 +51,9 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.github.Yalantis:Context-Menu.Android:1.0.8'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.nightonke:boommenu:2.1.1'
+    implementation 'com.mxn.soul:flowingdrawer-core:2.0.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
 
     //마크다운
     implementation 'com.github.tiagohm.MarkdownView:library:0.19.0'

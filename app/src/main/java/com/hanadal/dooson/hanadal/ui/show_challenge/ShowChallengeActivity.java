@@ -45,6 +45,11 @@ public class ShowChallengeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        for(TextView tv : days){
+            tv.setBackground(getResources().getDrawable(R.drawable.white_circle, null));
+            tv.setTextColor(Color.argb(255, 80, 80, 80));
+        }
+
         markdownView.loadMarkdown("");
 
         Intent intent = getIntent();
