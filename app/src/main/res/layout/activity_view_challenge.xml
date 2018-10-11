@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     android:background="@android:color/white"
     android:focusableInTouchMode="false"
+    android:orientation="vertical"
     tools:context=".ui.show_challenge.ShowChallengeActivity">
 
     <android.support.v7.widget.Toolbar
@@ -13,9 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:contentInsetStart="0dp">
 
         <android.support.constraint.ConstraintLayout
@@ -24,21 +23,25 @@
 
             <ImageView
                 android:id="@+id/btn_back"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:src="@drawable/back"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
                 android:onClick="onClick"
+                android:src="@drawable/challenge_todo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/challenge_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:text="여기는 편린 이름"
                 android:textColor="@android:color/white"
-                android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/action_bar_right_bmb"
                 app:layout_constraintStart_toEndOf="@+id/btn_back"
@@ -48,645 +51,693 @@
                 android:id="@+id/action_bar_right_bmb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
                 app:bmb_backgroundEffect="false"
                 app:bmb_boomEnum="boomParabola_2"
-                app:bmb_showDuration="1000"
                 app:bmb_hideDuration="1000"
-                app:layout_constraintTop_toTopOf="parent"
+                app:bmb_showDuration="1000"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Toolbar>
 
-    <ScrollView
-        android:id="@+id/scroll_view"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_write_diary"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-
-        <android.support.constraint.ConstraintLayout
+        <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <GridLayout
-                android:id="@+id/gridLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:alignmentMode="alignBounds"
-                android:columnCount="5"
-                android:orientation="horizontal"
-                android:rowCount="6"
-                android:rowOrderPreserved="false"
-                android:useDefaultMargins="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/day_1"
-                    android:layout_column="0"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="0"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="1"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_2"
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="0"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="2"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_3"
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="0"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="3"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_4"
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="0"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="4"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_5"
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="0"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="5"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_6"
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="1"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="6"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_7"
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="1"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="7"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_8"
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="1"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="8"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_9"
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="1"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="9"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_10"
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="1"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="10"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_11"
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="2"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="11"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_12"
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="2"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="12"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_13"
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="2"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="13"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_14"
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="2"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="14"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_15"
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="2"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="15"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_16"
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="3"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="16"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_17"
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="3"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="17"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_18"
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="3"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="18"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_19"
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="3"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="19"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_20"
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="3"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="20"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_21"
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="4"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="21"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_22"
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="4"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="22"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_23"
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="4"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="23"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_24"
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="4"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="24"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_25"
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="4"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="25"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_26"
-                    android:layout_column="0"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="5"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="26"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_27"
-                    android:layout_column="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="5"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="27"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_28"
-                    android:layout_column="2"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="5"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="28"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_29"
-                    android:layout_column="3"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="5"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="29"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-
-                <TextView
-                    android:id="@+id/day_30"
-                    android:layout_column="4"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_row="5"
-                    android:gravity="center"
-                    android:background="@drawable/white_circle"
-                    android:text="30"
-                    android:textSize="24sp"
-                    android:onClick="onDaysClick"/>
-            </GridLayout>
-
-            <TextView
-                android:id="@+id/diary_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:text="다이어리"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-                app:layout_constraintBottom_toTopOf="@+id/md_diary"/>
-
-            <br.tiagohm.markdownview.MarkdownView
-                android:id="@+id/md_diary"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:escapeHtml="false"
-                app:layout_constraintBottom_toTopOf="@+id/will_work_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
-            <TextView
-                android:id="@+id/will_work_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="오늘의 할일"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/md_diary" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:background="@color/colorPrimary">
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/will_work_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/will_work_text">
+                android:background="@android:color/white">
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardView_one"
+                <LinearLayout
+                    android:id="@+id/challenge_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical"
+                    android:background="@color/colorPrimary">
+
+                    <ImageView
+                        android:id="@+id/user_img"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="8dp"
+                        android:src="@mipmap/ic_launcher_round"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="손승용"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/challenge_explanation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="여기는 도전 설명"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/challenge_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_margin="8dp"
+                        android:text="#태그 #입니다"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <GridLayout
+                    android:id="@+id/gridLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_margin="10dp"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="5"
+                    android:orientation="horizontal"
+                    android:rowCount="6"
+                    android:rowOrderPreserved="false"
+                    android:useDefaultMargins="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/challenge_info">
 
-                    <android.support.constraint.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day_1"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="0"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="1"
+                        android:textSize="24sp" />
 
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="6dp"
-                            android:gravity="center"
-                            android:text="1."
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/day_2"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="0"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="2"
+                        android:textSize="24sp" />
 
-                        <EditText
-                            android:id="@+id/edit_will_work_one"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
-                            android:background="@android:color/white"
-                            android:hint="첫 번째 할일"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView5"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </android.support.constraint.ConstraintLayout>
-                </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/day_3"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="0"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="3"
+                        android:textSize="24sp" />
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardView_two"
+                    <TextView
+                        android:id="@+id/day_4"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="0"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="4"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_5"
+                        android:layout_column="4"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="0"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="5"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_6"
+                        android:layout_column="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="1"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="6"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_7"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="1"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="7"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_8"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="1"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="8"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_9"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="1"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="9"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_10"
+                        android:layout_column="4"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="1"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="10"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_11"
+                        android:layout_column="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="2"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="11"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_12"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="2"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="12"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_13"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="2"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="13"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_14"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="2"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="14"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_15"
+                        android:layout_column="4"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="2"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="15"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_16"
+                        android:layout_column="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="3"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="16"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_17"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="3"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="17"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_18"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="3"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="18"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_19"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="3"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="19"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_20"
+                        android:layout_column="4"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="3"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="20"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_21"
+                        android:layout_column="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="4"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="21"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_22"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="4"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="22"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_23"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="4"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="23"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_24"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="4"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="24"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_25"
+                        android:layout_column="4"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="4"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="25"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_26"
+                        android:layout_column="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="5"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="26"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_27"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="5"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="27"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_28"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="5"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="28"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_29"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="5"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="29"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/day_30"
+                        android:layout_column="4"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_row="5"
+                        android:background="@drawable/white_circle"
+                        android:gravity="center"
+                        android:onClick="onDaysClick"
+                        android:text="30"
+                        android:textSize="24sp" />
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/diary_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="다이어리"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/md_diary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView_one">
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
-                    <android.support.constraint.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                <br.tiagohm.markdownview.MarkdownView
+                    android:id="@+id/md_diary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:escapeHtml="false"
+                    app:layout_constraintBottom_toTopOf="@+id/will_work_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="6dp"
-                            android:gravity="center"
-                            android:text="2."
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <EditText
-                            android:id="@+id/edit_will_work_two"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
-                            android:background="@android:color/white"
-                            android:hint="두 번째 할일"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView4"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </android.support.constraint.ConstraintLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardView_three"
+                <TextView
+                    android:id="@+id/will_work_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_marginStart="16dp"
+                    android:text="오늘의 할일"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView_two">
+                    app:layout_constraintTop_toBottomOf="@+id/md_diary" />
 
-                    <android.support.constraint.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="6dp"
-                            android:gravity="center"
-                            android:text="3."
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <EditText
-                            android:id="@+id/edit_will_work_three"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
-                            android:background="@android:color/white"
-                            android:hint="세 번째 할일"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView3"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </android.support.constraint.ConstraintLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardView_four"
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/will_work_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView_three"
-                    app:layout_constraintBottom_toBottomOf="parent">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/will_work_text">
 
-                    <android.support.constraint.ConstraintLayout
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardView_one"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="6dp"
-                            android:gravity="center"
-                            android:text="4."
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                        <EditText
-                            android:id="@+id/edit_will_work_four"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
-                            android:background="@android:color/white"
-                            android:hint="네 번째 할일"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView2"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </android.support.constraint.ConstraintLayout>
-                </android.support.v7.widget.CardView>
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="6dp"
+                                android:gravity="center"
+                                android:text="1."
+                                android:textSize="20dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/edit_will_work_one"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@android:color/white"
+                                android:hint="첫 번째 할일"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView5"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardView_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cardView_one">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="6dp"
+                                android:gravity="center"
+                                android:text="2."
+                                android:textSize="20dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/edit_will_work_two"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@android:color/white"
+                                android:hint="두 번째 할일"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView4"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardView_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cardView_two">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="6dp"
+                                android:gravity="center"
+                                android:text="3."
+                                android:textSize="20dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/edit_will_work_three"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@android:color/white"
+                                android:hint="세 번째 할일"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView3"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardView_four"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cardView_three">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="6dp"
+                                android:gravity="center"
+                                android:text="4."
+                                android:textSize="20dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/edit_will_work_four"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@android:color/white"
+                                android:hint="네 번째 할일"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView2"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.v7.widget.CardView>
+                </android.support.constraint.ConstraintLayout>
             </android.support.constraint.ConstraintLayout>
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+        </ScrollView>
 
     <Button
         android:id="@+id/btn_write_diary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="다이어리 작성하기+"
-        android:textColor="@android:color/white"
         android:onClick="onClick"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:text="다이어리 작성하기+"
+        android:textColor="@android:color/white" />
+</LinearLayout>

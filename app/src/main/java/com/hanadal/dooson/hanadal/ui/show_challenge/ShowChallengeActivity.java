@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -17,6 +18,7 @@ import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeDetail;
+import com.hanadal.dooson.hanadal.data.ChallengeInfo;
 import com.hanadal.dooson.hanadal.data.Diary;
 import com.hanadal.dooson.hanadal.ui.challenge_info.ChallengeInfoActivity;
 import com.hanadal.dooson.hanadal.ui.request.RequestActivity;
@@ -43,6 +45,13 @@ public class ShowChallengeActivity extends AppCompatActivity {
     private ArrayList<Diary> diaryList = new ArrayList<>();
     private ArrayList<String> todoList = new ArrayList<>();
     private int day;
+
+    private TextView challengeTitle;
+
+    private ImageView userImg;
+    private TextView userName;
+    private TextView challengeExplanation;
+    private TextView challengeTag;
 
     private MarkdownView markdownView;
     private TextView dayTextView;
@@ -113,6 +122,14 @@ public class ShowChallengeActivity extends AppCompatActivity {
 
         intent = getIntent();
 
+        challengeExplanation  = findViewById(R.id.challenge_explanation);
+        challengeTag = findViewById(R.id.challenge_tag);
+        userName = findViewById(R.id.user_name);
+        userImg = findViewById(R.id.user_img);
+
+        challengeTitle = findViewById(R.id.challenge_title);
+        challengeTitle.setText(Objects.requireNonNull(intent.getExtras()).getString("title"));
+
         dayTextView = findViewById(R.id.will_work_text);
         btnWriteDiary = findViewById(R.id.btn_write_diary);
         btnWriteDiary.setVisibility(View.GONE);
@@ -123,6 +140,19 @@ public class ShowChallengeActivity extends AppCompatActivity {
         setDays();
         setTodos();
         setAssistance();
+
+        Connector.api.GetChallengeInfo(intent.getExtras().getString("id")).enqueue(new Res<ChallengeInfo>(getApplicationContext()) {
+            @Override
+            public void callback(int code, ChallengeInfo body) {
+                if(code == 200){
+                    challengeExplanation.setText(body.description);
+                    StringBuilder tags = new StringBuilder();
+                    for(String s : body.tags) tags.append("#").append(s).append(" ");
+                    challengeTag.setText(tags);
+                    userName.setText(body.author.name);
+                }
+            }
+        });
     }
 
     @Override
@@ -156,7 +186,6 @@ public class ShowChallengeActivity extends AppCompatActivity {
                     public void callback(int code, Gson body) {
                         if (code == 201) UtilClass.Toast(getApplicationContext(), "ToDo 가 수정되었습니다.");
                         else UtilClass.Toast(getApplicationContext(), "ToDo 를 수정하지 못했습니다.");
-                        finish();
                     }
                 });
             }
@@ -217,17 +246,13 @@ public class ShowChallengeActivity extends AppCompatActivity {
         barRightBMB = findViewById(R.id.action_bar_right_bmb);
 
         barRightBMB.setButtonEnum(ButtonEnum.Ham);
-        barRightBMB.setPiecePlaceEnum(PiecePlaceEnum.HAM_4);
-        barRightBMB.setButtonPlaceEnum(ButtonPlaceEnum.HAM_4);
+        barRightBMB.setPiecePlaceEnum(PiecePlaceEnum.HAM_3);
+        barRightBMB.setButtonPlaceEnum(ButtonPlaceEnum.HAM_3);
 
         barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
                 R.drawable.challenge_favorite_red,
                 "이 편린에 공감하기",
                 "편린의 주인에게 응원과 박수를 보냅니다."));
-        barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
-                R.drawable.tab_info,
-                "이 편린에 정보 보기",
-                "편린의 정보를 봅니다."));
         barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
                 R.drawable.challenge_fork_white,
                 "이 편린에 의견주기",
@@ -255,7 +280,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                                 });
                         break;
                     }
-                    case 3: {
+                    case 2: {
                         Connector.api.forkChallenge(
                                 token,
                                 Objects.requireNonNull(intent.getExtras()).getString("id"))
@@ -277,12 +302,6 @@ public class ShowChallengeActivity extends AppCompatActivity {
             public void onBoomDidHide() {
                 switch (getIndex){
                     case 1:{
-                        Intent i = new Intent(getApplicationContext(), ChallengeInfoActivity.class);
-                        i.putExtra("id", Objects.requireNonNull(intent.getExtras()).getString("id"));
-                        startActivity(i);
-                        break;
-                    }
-                    case 2:{
                         Intent i = new Intent(getApplicationContext(), RequestActivity.class);
                         i.putExtra("id", Objects.requireNonNull(intent.getExtras()).getString("id"));
                         startActivity(i);

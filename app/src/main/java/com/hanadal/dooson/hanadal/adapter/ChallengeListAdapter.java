@@ -59,6 +59,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         holder.thisItemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ShowChallengeActivity.class);
             intent.putExtra("id", arrayList.get(position).id);
+            intent.putExtra("title", arrayList.get(position).name);
             context.startActivity(intent);
         });
 
