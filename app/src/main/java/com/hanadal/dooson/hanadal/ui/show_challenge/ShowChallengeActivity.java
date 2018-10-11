@@ -3,6 +3,7 @@ package com.hanadal.dooson.hanadal.ui.show_challenge;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,11 @@ import com.hanadal.dooson.hanadal.data.ChallengeDetail;
 import com.hanadal.dooson.hanadal.data.Diary;
 import com.hanadal.dooson.hanadal.ui.write_diary.WriteDiaryActivity;
 import com.hanadal.dooson.hanadal.util.UtilClass;
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -38,6 +44,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
     private ArrayList<TextView> days = new ArrayList<>();
     private ArrayList<EditText> todos = new ArrayList<>();
     private Button btnWriteDiary;
+    private BoomMenuButton barRightBMB;
 
     String token =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViOWFlNmJjMzY1ZjBlMTNhODVhMTQ0YSIsImlhdCI6MTUzODAyNTcwMSwiZXhwIjoxNTQwNjE3NzAxLCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.9Ar-ElYJYpe_h9jet6TP3egDmr7vSpwuaz8mh-rr5Nc";
@@ -104,6 +111,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
 
         setDays();
         setTodos();
+        setAssistance();
     }
 
     @Override
@@ -192,6 +200,62 @@ public class ShowChallengeActivity extends AppCompatActivity {
         } else {
             UtilClass.Toast(getApplicationContext(), "아직 진행되지 않은 Day 입니다.");
         }
+    }
+
+    private void setAssistance(){
+        barRightBMB = findViewById(R.id.action_bar_right_bmb);
+
+        barRightBMB.setButtonEnum(ButtonEnum.Ham);
+        barRightBMB.setPiecePlaceEnum(PiecePlaceEnum.HAM_4);
+        barRightBMB.setButtonPlaceEnum(ButtonPlaceEnum.HAM_4);
+
+        barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
+                R.drawable.challenge_favorite_red,
+                "이 편린에 공감하기",
+                "편린의 주인에게 응원과 박수를 보냅니다."));
+        barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
+                R.drawable.tab_info,
+                "이 편린에 정보 보기",
+                "편린의 정보를 봅니다."));
+        barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
+                R.drawable.challenge_fork_white,
+                "이 편린에 의견주기",
+                "편린의 주인에게 이 편린에 대해 의견을 줍니다."));
+        barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
+                R.drawable.challenge_copy,
+                "이 편린 따라하기",
+                "이 편린를 따라하여 자신도 실천해보세요."));
+    }
+
+    private HamButton.Builder getHamButtonBuilderWithDifferentPieceColor(
+            int imageResource, String nT, String snT) {
+        return new HamButton.Builder()
+                .imagePadding(new Rect(36, 36, 36, 36))
+                .normalImageRes(imageResource)
+                .normalText(nT)
+                .subNormalText(snT)
+                .highlightedColor(Color.argb(255, 29, 39, 103))
+                .normalColor(Color.argb(255, 0, 0, 60))
+                .pieceColor(Color.WHITE)
+                .listener(index -> {
+                    switch (index) {
+                        case 0: {
+                            break;
+                        }
+                        case 1: {
+                            break;
+                        }
+                        case 2: {
+                            break;
+                        }
+                        case 3: {
+                            break;
+                        }
+                        case 4: {
+                            break;
+                        }
+                    }
+                });
     }
 
     @SuppressLint("FindViewByIdCast")
