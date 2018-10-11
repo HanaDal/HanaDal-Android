@@ -126,4 +126,8 @@ public class ShowQnaActivity extends AppCompatActivity
             });
         }else UtilClass.Toast(getApplicationContext(), "내용을 입력 해주세요!");
     }
+
+    public void onBackClick(View v){
+        finish();
+    }
 }

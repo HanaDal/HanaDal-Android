@@ -25,6 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="손승용"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/challenge_image"
         app:layout_constraintEnd_toStartOf="@+id/challenge_achieve"
         app:layout_constraintStart_toEndOf="@+id/challenge_user_image"
@@ -38,6 +39,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="달성률 : 100%"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/challenge_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

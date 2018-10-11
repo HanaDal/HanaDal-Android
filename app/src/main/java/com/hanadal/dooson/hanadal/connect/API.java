@@ -39,20 +39,17 @@ public interface API {
 
     // 프로필 정보 변경
     @FormUrlEncoded
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @PUT("user/profile")
     Call<Gson> modifyProfile(@Header("X-Access-Token") String jwt,
                              @Field("profileName") String profileName,
                              @Field("profileTags") String profileTags);
 
     // 공감한 편린들
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/cheering")
     Call<ArrayList<ChallengeCard>> getCheering(@Header("X-Access-Token") String jwt);
 
     // 편린에 공감하기
     @FormUrlEncoded
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @POST("user/cheering")
     Call<Gson> addCheering(@Header("X-Access-Token") String jwt, @Field("id") String id);
 
@@ -74,7 +71,6 @@ public interface API {
                                @Field("tags") String tags);
 
     // 도전 상세보기
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("challenge/{id}")
     Call<ChallengeDetail> showChallenge(@Header("X-Access-Token") String jwt, @Path("id") String id);
 
@@ -125,7 +121,6 @@ public interface API {
 
     // 도전에 대한 정보 수정
     @FormUrlEncoded
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @PUT("challenge/{id}/info")
     Call<Gson> modifyChallengeInfo(@Header("X-Access-Token") String jwt,
                                    @Path("id") String id,
@@ -134,9 +129,7 @@ public interface API {
                                    @Field("tags") String tags);
 
     // 도전 포크
-    @FormUrlEncoded
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
-    @PUT("challenge/challenge/{id}/fork")
+    @POST("challenge/{id}/fork")
     Call<Gson> forkChallenge(@Header("X-Access-Token") String jwt, @Path("id") String id);
 
     // 내 책 조회하기

@@ -18,12 +18,17 @@ import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeDetail;
 import com.hanadal.dooson.hanadal.data.Diary;
+import com.hanadal.dooson.hanadal.ui.challenge_info.ChallengeInfoActivity;
+import com.hanadal.dooson.hanadal.ui.request.RequestActivity;
 import com.hanadal.dooson.hanadal.ui.write_diary.WriteDiaryActivity;
 import com.hanadal.dooson.hanadal.util.UtilClass;
+import com.nightonke.boommenu.BoomButtons.BoomButton;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomButtons.InnerOnBoomButtonClickListener;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.OnBoomListener;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import java.util.ArrayList;
@@ -46,6 +51,10 @@ public class ShowChallengeActivity extends AppCompatActivity {
     private Button btnWriteDiary;
     private BoomMenuButton barRightBMB;
 
+    private int getIndex = -1;
+
+    Intent intent;
+
     String token =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViOWFlNmJjMzY1ZjBlMTNhODVhMTQ0YSIsImlhdCI6MTUzODAyNTcwMSwiZXhwIjoxNTQwNjE3NzAxLCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.9Ar-ElYJYpe_h9jet6TP3egDmr7vSpwuaz8mh-rr5Nc";
 
@@ -53,14 +62,14 @@ public class ShowChallengeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        getIndex = -1;
+
         for(TextView tv : days){
             tv.setBackground(getResources().getDrawable(R.drawable.white_circle, null));
             tv.setTextColor(Color.argb(255, 80, 80, 80));
         }
 
         markdownView.loadMarkdown("");
-
-        Intent intent = getIntent();
         Connector.api.showChallenge(token, Objects.requireNonNull(intent.getExtras()).getString("id"))
                 .enqueue(new Res<ChallengeDetail>(getApplicationContext()) {
                     @Override
@@ -101,6 +110,8 @@ public class ShowChallengeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_challenge);
+
+        intent = getIntent();
 
         dayTextView = findViewById(R.id.will_work_text);
         btnWriteDiary = findViewById(R.id.btn_write_diary);
@@ -225,6 +236,73 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 R.drawable.challenge_copy,
                 "이 편린 따라하기",
                 "이 편린를 따라하여 자신도 변화 시켜보세요."));
+
+        barRightBMB.setOnBoomListener(new OnBoomListener() {
+            @Override
+            public void onClicked(int index, BoomButton boomButton) {
+                getIndex = index;
+                switch (index) {
+                    case 0: {
+                        Connector.api.addCheering(
+                                token,
+                                Objects.requireNonNull(intent.getExtras()).getString("id"))
+                                .enqueue(new Res<Gson>(getApplicationContext()) {
+                                    @Override
+                                    public void callback(int code, Gson body) {
+                                        if (code == 201) UtilClass.Toast(getApplicationContext(), "편린을 공감했습니다.");
+                                        else UtilClass.Toast(getApplicationContext(), "놀랍게도 지금은 공감을 못 합니다...");
+                                    }
+                                });
+                        break;
+                    }
+                    case 3: {
+                        Connector.api.forkChallenge(
+                                token,
+                                Objects.requireNonNull(intent.getExtras()).getString("id"))
+                                .enqueue(new Res<Gson>(getApplicationContext()) {
+                                    @Override
+                                    public void callback(int code, Gson body) {
+                                        if (code == 201)
+                                            UtilClass.Toast(getApplicationContext(), "이제 이 편린을 따라할 수 있습니다.");
+                                        else
+                                            UtilClass.Toast(getApplicationContext(), "놀랍게도 지금은 못 따라 합니다...");
+                                    }
+                                });
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onBoomDidHide() {
+                switch (getIndex){
+                    case 1:{
+                        Intent i = new Intent(getApplicationContext(), ChallengeInfoActivity.class);
+                        i.putExtra("id", Objects.requireNonNull(intent.getExtras()).getString("id"));
+                        startActivity(i);
+                        break;
+                    }
+                    case 2:{
+                        Intent i = new Intent(getApplicationContext(), RequestActivity.class);
+                        i.putExtra("id", Objects.requireNonNull(intent.getExtras()).getString("id"));
+                        startActivity(i);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onBackgroundClick() { }
+
+            @Override
+            public void onBoomWillHide() { }
+
+            @Override
+            public void onBoomWillShow() { }
+
+            @Override
+            public void onBoomDidShow() { }
+        });
     }
 
     private HamButton.Builder getHamButtonBuilderWithDifferentPieceColor(
@@ -236,26 +314,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 .subNormalText(snT)
                 .highlightedColor(Color.argb(255, 29, 39, 103))
                 .normalColor(Color.argb(255, 0, 0, 60))
-                .pieceColor(Color.WHITE)
-                .listener(index -> {
-                    switch (index) {
-                        case 0: {
-                            break;
-                        }
-                        case 1: {
-                            break;
-                        }
-                        case 2: {
-                            break;
-                        }
-                        case 3: {
-                            break;
-                        }
-                        case 4: {
-                            break;
-                        }
-                    }
-                });
+                .pieceColor(Color.WHITE);
     }
 
     @SuppressLint("FindViewByIdCast")

@@ -25,6 +25,7 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:src="@drawable/back"
+                android:onClick="onBackClick"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
