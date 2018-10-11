@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.app_info.AppInfoActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="쓰읍....\n 미스!"
+        android:textSize="60dp"
+        android:textStyle="bold|italic"
+        android:gravity="center"/>
+
 </android.support.constraint.ConstraintLayout>
