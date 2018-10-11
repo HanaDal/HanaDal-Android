@@ -224,7 +224,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
         barRightBMB.addBuilder(getHamButtonBuilderWithDifferentPieceColor(
                 R.drawable.challenge_copy,
                 "이 편린 따라하기",
-                "이 편린를 따라하여 자신도 실천해보세요."));
+                "이 편린를 따라하여 자신도 변화 시켜보세요."));
     }
 
     private HamButton.Builder getHamButtonBuilderWithDifferentPieceColor(
