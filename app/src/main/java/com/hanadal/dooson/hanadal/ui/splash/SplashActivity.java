@@ -12,6 +12,7 @@ import android.view.animation.TranslateAnimation;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.databinding.ActivitySplashBinding;
+import com.hanadal.dooson.hanadal.ui.main.MainActivity;
 import com.hanadal.dooson.hanadal.ui.sign.SignActivity;
 
 public class SplashActivity extends AppCompatActivity{
@@ -41,7 +42,7 @@ public class SplashActivity extends AppCompatActivity{
         set1.startNow();
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplicationContext(), SignActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }, 3000);
     }
