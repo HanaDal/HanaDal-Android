@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.splash.SplashActivity"
         android:background="@drawable/gradient_drawable">
-
-        <ImageView
-            android:id="@+id/star"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/star" />
 
         <ImageView
             android:id="@+id/moon"
@@ -79,6 +73,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/green"
             app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/star"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/star"
+            app:layout_constraintBottom_toBottomOf="@+id/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

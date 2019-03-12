@@ -10,9 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.TestFragment;
-import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
-import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
+import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
+import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
 
 public class TrendingFragment extends Fragment {
 

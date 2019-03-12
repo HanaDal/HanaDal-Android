@@ -7,16 +7,14 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
-import com.hanadal.dooson.hanadal.ui.make_challenge.MakeChallengeActivity;
+import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.make_qna.MakeQnaActivity;
-import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
+import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
 
 // Todo("QnA 만들기 기능 구현")
 public class QnaFragment extends Fragment

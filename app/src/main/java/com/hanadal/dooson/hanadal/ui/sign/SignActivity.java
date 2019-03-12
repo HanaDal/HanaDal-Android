@@ -1,78 +1,47 @@
 package com.hanadal.dooson.hanadal.ui.sign;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+import com.google.gson.JsonObject;
 import com.hanadal.dooson.hanadal.R;
+import com.hanadal.dooson.hanadal.connect.Connector;
 
-public class SignActivity extends AppCompatActivity {
+import mehdi.sakout.fancybuttons.FancyButton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    LoginButton loginButton;
-    CallbackManager callbackManager;
+public class SignActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private FancyButton loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_sign);
 
-        callbackManager = CallbackManager.Factory.create();
-
         loginButton = findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email");
-        // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.e("개꿀입니다.", "^오^;");
-                // App code
-            }
+        loginButton.setOnClickListener(this);
 
-            @Override
-            public void onCancel() {
-                Log.e("꺼집니다.", "^오^;");
-                // App code
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                Log.e("부끄러운줄알아야지.", "^오^;");
-                // App code
-            }
-        });
-
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Log.e("개꿀입니다!", "^오^;");
-                        // App code
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Log.e("꺼집니다!", "^오^;");
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Log.e("부끄러운줄알아야지!", exception.toString());
-                        // App code
-                    }
-                });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onClick(View v) {
+
+//        Connector.api.sex().enqueue(new Callback<JsonObject>() {
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                Log.e("sex", response.headers().get("Location") + " " + response.code());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable t) {
+//                Log.e("feels good", t.getMessage());
+//            }
+//        });
     }
 }

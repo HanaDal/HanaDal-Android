@@ -13,10 +13,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.adapter.AnswerAdapter;
+import com.hanadal.dooson.hanadal.ui.adapter.AnswerAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.Answer;

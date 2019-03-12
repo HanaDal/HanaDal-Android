@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.adapter;
+package com.hanadal.dooson.hanadal.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

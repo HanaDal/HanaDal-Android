@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.adapter.ChallengeListAdapter;
+import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;

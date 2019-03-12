@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.adapter;
+package com.hanadal.dooson.hanadal.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,8 +14,6 @@ import android.widget.TextView;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.Answer;
 import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

@@ -14,14 +14,14 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
+import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
 import com.hanadal.dooson.hanadal.ui.favorite.FavoriteActivity;
 import com.hanadal.dooson.hanadal.ui.my_challenge.MyChallengeFragment;
 import com.hanadal.dooson.hanadal.ui.qna.QnaFragment;
 import com.hanadal.dooson.hanadal.ui.search.SearchFragment;
 import com.hanadal.dooson.hanadal.ui.trending.TrendingFragment;
-import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
+import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity
         mainViewPagerAdapter.addFragment(new MyChallengeFragment());
         mainViewPagerAdapter.addFragment(new TrendingFragment());
         mainViewPagerAdapter.addFragment(new QnaFragment());
-/*        mainViewPagerAdapter.addFragment(new ItemFragment());
-        mainViewPagerAdapter.addFragment(new ShopFragment());*/
         mainViewPagerAdapter.addFragment(new SearchFragment());
 
         viewPager.setAdapter(mainViewPagerAdapter);
@@ -66,18 +64,6 @@ public class MainActivity extends AppCompatActivity
         tabLayout.getTabAt(2).setIcon(R.drawable.tab_question_answer);
         tabLayout.getTabAt(2).getIcon().setColorFilter(
                 ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
-/*        tabLayout.getTabAt(3).setIcon(R.drawable.tab_gallery);
-        tabLayout.getTabAt(3).getIcon().setColorFilter(
-                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(4).setIcon(R.drawable.tab_shop);
-        tabLayout.getTabAt(4).getIcon().setColorFilter(
-                ContextCompat.getColor(getApplicationContext(), R.color.weekWhite), PorterDuff.Mode.SRC_IN);*/
-
-/*        tabLayout.getTabAt(0).setText("내 도전");
-        tabLayout.getTabAt(1).setText("트렌딩");
-        tabLayout.getTabAt(2).setText("Q&A");
-        tabLayout.getTabAt(3).setText("아이템");
-        tabLayout.getTabAt(4).setText("상점");*/
 
         navigationView.setNavigationItemSelectedListener(this);
         tabLayout.addOnTabSelectedListener(this);
@@ -118,16 +104,6 @@ public class MainActivity extends AppCompatActivity
                 tabLayout.setVisibility(View.VISIBLE);
                 viewPager.setCurrentItem(2);
                 break;
-/*            case R.id.nav_skin:
-                lastPagerNum = 3;
-                tabLayout.setVisibility(View.VISIBLE);
-                viewPager.setCurrentItem(3);
-                break;
-            case R.id.nav_shop:
-                lastPagerNum = 4;
-                tabLayout.setVisibility(View.VISIBLE);
-                viewPager.setCurrentItem(4);
-                break;*/
             case R.id.nav_hart:
                 startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
                 break;

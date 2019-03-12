@@ -7,16 +7,15 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.TestFragment;
-import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
+import com.hanadal.dooson.hanadal.ui.TestFragment;
+import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.main.MainActivity;
-import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
+import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
 
 
 //ToDo("검색 입력시 페이지에 맞게 리스트 값 계속 가져오기")

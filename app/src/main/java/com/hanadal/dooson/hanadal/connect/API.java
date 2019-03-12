@@ -1,6 +1,8 @@
 package com.hanadal.dooson.hanadal.connect;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.hanadal.dooson.hanadal.data.*;
 
 import java.util.ArrayList;
@@ -198,4 +200,7 @@ public interface API {
 
     @GET("qna/my-answer")
     Call<ArrayList<QnACard>> getMyAnswer(@Header("X-Access-Token") String jwt);
+
+    @GET("user/login")
+    Call<JsonObject> facebookLogin();
 }

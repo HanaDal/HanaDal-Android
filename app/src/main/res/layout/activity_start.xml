@@ -85,10 +85,11 @@
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/login_button"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:paddingLeft="42dp"
-        android:paddingRight="42dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:fb_radius="2dp"
@@ -96,7 +97,7 @@
         app:fb_fontIconSize="20sp"
         app:fb_iconPaddingRight="12dp"
         app:fb_textSize="18sp"
-        app:fb_text="Facebook 로그인"
+        app:fb_text="Facebook으로 로그인"
         app:fb_textColor="#ffffff"
         app:fb_defaultColor="#39579B"
         app:fb_focusColor="#6183d2"

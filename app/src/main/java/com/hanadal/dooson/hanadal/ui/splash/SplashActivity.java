@@ -2,9 +2,9 @@ package com.hanadal.dooson.hanadal.ui.splash;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
@@ -12,12 +12,11 @@ import android.view.animation.TranslateAnimation;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.databinding.ActivitySplashBinding;
-import com.hanadal.dooson.hanadal.ui.main.MainActivity;
 import com.hanadal.dooson.hanadal.ui.sign.SignActivity;
 
 public class SplashActivity extends AppCompatActivity{
-    ActivitySplashBinding binding;
-    boolean ani = false;
+    private ActivitySplashBinding binding;
+    private boolean ani = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class SplashActivity extends AppCompatActivity{
         set1.startNow();
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), SignActivity.class));
             finish();
         }, 3000);
     }

@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.adapter.FragmentViewPagerAdapter;
+import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.make_challenge.MakeChallengeActivity;
-import com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager;
+import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
 
 // ToDo("도전 만들기 기능 구현")
 // ToDo("다이어리 작성 기능 구현")

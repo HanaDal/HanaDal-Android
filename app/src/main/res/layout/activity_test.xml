@@ -5,7 +5,7 @@
     <data>
         <variable
             name="activity"
-            type="com.hanadal.dooson.hanadal.TestActivity"/>
+            type="com.hanadal.dooson.hanadal.ui.TestActivity"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

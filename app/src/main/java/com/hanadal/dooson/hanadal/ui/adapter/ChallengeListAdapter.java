@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.adapter;
+package com.hanadal.dooson.hanadal.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
 import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;

@@ -15,7 +15,7 @@
         app:tabSelectedTextColor="@android:color/white"
         app:tabIndicatorColor="#ffcf00" />
 
-    <com.hanadal.dooson.hanadal.view.DoNotSwipeViewPager
+    <com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager
         android:id="@+id/qna_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

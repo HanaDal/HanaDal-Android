@@ -1,4 +1,4 @@
-package com.hanadal.dooson.hanadal.view;
+package com.hanadal.dooson.hanadal.ui.view;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

@@ -24,8 +24,8 @@ public abstract class Res<T> implements Callback<T> {
 
     @Override
     public void onFailure(@NonNull Call call, @NonNull Throwable t) {
-        Log.e("어림없는 볼", "부끄러운줄 알아야지");
-        UtilClass.Toast(context, "네트워크 연결이 필요합니다.");
+        Log.e("반성해라", "네");
+        //UtilClass.Toast(context, "네트워크 연결이 필요합니다.");
     }
 
     public abstract void callback(int code, T body);
