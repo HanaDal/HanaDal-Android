@@ -40,9 +40,6 @@ public class ShowQnaActivity extends AppCompatActivity
     AnswerAdapter answerAdapter;
     ArrayList<Answer> arrayList = new ArrayList<>();
 
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -99,7 +96,7 @@ public class ShowQnaActivity extends AppCompatActivity
     public void onClick(View v) {
         if(qnaCommentEditText.getTextSize() > 0) {
             Intent intent = getIntent();
-            Connector.api.addQnAComment(token,
+            Connector.api.addQnAComment(UtilClass.getToken(getApplicationContext()),
                     Objects.requireNonNull(intent.getExtras()).getString("id"),
                     qnaCommentEditText.getText().toString()).enqueue(new Res<Gson>(getApplicationContext()) {
                 @Override

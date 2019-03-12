@@ -27,6 +27,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     private ImageView star;
 
     private Boolean isAni = false;
+    private SignDialog sd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        SignDialog sd = new SignDialog();
+        sd = new SignDialog(this);
         sd.setCancelable(false);
         sd.show(getFragmentManager(), "Facebook Login");
     }

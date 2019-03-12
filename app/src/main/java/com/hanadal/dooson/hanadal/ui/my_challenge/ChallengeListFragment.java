@@ -16,6 +16,7 @@ import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
+import com.hanadal.dooson.hanadal.util.UtilClass;
 
 import java.util.ArrayList;
 
@@ -25,14 +26,11 @@ public class ChallengeListFragment extends Fragment {
     ChallengeListAdapter adapter;
     ArrayList<ChallengeCard> arrayList = new ArrayList<>();
 
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
-
     @Override
     public void onStart() {
         super.onStart();
         adapter.remove();
-        Connector.api.getMyChallenge(token).enqueue(new Res<ArrayList<ChallengeCard>>(getContext()) {
+        Connector.api.getMyChallenge(UtilClass.getToken(getContext())).enqueue(new Res<ArrayList<ChallengeCard>>(getContext()) {
             @Override
             public void callback(int code, ArrayList<ChallengeCard> body) {
                 if(code == 200){

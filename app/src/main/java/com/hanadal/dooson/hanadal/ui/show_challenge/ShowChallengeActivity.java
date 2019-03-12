@@ -64,9 +64,6 @@ public class ShowChallengeActivity extends AppCompatActivity {
 
     Intent intent;
 
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -79,7 +76,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
         }
 
         markdownView.loadMarkdown("");
-        Connector.api.showChallenge(token, Objects.requireNonNull(intent.getExtras()).getString("id"))
+        Connector.api.showChallenge(UtilClass.getToken(getApplication()), Objects.requireNonNull(intent.getExtras()).getString("id"))
                 .enqueue(new Res<ChallengeDetail>(getApplicationContext()) {
                     @Override
                     public void callback(int code, ChallengeDetail body) {
@@ -269,7 +266,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 switch (index) {
                     case 0: {
                         Connector.api.addCheering(
-                                token,
+                                UtilClass.getToken(getApplication()),
                                 Objects.requireNonNull(intent.getExtras()).getString("id"))
                                 .enqueue(new Res<Gson>(getApplicationContext()) {
                                     @Override
@@ -282,7 +279,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                     }
                     case 2: {
                         Connector.api.forkChallenge(
-                                token,
+                                UtilClass.getToken(getApplication()),
                                 Objects.requireNonNull(intent.getExtras()).getString("id"))
                                 .enqueue(new Res<Gson>(getApplicationContext()) {
                                     @Override

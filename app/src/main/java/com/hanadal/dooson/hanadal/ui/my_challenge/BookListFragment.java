@@ -16,6 +16,7 @@ import com.hanadal.dooson.hanadal.ui.adapter.BookListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.BookCard;
+import com.hanadal.dooson.hanadal.util.UtilClass;
 
 import java.util.ArrayList;
 
@@ -25,13 +26,10 @@ public class BookListFragment extends Fragment {
     BookListAdapter adapter;
     ArrayList<BookCard> arrayList = new ArrayList<>();
 
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
-
     @Override
     public void onStart() {
         super.onStart();
-        Connector.api.getBook(token).enqueue(new Res<ArrayList<BookCard>>(getContext()) {
+        Connector.api.getBook(UtilClass.getToken(getContext())).enqueue(new Res<ArrayList<BookCard>>(getContext()) {
             @Override
             public void callback(int code, ArrayList<BookCard> body) {
                 if(code == 200){

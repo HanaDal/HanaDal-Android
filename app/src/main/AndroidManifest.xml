@@ -34,7 +34,5 @@
         <activity android:name=".ui.make_qna.MakeQnaActivity" />
         <activity android:name=".ui.favorite.FavoriteActivity" />
         <activity android:name=".ui.TestActivity" />
-        <activity android:name=".ui.sign.SignActivity" />
-        <activity android:name=".ui.splash.SplashActivity" />
     </application>
 </manifest>

@@ -31,9 +31,6 @@ public class MakeChallengeActivity extends AppCompatActivity
     Button btnStartChallenge;
     ImageView btnBack;
 
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +59,7 @@ public class MakeChallengeActivity extends AppCompatActivity
         switch (v.getId()){
             case R.id.btn_start_challenge:{
                 Connector.api.makeMyChallenge(
-                        token,
+                        UtilClass.getToken(getApplicationContext()),
                         editChallengeName.getText().toString(),
                         editChallengeInfo.getText().toString(),
                         radioPublic.isChecked(),

@@ -19,12 +19,9 @@ import java.util.Objects;
 public class WriteDiaryActivity extends AppCompatActivity
         implements View.OnClickListener{
 
-    EditText diaryTitle;
-    EditText diaryContent;
-    Button diarySend;
-
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
+    private EditText diaryTitle;
+    private EditText diaryContent;
+    private Button diarySend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

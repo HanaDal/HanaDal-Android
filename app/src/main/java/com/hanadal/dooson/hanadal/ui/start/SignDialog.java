@@ -1,5 +1,7 @@
 package com.hanadal.dooson.hanadal.ui.start;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,17 +30,22 @@ import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+@SuppressLint("ValidFragment")
 public class SignDialog extends DialogFragment {
 
     private WebView web;
     private ProgressDialog progressDialog;
     private OkHttpClient app = new OkHttpClient();
+    private Activity activity;
+
+    public SignDialog(Activity activity){
+        this.activity = activity;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_sign, container, false);
-
         web = view.findViewById(R.id.web);
 
         showLoading();
@@ -67,6 +74,9 @@ public class SignDialog extends DialogFragment {
 
                     app.newCall(okRequest).enqueue(tokenCallback);
 
+                    startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
+                    activity.finish();
+
                     return true;
                 }
                 return false;
@@ -84,8 +94,6 @@ public class SignDialog extends DialogFragment {
                     if(response.code() == 200) {
                         UtilClass.saveToken(getContext(), response.header("authentication"));
                         dismiss();
-                        getContext().startActivity(new Intent(getContext(), MainActivity.class));
-                        getActivity().finish();
                     }
                 }
             };

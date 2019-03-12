@@ -12,6 +12,7 @@ import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
+import com.hanadal.dooson.hanadal.util.UtilClass;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,6 @@ public class FavoriteActivity extends AppCompatActivity {
     RecyclerView challengeList;
     ChallengeListAdapter adapter;
     ArrayList<ChallengeCard> arrayList = new ArrayList<>();
-
-    String token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjY5ZmExMjBhMDFjMDAxM2VlOGZjYSIsImlhdCI6MTU0NDY4NzIyNCwiZXhwIjoxNTQ3Mjc5MjI0LCJpc3MiOiJoYW5hZGFsLXNlcnZlciJ9.Ex2D1-lhwcQa7baTgQLnfgiecuSg37sjtX1xMaRSwxg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,7 @@ public class FavoriteActivity extends AppCompatActivity {
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
 
-        Connector.api.getCheering(token).enqueue(new Res<ArrayList<ChallengeCard>>(getApplicationContext()) {
+        Connector.api.getCheering(UtilClass.getToken(getApplicationContext())).enqueue(new Res<ArrayList<ChallengeCard>>(getApplicationContext()) {
             @Override
             public void callback(int code, ArrayList<ChallengeCard> body) {
                 if(code == 200){
