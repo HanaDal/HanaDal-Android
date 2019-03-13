@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -25,6 +26,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     private TextView title;
     private TextView subTitle;
     private ImageView star;
+    private SignDialog sd;
 
     private Boolean isAni = false;
 
@@ -55,7 +57,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        SignDialog sd = new SignDialog(this);
+        sd = new SignDialog(this);
         sd.setCancelable(false);
         sd.show(getFragmentManager(), "Facebook Login");
     }

@@ -11,6 +11,9 @@ public class Profile {
     @SerializedName("name")
     @Expose
     public String name;
+    @SerializedName("picture")
+    @Expose
+    public String picture;
     @SerializedName("point")
     @Expose
     public Integer point;

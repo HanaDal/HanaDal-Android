@@ -5,7 +5,7 @@
     android:background="@drawable/gradient_drawable"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".ui.sign.SignActivity">
+    tools:context=".ui.start.StartActivity">
 
     <ImageView
         android:background="@drawable/icon"

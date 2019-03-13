@@ -9,11 +9,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.request.RequestOptions;
 import com.hanadal.dooson.hanadal.R;
+import com.hanadal.dooson.hanadal.connect.Connector;
+import com.hanadal.dooson.hanadal.connect.Res;
+import com.hanadal.dooson.hanadal.data.Profile;
 import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.app_info.AppInfoActivity;
 import com.hanadal.dooson.hanadal.ui.favorite.FavoriteActivity;
@@ -22,6 +30,9 @@ import com.hanadal.dooson.hanadal.ui.qna.QnaFragment;
 import com.hanadal.dooson.hanadal.ui.search.SearchFragment;
 import com.hanadal.dooson.hanadal.ui.trending.TrendingFragment;
 import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
+import com.hanadal.dooson.hanadal.util.UtilClass;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -31,6 +42,9 @@ public class MainActivity extends AppCompatActivity
     private DoNotSwipeViewPager viewPager;
     private TabLayout tabLayout;
     public EditText editText;
+
+    private CircleImageView userImage;
+    private TextView userName;
 
     private int lastPagerNum;
 
@@ -44,6 +58,12 @@ public class MainActivity extends AppCompatActivity
         viewPager = findViewById(R.id.main_view_pager);
         tabLayout = findViewById(R.id.main_tab);
         editText = findViewById(R.id.search_edit);
+
+        View headerLayout =
+                navigationView.inflateHeaderView(R.layout.nav_header_main);
+
+        userImage = headerLayout.findViewById(R.id.profile_image);
+        userName = headerLayout.findViewById(R.id.name_text);
 
         FragmentViewPagerAdapter mainViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new MyChallengeFragment());
@@ -67,6 +87,24 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
         tabLayout.addOnTabSelectedListener(this);
+
+        Connector.api.getProfile(UtilClass.getToken(getApplicationContext()))
+                .enqueue(new Res<Profile>(getApplicationContext()) {
+            @Override
+            public void callback(int code, Profile body) {
+                if(code == 200) {
+                    RequestOptions options = new RequestOptions()
+                            .fitCenter()
+                            .override(450)
+                            .format(DecodeFormat.PREFER_ARGB_8888);
+                    userName.setText(body.name);
+                    Glide.with(getApplicationContext())
+                            .asBitmap()
+                            .load(body.picture)
+                            .apply(options).into(userImage);
+                }
+            }
+        });
     }
 
     @Override

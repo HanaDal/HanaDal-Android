@@ -2,6 +2,7 @@ package com.hanadal.dooson.hanadal.ui.start;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -38,8 +39,25 @@ public class SignDialog extends DialogFragment {
     private OkHttpClient app = new OkHttpClient();
     private Activity activity;
 
+    private long backKeyPressedTime = 0;
+
     public SignDialog(Activity activity){
         this.activity = activity;
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return new Dialog(getActivity(), getTheme()){
+            @Override
+            public void onBackPressed() {
+                if(System.currentTimeMillis() > backKeyPressedTime + 200){
+                    backKeyPressedTime = System.currentTimeMillis();
+                    UtilClass.Toast(getContext(), "한번 더 누르면\n로그인 과정을 취소합니다.");
+                } else{
+                    dismiss();
+                }
+            }
+        };
     }
 
     @Nullable
@@ -74,9 +92,6 @@ public class SignDialog extends DialogFragment {
 
                     app.newCall(okRequest).enqueue(tokenCallback);
 
-                    startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
-                    activity.finish();
-
                     return true;
                 }
                 return false;
@@ -93,7 +108,8 @@ public class SignDialog extends DialogFragment {
                     Log.e("Facebook Token", String.valueOf(response.code()));
                     if(response.code() == 200) {
                         UtilClass.saveToken(getContext(), response.header("authentication"));
-                        dismiss();
+                        startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
+                        activity.finish();
                     }
                 }
             };

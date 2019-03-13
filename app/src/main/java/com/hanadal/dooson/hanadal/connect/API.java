@@ -21,30 +21,10 @@ import retrofit2.http.Query;
 public interface API {
 
     /** USER **/
-
-    // 로그인
-    @FormUrlEncoded
-    @POST("user/login")
-    Call<Login> login(@Field("id") String id);
-
-    // 회원가입
-    @FormUrlEncoded
-    @POST("user/login")
-    Call<Gson> resister(@Field("id") String id,
-                        @Field("name") String name,
-                        @Field("tags") String tags);
-
     // 프로필 정보 얻기
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     @GET("user/profile")
     Call<Profile> getProfile(@Header("X-Access-Token") String jwt);
-
-    // 프로필 정보 변경
-    @FormUrlEncoded
-    @PUT("user/profile")
-    Call<Gson> modifyProfile(@Header("X-Access-Token") String jwt,
-                             @Field("profileName") String profileName,
-                             @Field("profileTags") String profileTags);
 
     // 공감한 편린들
     @GET("user/cheering")
