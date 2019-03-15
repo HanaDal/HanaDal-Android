@@ -16,6 +16,7 @@ import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
+import com.hanadal.dooson.hanadal.util.UtilClass;
 
 import java.util.ArrayList;
 

@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.QnACard;
 import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
@@ -61,7 +63,11 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
         StringBuilder stringBuilder = new StringBuilder();
         for(String tag : arrayList.get(position).tags) stringBuilder.append("#").append(tag).append(" ");
         holder.qnaTag.setText(stringBuilder.toString());
-        //Glide.with(context).load(arrayList.get(position).author.picture).into(holder.qnaUserImage);
+
+        Glide.with(context)
+                .load(arrayList.get(position).author.picture)
+                .apply(new RequestOptions()
+                        .override(150)).into(holder.qnaUserImage);
     }
 
     @Override

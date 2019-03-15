@@ -6,21 +6,25 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
 import com.hanadal.dooson.hanadal.ui.show_challenge.ShowChallengeActivity;
 
 import java.util.ArrayList;
 
-public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdapter.ViewHolder>
-        implements View.OnClickListener{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdapter.ViewHolder> {
 
     ArrayList<ChallengeCard> arrayList;
     Context context;
@@ -52,25 +56,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.challengeFavorite.setOnClickListener(this);
-        holder.challengeFork.setOnClickListener(this);
-        holder.challengeShare.setOnClickListener(this);
-        holder.thisItemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ShowChallengeActivity.class);
-            intent.putExtra("id", arrayList.get(position).id);
-            intent.putExtra("title", arrayList.get(position).name);
-            context.startActivity(intent);
-        });
-
-        holder.challengeName.setText(arrayList.get(position).name);
-        holder.challengeAchieve.setText("달성률 : " + arrayList.get(position).achievementRate + "%");
-        holder.challengeUserName.setText(arrayList.get(position).author.name);
-        StringBuilder tags = new StringBuilder();
-        for(String s : arrayList.get(position).tags) tags.append("#").append(s).append(" ");
-        holder.challengeTag.setText(tags);
-
-        Glide.with(context).load(arrayList.get(position).pictureUrl).into(holder.challengeImage);
-        Log.e("테스트", arrayList.get(position).achievementRate.toString());
+        holder.bind(context, arrayList.get(position));
     }
 
     @Override
@@ -78,29 +64,14 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         return arrayList.size();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.challenge_favorite:{
-                break;
-            }
-            case R.id.challenge_fork:{
-                break;
-            }
-            case R.id.challenge_share:{
-                break;
-            }
-        }
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener{
 
         TextView challengeName;
         TextView challengeAchieve;
         TextView challengeUserName;
 
-
-        ImageView challengeUserImage;
+        CircleImageView challengeUserImage;
         ImageView challengeImage;
 
         TextView challengeFavorite;
@@ -111,7 +82,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
 
         View thisItemView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             thisItemView = itemView;
@@ -127,6 +98,52 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
             challengeFork = itemView.findViewById(R.id.challenge_fork);
             challengeShare = itemView.findViewById(R.id.challenge_share);
             challengeTag = itemView.findViewById(R.id.challenge_tag);
+        }
+
+        void bind(Context context, ChallengeCard card){
+            challengeFavorite.setOnClickListener(this);
+            challengeFork.setOnClickListener(this);
+            challengeShare.setOnClickListener(this);
+
+            Glide.with(context)
+                    .load(card.pictureUrl)
+                    .apply(new RequestOptions().override(50))
+                    .into(challengeImage);
+
+            challengeName.setText(card.name);
+            challengeUserName.setText(card.author.name);
+            challengeAchieve.setText("달성률 : " + card.achievementRate + "%");
+            StringBuilder tags = new StringBuilder();
+            for(String s : card.tags) tags.append("#").append(s).append(" ");
+            challengeTag.setText(tags);
+
+            Glide.with(context).load(card.pictureUrl).into(challengeImage);
+            Glide.with(context).load(card.author.picture)
+                    .apply(new RequestOptions().override(150))
+                    .into(challengeUserImage);
+            Log.e("테스트", card.achievementRate.toString());
+
+            thisItemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, ShowChallengeActivity.class);
+                intent.putExtra("id", card.id);
+                intent.putExtra("title", card.name);
+                context.startActivity(intent);
+            });
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.challenge_favorite:{
+                    break;
+                }
+                case R.id.challenge_fork:{
+                    break;
+                }
+                case R.id.challenge_share:{
+                    break;
+                }
+            }
         }
     }
 }

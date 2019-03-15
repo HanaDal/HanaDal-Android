@@ -20,11 +20,13 @@ public abstract class Res<T> implements Callback<T> {
     @Override
     public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
         callback(response.code(), response.body());
+        UtilClass.cancelProgress();
     }
 
     @Override
     public void onFailure(@NonNull Call call, @NonNull Throwable t) {
-        Log.e("반성해라", "네");
+        Log.e("반성해라", "네 " + t.getMessage());
+        UtilClass.cancelProgress();
         //UtilClass.Toast(context, "네트워크 연결이 필요합니다.");
     }
 

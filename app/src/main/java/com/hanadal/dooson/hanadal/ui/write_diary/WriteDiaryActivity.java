@@ -54,6 +54,7 @@ public class WriteDiaryActivity extends AppCompatActivity
                     }
                 }
             });
+            UtilClass.loadProgress(this);
         }
     }
 }

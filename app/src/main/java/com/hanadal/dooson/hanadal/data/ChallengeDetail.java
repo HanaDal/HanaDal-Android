@@ -23,5 +23,7 @@ public class ChallengeDetail {
     @SerializedName("todo")
     @Expose
     public ArrayList<String> todo = null;
-
+    @SerializedName("isStrict")
+    @Expose
+    public Boolean isStrict;
 }

@@ -56,6 +56,7 @@ public class MakeQnaActivity extends AppCompatActivity
                         }
                     }
                 });
+                UtilClass.loadProgress(this);
                 break;
             }
             case R.id.btn_back:{

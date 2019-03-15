@@ -50,10 +50,12 @@ public class SignDialog extends DialogFragment {
         return new Dialog(getActivity(), getTheme()){
             @Override
             public void onBackPressed() {
-                if(System.currentTimeMillis() > backKeyPressedTime + 200){
+                if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
                     backKeyPressedTime = System.currentTimeMillis();
                     UtilClass.Toast(getContext(), "한번 더 누르면\n로그인 과정을 취소합니다.");
-                } else{
+                    return;
+                }
+                if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
                     dismiss();
                 }
             }
@@ -66,17 +68,11 @@ public class SignDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_sign, container, false);
         web = view.findViewById(R.id.web);
 
-        showLoading();
+        UtilClass.loadProgress(getActivity());
         loadFacebook();
         requestLogin();
 
         return view;
-    }
-
-    private void showLoading(){
-        progressDialog = new ProgressDialog(SignDialog.this.getContext());
-        progressDialog.setMessage("로딩중...");
-        progressDialog.show();
     }
 
     private void requestLogin(){
@@ -121,7 +117,7 @@ public class SignDialog extends DialogFragment {
             @Override
             public void onResponse(@NonNull Call<JsonObject> call, @NonNull retrofit2.Response<JsonObject> response) {
                 web.loadUrl(response.headers().get("Location"));
-                progressDialog.dismiss();
+                UtilClass.cancelProgress();
             }
 
             @Override

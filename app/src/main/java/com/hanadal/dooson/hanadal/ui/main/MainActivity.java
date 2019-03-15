@@ -1,5 +1,6 @@
 package com.hanadal.dooson.hanadal.ui.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -105,6 +105,12 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        UtilClass.loadProgress(this);
     }
 
     @Override

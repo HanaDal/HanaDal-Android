@@ -11,11 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.Answer;
 import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder>
         implements View.OnClickListener{
@@ -52,7 +56,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.qnaDetailCommentContent.setText(arrayList.get(position).content);
         holder.qnaDetailCommentUserName.setText(arrayList.get(position).author.name);
-        //holder.qnaDetailCommentUserImage.setText(arrayList.get(position).author.name);
+        Glide.with(context)
+                .load(arrayList.get(position).author.picture)
+                .apply(new RequestOptions()
+                        .override(100)).into(holder.qnaDetailCommentUserImage);
     }
 
     @Override
@@ -67,7 +74,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView qnaDetailCommentUserName;
-        ImageView qnaDetailCommentUserImage;
+        CircleImageView qnaDetailCommentUserImage;
         TextView qnaDetailCommentContent;
 
         public ViewHolder(View itemView) {

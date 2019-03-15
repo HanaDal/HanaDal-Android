@@ -12,7 +12,7 @@ public class Author {
     @SerializedName("name")
     @Expose
     public String name;
-    @SerializedName("picture")
+    @SerializedName("pictureUrl")
     @Expose
     public String picture;
 

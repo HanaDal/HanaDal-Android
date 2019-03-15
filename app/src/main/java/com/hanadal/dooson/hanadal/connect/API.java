@@ -5,16 +5,21 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.hanadal.dooson.hanadal.data.*;
 
+import java.io.File;
 import java.util.ArrayList;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -43,14 +48,15 @@ public interface API {
     Call<ArrayList<ChallengeCard>> getMyChallenge(@Header("X-Access-Token") String jwt);
 
     // 도전 만들기
-    @FormUrlEncoded
+    @Multipart
     @POST("challenge")
     Call<Gson> makeMyChallenge(@Header("X-Access-Token") String jwt,
-                               @Field("title") String title,
-                               @Field("description") String description,
-                               @Field("isPublic") Boolean isPublic,
-                               @Field("isStrict") Boolean isStrict,
-                               @Field("tags") String tags);
+                               @Part("title") String title,
+                               @Part("description") String description,
+                               @Part("isPublic") Boolean isPublic,
+                               @Part("isStrict") Boolean isStrict,
+                               @Part("tags") String tags,
+                               @Part("picture\"; filename=\"pp.png\" ") RequestBody file);
 
     // 도전 상세보기
     @GET("challenge/{id}")

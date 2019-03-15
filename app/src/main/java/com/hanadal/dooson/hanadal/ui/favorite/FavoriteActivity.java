@@ -12,6 +12,7 @@ import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
+import com.hanadal.dooson.hanadal.ui.start.StartActivity;
 import com.hanadal.dooson.hanadal.util.UtilClass;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class FavoriteActivity extends AppCompatActivity {
         challengeList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
+
+        UtilClass.loadProgress(this);
 
         Connector.api.getCheering(UtilClass.getToken(getApplicationContext())).enqueue(new Res<ArrayList<ChallengeCard>>(getApplicationContext()) {
             @Override

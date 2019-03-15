@@ -31,9 +31,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/qna_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="여기는 QnA 이름"
+                android:text=""
                 android:textColor="@android:color/white"
                 android:layout_marginStart="12dp"
                 android:textSize="20sp"
@@ -44,11 +45,10 @@
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Toolbar>
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/qna_content_type_comment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,12 +59,12 @@
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/qna_content"
+                android:id="@+id/cardView2"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -74,59 +74,27 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/qna_content_modify"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/qna_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="16dp"
-                        android:text="수정"
-                        android:textColor="@android:color/black"
-                        android:textStyle="bold"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/qna_tag"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/qna_content_name"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/qna_content_name"
+                        android:id="@+id/qna_tag"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="하나달이 뭐에요?"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/qna_content_modify"
-                        app:layout_goneMarginStart="10dp" />
-
-                    <TextView
-                        android:id="@+id/qna_content_tag"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="#자프 #개발 #해야지"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/qna_content_name" />
-
-                    <TextView
-                        android:id="@+id/qna_content_body_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="8dp"
-                        android:text="그것이 궁금합니다. 뭐가 궁금할까요 저도 모르겠어요"
-                        android:textSize="11sp"
+                        android:layout_marginEnd="8dp"
                         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/qna_content_tag"
-                        tools:ignore="SmallSp" />
-
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/constraintLayout3"
@@ -136,31 +104,28 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent">
 
-                        <ImageView
-                            android:id="@+id/qna_content_user_img"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_marginBottom="8dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/qna_user_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
-                            android:src="@mipmap/ic_launcher"
+                            android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/qna_content_user_name"
+                            android:id="@+id/qna_user_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginEnd="8dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:text="손승용"
+                            android:layout_marginEnd="8dp"
+                            android:text=""
                             android:textColor="@android:color/black"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/qna_content_user_img"
+                            app:layout_constraintStart_toEndOf="@+id/qna_user_img"
                             app:layout_constraintTop_toTopOf="parent" />
                     </android.support.constraint.ConstraintLayout>
                 </android.support.constraint.ConstraintLayout>
@@ -170,25 +135,25 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
                 android:text="댓글"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/qna_content" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/qna_content_comment"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
         </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/qna_content_type_comment"

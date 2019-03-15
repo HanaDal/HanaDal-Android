@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.connect.Connector;
@@ -38,6 +40,7 @@ import java.util.Objects;
 
 import br.tiagohm.markdownview.MarkdownView;
 import br.tiagohm.markdownview.css.styles.Github;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShowChallengeActivity extends AppCompatActivity {
 
@@ -48,7 +51,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
 
     private TextView challengeTitle;
 
-    private ImageView userImg;
+    private CircleImageView userImg;
     private TextView userName;
     private TextView challengeExplanation;
     private TextView challengeTag;
@@ -61,21 +64,23 @@ public class ShowChallengeActivity extends AppCompatActivity {
     private BoomMenuButton barRightBMB;
 
     private int getIndex = -1;
+    private int chooseDay = -1;
 
     Intent intent;
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        getIndex = -1;
-
+        markdownView.loadMarkdown("");
         for(TextView tv : days){
             tv.setBackground(getResources().getDrawable(R.drawable.white_circle, null));
             tv.setTextColor(Color.argb(255, 80, 80, 80));
         }
 
-        markdownView.loadMarkdown("");
+        btnWriteDiary.setVisibility(View.INVISIBLE);
+        for (int i = 0; i < todos.size(); i++) todos.get(i).setEnabled(true);
+
+        UtilClass.loadProgress(this);
         Connector.api.showChallenge(UtilClass.getToken(getApplication()), Objects.requireNonNull(intent.getExtras()).getString("id"))
                 .enqueue(new Res<ChallengeDetail>(getApplicationContext()) {
                     @Override
@@ -85,8 +90,11 @@ public class ShowChallengeActivity extends AppCompatActivity {
                             days.get(body.day).setTextColor(Color.WHITE);
                             isMine = body.isMine;
                             day = body.day;
+                            chooseDay = body.day;
                             diaryList = body.diary;
                             todoList = body.todo;
+
+                            dayTextView.setText((day+1) + "번째 날의 TO-DO");
 
                             if (isMine) btnWriteDiary.setVisibility(View.VISIBLE);
 
@@ -147,9 +155,15 @@ public class ShowChallengeActivity extends AppCompatActivity {
                     for(String s : body.tags) tags.append("#").append(s).append(" ");
                     challengeTag.setText(tags);
                     userName.setText(body.author.name);
+                    Glide.with(getApplicationContext())
+                            .load(body.author.picture)
+                            .apply(new RequestOptions().override(300))
+                            .into(userImg);
                 }
             }
         });
+
+        getIndex = -1;
     }
 
     @Override
@@ -181,10 +195,11 @@ public class ShowChallengeActivity extends AppCompatActivity {
                         todoContent.toString()).enqueue(new Res<Gson>(getApplicationContext()) {
                     @Override
                     public void callback(int code, Gson body) {
-                        if (code == 201) UtilClass.Toast(getApplicationContext(), "ToDo 가 수정되었습니다.");
-                        else UtilClass.Toast(getApplicationContext(), "ToDo 를 수정하지 못했습니다.");
+                        if (code == 201) UtilClass.Toast(getApplicationContext(), "To-Do 가 수정되었습니다.");
+                        else UtilClass.Toast(getApplicationContext(), "To-Do 를 수정하지 못했습니다.");
                     }
                 });
+                UtilClass.loadProgress(this);
             }
         }
     }
@@ -192,7 +207,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void onDaysClick(View v) {
         TextView tmp = (TextView) v;
-        int chooseDay = Integer.parseInt(tmp.getText().toString()) - 1;
+        chooseDay = Integer.parseInt(tmp.getText().toString()) - 1;
 
         if (chooseDay <= day) {
             for (TextView tv : days) {
@@ -232,8 +247,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 }
                 findViewById(R.id.scroll_view).requestLayout();
             }
-            if(chooseDay == day) dayTextView.setText("오늘의 할일");
-            else dayTextView.setText((chooseDay+1) + "째 날의 한일");
+            dayTextView.setText((chooseDay+1) + "번째 날의 TO-DO");
         } else {
             UtilClass.Toast(getApplicationContext(), "아직 진행되지 않은 Day 입니다.");
         }

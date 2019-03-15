@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.ui.adapter.AnswerAdapter;
@@ -25,6 +27,8 @@ import com.hanadal.dooson.hanadal.util.UtilClass;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ShowQnaActivity extends AppCompatActivity
         implements View.OnClickListener{
 
@@ -32,7 +36,7 @@ public class ShowQnaActivity extends AppCompatActivity
     TextView qnaTag;
     TextView qnaContent;
     TextView qnaUserName;
-    ImageView qnaUserImage;
+    CircleImageView qnaUserImage;
     RecyclerView recyclerView;
     EditText qnaCommentEditText;
     Button qnaCommentBtn;
@@ -41,45 +45,17 @@ public class ShowQnaActivity extends AppCompatActivity
     ArrayList<Answer> arrayList = new ArrayList<>();
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        answerAdapter.remove();
-        Intent intent = getIntent();
-        Connector.api.shpwQnA(Objects.requireNonNull(intent.getExtras()).getString("id"))
-                .enqueue(new Res<QnaDetail>(getApplicationContext()) {
-                    @Override
-                    public void callback(int code, QnaDetail body) {
-                        if(code == 200) {
-                            qnaTitle.setText(body.title);
-                            qnaContent.setText(body.content);
-                            StringBuilder tag = new StringBuilder();
-                            for (String s : body.tags) tag.append("#").append(s).append(" ");
-                            qnaTag.setText(tag);
-                            Log.e("asdf", body.author.name);
-
-                            String tmp = body.author.name;
-                            qnaUserName.setText(tmp);
-                            //Glide.with(getApplicationContext()).load(body.author.picture).into(qnaUserImage);
-                            for(int i = 0; i < body.answers.size(); i++){
-                                answerAdapter.add(body.answers.get(i));
-                            }
-                        }
-                    }
-                });
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_qna);
 
         answerAdapter = new AnswerAdapter(arrayList, getApplicationContext());
 
-        qnaTitle = findViewById(R.id.qna_content_name);
-        qnaTag = findViewById(R.id.qna_content_tag);
-        qnaContent = findViewById(R.id.qna_content_body_text);
-        qnaUserName = findViewById(R.id.qna_content_user_name);
-        qnaUserImage = findViewById(R.id.qna_content_user_img);
+        qnaTitle = findViewById(R.id.qna_title);
+        qnaTag = findViewById(R.id.qna_tag);
+        qnaContent = findViewById(R.id.qna_content);
+        qnaUserName = findViewById(R.id.qna_user_name);
+        qnaUserImage = findViewById(R.id.qna_user_img);
         qnaCommentEditText = findViewById(R.id.qna_detail_comment_edit);
         qnaCommentBtn = findViewById(R.id.qna_detail_comment_btn);
 
@@ -90,6 +66,36 @@ public class ShowQnaActivity extends AppCompatActivity
         recyclerView.setAdapter(answerAdapter);
 
         qnaCommentBtn.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        answerAdapter.remove();
+        Intent intent = getIntent();
+        if(isFinishing())
+        UtilClass.loadProgress(this);
+        Connector.api.shpwQnA(Objects.requireNonNull(intent.getExtras()).getString("id"))
+                .enqueue(new Res<QnaDetail>(getApplicationContext()) {
+                    @Override
+                    public void callback(int code, QnaDetail body) {
+                        if(code == 200) {
+                            qnaTitle.setText(body.title);
+                            qnaContent.setText(body.content);
+                            StringBuilder tag = new StringBuilder();
+                            for (String s : body.tags) tag.append("#").append(s).append(" ");
+                            qnaTag.setText(tag);
+                            qnaUserName.setText(body.author.name);
+                            Glide.with(getApplicationContext())
+                                    .load(body.author.picture)
+                                    .apply(new RequestOptions().override(100))
+                                    .into(qnaUserImage);
+                            for(int i = 0; i < body.answers.size(); i++){
+                                answerAdapter.add(body.answers.get(i));
+                            }
+                        }
+                    }
+                });
     }
 
     @Override
@@ -109,6 +115,7 @@ public class ShowQnaActivity extends AppCompatActivity
                                     @Override
                                     public void callback(int code, QnaDetail body) {
                                         if(code == 200) {
+                                            answerAdapter.remove();
                                             for(int i = 0; i < body.answers.size(); i++){
                                                 answerAdapter.add(body.answers.get(i));
                                             }
@@ -120,6 +127,7 @@ public class ShowQnaActivity extends AppCompatActivity
                     }
                 }
             });
+            UtilClass.loadProgress(this);
         }else UtilClass.Toast(getApplicationContext(), "내용을 입력 해주세요!");
     }
 
