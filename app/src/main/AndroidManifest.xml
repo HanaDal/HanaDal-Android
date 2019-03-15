@@ -29,7 +29,6 @@
         <activity android:name=".ui.make_challenge.MakeChallengeActivity" />
         <activity android:name=".ui.show_challenge.ShowChallengeActivity" />
         <activity android:name=".ui.write_diary.WriteDiaryActivity" />
-        <activity android:name=".ui.challenge_info.ChallengeInfoActivity" />
         <activity android:name=".ui.request.RequestActivity" />
         <activity android:name=".ui.show_book.ShowBookActivity" />
         <activity android:name=".ui.show_qna.ShowQnaActivity" />

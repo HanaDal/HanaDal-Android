@@ -1,6 +1,5 @@
 package com.hanadal.dooson.hanadal.ui.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
