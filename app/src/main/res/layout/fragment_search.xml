@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        tabTextColor="@android:color/white"
-        app:tabTextColor="#55ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="#ffcf00"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabIndicatorColor="#ffcf00" />
+        app:tabTextColor="#55ffffff" />
 
     <com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager
         android:id="@+id/search_view_pager"

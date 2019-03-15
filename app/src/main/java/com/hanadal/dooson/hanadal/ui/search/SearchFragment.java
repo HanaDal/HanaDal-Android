@@ -5,36 +5,46 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.ui.TestFragment;
+import com.hanadal.dooson.hanadal.connect.Connector;
+import com.hanadal.dooson.hanadal.connect.Res;
+import com.hanadal.dooson.hanadal.data.Search;
 import com.hanadal.dooson.hanadal.ui.adapter.FragmentViewPagerAdapter;
 import com.hanadal.dooson.hanadal.ui.main.MainActivity;
 import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
-
+import com.hanadal.dooson.hanadal.util.UtilClass;
 
 //ToDo("검색 입력시 페이지에 맞게 리스트 값 계속 가져오기")
-public class SearchFragment extends Fragment implements TextWatcher {
+public class SearchFragment extends Fragment implements TextView.OnEditorActionListener {
 
-    TabLayout tabLayout;
-    FragmentViewPagerAdapter fragmentViewPagerAdapter;
-    DoNotSwipeViewPager viewPager;
+    private TabLayout tabLayout;
+    private FragmentViewPagerAdapter fragmentViewPagerAdapter;
+    private DoNotSwipeViewPager viewPager;
+    private SearchResultFragment challengeResultFragment;
+    private SearchResultFragment qnaResultFragment;
 
+    @Nullable
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         viewPager = view.getRootView().findViewById(R.id.search_view_pager);
         tabLayout = view.getRootView().findViewById(R.id.search_tab);
+
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
 
-        fragmentViewPagerAdapter.addFragment(new TestFragment());
-        fragmentViewPagerAdapter.addFragment(new TestFragment());
+        challengeResultFragment = new SearchResultFragment();
+        qnaResultFragment = new SearchResultFragment();
+
+        fragmentViewPagerAdapter.addFragment(challengeResultFragment);
+        fragmentViewPagerAdapter.addFragment(qnaResultFragment);
 
         viewPager.setAdapter(fragmentViewPagerAdapter);
         viewPager.setPagingEnabled(false);
@@ -43,26 +53,29 @@ public class SearchFragment extends Fragment implements TextWatcher {
         tabLayout.getTabAt(0).setText("도전");
         tabLayout.getTabAt(1).setText("질문");
 
-        ((MainActivity)getActivity()).editText.addTextChangedListener(this);
-    }
+        ((MainActivity)getActivity()).editText.setOnEditorActionListener(this);
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return view;
     }
 
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            UtilClass.loadProgress(getActivity());
+            Connector.api.searching(v.getText().toString()).enqueue(new Res<Search>(getContext()) {
+                @Override
+                public void callback(int code, Search body) {
+                    if(code == 200){
+                        UtilClass.Toast(getContext(),
+                                "도전 " + body.challenges.size() + "개,\n" +
+                                "질문 " + body.qnas.size() + "개를 찾았습니다.");
+                        challengeResultFragment.putResult(body.challenges);
+                        qnaResultFragment.putResult(body.qnas);
+                    }
+                }
+            });
+            return true;
+        }
+        return false;
     }
 }
