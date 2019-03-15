@@ -10,18 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        tabTextColor="@android:color/white"
-        app:tabTextColor="#55ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabIndicatorColor="@color/white"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabIndicatorColor="#ffcf00" />
+        app:tabTextColor="#55ffffff" />
 
     <com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager
         android:id="@+id/trending_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/trending_tab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trending_tab">
-    </com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager>
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -84,6 +84,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
                         app:layout_collapseMode="parallax"
+                        app:tabIndicatorColor="#ffcf00"
                         app:tabSelectedTextColor="@android:color/white"
                         app:tabTextColor="#55ffffff" />
                 </LinearLayout>
