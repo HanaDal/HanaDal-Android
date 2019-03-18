@@ -6,12 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.request.RequestActivity">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/request_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="쓰읍....\n 미스!"
-        android:textSize="60dp"
-        android:textStyle="bold|italic"
-        android:gravity="center"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/request_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/request_type"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/request_edit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hint="의견 작성"/>
+
+        <Button
+            android:id="@+id/request_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:drawableTop="@drawable/qna_comment_send"
+            android:paddingTop="12dp"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

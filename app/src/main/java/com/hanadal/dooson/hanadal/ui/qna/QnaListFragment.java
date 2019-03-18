@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.ui.adapter.QnaListAdapter;
+import com.hanadal.dooson.hanadal.ui.adapter.RequestNQnaListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.QnACard;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class QnaListFragment extends Fragment {
 
     RecyclerView challengeList;
-    QnaListAdapter adapter;
+    RequestNQnaListAdapter adapter;
     ArrayList<QnACard> arrayList = new ArrayList<>();
 
     @Override
@@ -46,13 +46,11 @@ public class QnaListFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler, container, false);
         challengeList = view.findViewById(R.id.fragment_recycler_view);
 
-        adapter = new QnaListAdapter(arrayList, getContext());
+        adapter = new RequestNQnaListAdapter(arrayList, getContext(), false);
         challengeList.setHasFixedSize(false);
         challengeList.setLayoutManager(new LinearLayoutManager(getContext()));
         challengeList.setItemAnimator(new DefaultItemAnimator());
         challengeList.setAdapter(adapter);
-
-        //adapter.add(new QnACard());
 
         return view;
     }

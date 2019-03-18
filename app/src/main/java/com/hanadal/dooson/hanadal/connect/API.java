@@ -189,4 +189,15 @@ public interface API {
 
     @GET("user/login")
     Call<JsonObject> facebookLogin();
+
+    @GET("challenge/{id}/comment")
+    Call<ArrayList<QnACard>> getChallengeComment(@Path("id") String id);
+
+    // QnA 작성
+    @FormUrlEncoded
+    @POST("challenge/{id}/comment")
+    Call<Gson> writeRequest(@Path("id") String id,
+                            @Header("X-Access-Token") String jwt,
+                            @Field("title") String title,
+                            @Field("content") String content);
 }

@@ -15,7 +15,7 @@ import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
 import com.hanadal.dooson.hanadal.data.QnACard;
 import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
-import com.hanadal.dooson.hanadal.ui.adapter.QnaListAdapter;
+import com.hanadal.dooson.hanadal.ui.adapter.RequestNQnaListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class SearchResultFragment extends Fragment {
 
     private ChallengeListAdapter challengeListAdapter;
-    private QnaListAdapter qnaListAdapter;
+    private RequestNQnaListAdapter qnaListAdapter;
     private RecyclerView recyclerView;
 
     void putResult(ArrayList<ChallengeCard> list){
@@ -41,7 +41,7 @@ public class SearchResultFragment extends Fragment {
 
     void putResult(List<QnACard> list){
         if(qnaListAdapter == null) {
-            qnaListAdapter = new QnaListAdapter(new ArrayList<>(), getContext());
+            qnaListAdapter = new RequestNQnaListAdapter(new ArrayList<>(), getContext(), false);
             recyclerView.setAdapter(qnaListAdapter);
         }
 

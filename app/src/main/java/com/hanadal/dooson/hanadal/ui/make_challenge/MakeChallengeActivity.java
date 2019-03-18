@@ -83,25 +83,31 @@ public class MakeChallengeActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start_challenge: {
-                File file = new File(imgeUrl.toString());
-                RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+                if(editChallengeName.length() > 0 &&
+                editChallengeInfo.length() > 0 &&
+                editTag.length() > 0) {
+                    File file = new File(imgeUrl.toString());
+                    RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
 
-                Connector.api.makeMyChallenge(
-                        UtilClass.getToken(getApplicationContext()),
-                        editChallengeName.getText().toString(),
-                        editChallengeInfo.getText().toString(),
-                        radioPublic.isChecked(),
-                        radioPerfect.isChecked(),
-                        editTag.getText().toString(),
-                        fileReqBody).enqueue(new Res<Gson>(getApplicationContext()) {
-                    @Override
-                    public void callback(int code, Gson body) {
-                        if (code == 201) {
-                            UtilClass.Toast(getApplicationContext(), "도전 추가 되었습니다.");
-                            finish();
+                    Connector.api.makeMyChallenge(
+                            UtilClass.getToken(getApplicationContext()),
+                            editChallengeName.getText().toString(),
+                            editChallengeInfo.getText().toString(),
+                            radioPublic.isChecked(),
+                            radioPerfect.isChecked(),
+                            editTag.getText().toString(),
+                            fileReqBody).enqueue(new Res<Gson>(getApplicationContext()) {
+                        @Override
+                        public void callback(int code, Gson body) {
+                            if (code == 201) {
+                                UtilClass.Toast(getApplicationContext(), "도전 추가 되었습니다.");
+                                finish();
+                            }
                         }
-                    }
-                });
+                    });
+                }else {
+                    UtilClass.Toast(getApplicationContext(), "올바르게 작성해 주세요.");
+                }
                 UtilClass.loadProgress(this);
 
                 break;

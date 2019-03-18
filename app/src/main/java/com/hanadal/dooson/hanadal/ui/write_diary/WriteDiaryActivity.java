@@ -38,7 +38,7 @@ public class WriteDiaryActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         Intent intent = getIntent();
-        if(diaryTitle.getTextSize() > 0 && diaryContent.getTextSize() > 0) {
+        if(diaryTitle.length() > 0 && diaryContent.length() > 0) {
             Connector.api.writeDiary(
                     Objects.requireNonNull(intent.getExtras()).getString("id"),
                     String.valueOf(intent.getExtras().getInt("day")),

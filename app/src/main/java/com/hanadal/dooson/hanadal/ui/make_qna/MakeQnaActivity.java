@@ -14,7 +14,6 @@ import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.util.UtilClass;
 
-//Todo("id 값들 바꾸기")
 public class MakeQnaActivity extends AppCompatActivity
         implements View.OnClickListener{
 
@@ -43,6 +42,8 @@ public class MakeQnaActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_start_challenge:{
+                if(editChallengeName.length() > 0 &&
+                        editTag.length() > 0 && editChallengeInfo.length() > 0)
                 Connector.api.writeQnA(
                         UtilClass.getToken(getApplicationContext()),
                         editChallengeName.getText().toString(),

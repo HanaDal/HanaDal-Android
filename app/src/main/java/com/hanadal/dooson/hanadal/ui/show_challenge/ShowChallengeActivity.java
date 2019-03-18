@@ -310,7 +310,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
                 switch (getIndex){
                     case 1:{
                         Intent i = new Intent(getApplicationContext(), RequestActivity.class);
-                        i.putExtra("id", Objects.requireNonNull(intent.getExtras()).getString("id"));
+                        i.putExtra("id", intent.getExtras().getString("id"));
                         startActivity(i);
                         break;
                     }

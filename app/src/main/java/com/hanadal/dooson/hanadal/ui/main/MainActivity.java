@@ -182,7 +182,6 @@ public class MainActivity extends AppCompatActivity
         lastPagerNum =  tab.getPosition();
         int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.white);
         tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
-        Log.e("asdf", ""+lastPagerNum);
     }
 
     @Override

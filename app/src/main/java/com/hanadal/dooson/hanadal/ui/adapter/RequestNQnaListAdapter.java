@@ -20,11 +20,12 @@ import com.hanadal.dooson.hanadal.ui.show_qna.ShowQnaActivity;
 
 import java.util.ArrayList;
 
-public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHolder>
+public class RequestNQnaListAdapter extends RecyclerView.Adapter<RequestNQnaListAdapter.ViewHolder>
         implements View.OnClickListener{
 
     ArrayList<QnACard> arrayList;
     Context context;
+    private boolean request = false;
 
     public void add(QnACard data){
         arrayList.add(data);
@@ -36,17 +37,18 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    public QnaListAdapter(ArrayList<QnACard> arrayList, Context context){
+    public RequestNQnaListAdapter(ArrayList<QnACard> arrayList, Context context, boolean request){
         this.arrayList = arrayList;
         this.context = context;
+        this.request = request;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(
-                parent.getContext()).inflate(R.layout.item_qna, parent, false);
-
+        View v = request ?
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_request, parent, false)
+                : LayoutInflater.from(parent.getContext()).inflate(R.layout.item_qna, parent, false);
         return new ViewHolder(v);
     }
 
@@ -59,17 +61,20 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
             circularProgressDrawable.setCenterRadius(30f);
             circularProgressDrawable.start();
 
-            holder.thisItemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, ShowQnaActivity.class);
-                intent.putExtra("id", arrayList.get(position).id);
-                context.startActivity(intent);
-            });
+            if(!request) {
+                holder.thisItemView.setOnClickListener(v -> {
+                    Intent intent = new Intent(context, ShowQnaActivity.class);
+                    intent.putExtra("id", arrayList.get(position).id);
+                    context.startActivity(intent);
+                });
+                holder.commentCount.setText("답변수: " + arrayList.get(position).answerCount);
+                StringBuilder stringBuilder = new StringBuilder();
+                for (String tag : arrayList.get(position).tags)
+                    stringBuilder.append("#").append(tag).append(" ");
+                holder.qnaTag.setText(stringBuilder.toString());
+            }
             holder.qnaName.setText(arrayList.get(position).title);
             holder.qnaUserName.setText(arrayList.get(position).author.name);
-            holder.commentCount.setText("답변수: " + arrayList.get(position).answerCount);
-            StringBuilder stringBuilder = new StringBuilder();
-            for(String tag : arrayList.get(position).tags) stringBuilder.append("#").append(tag).append(" ");
-            holder.qnaTag.setText(stringBuilder.toString());
 
             Glide.with(context)
                     .load(arrayList.get(position).author.picture)

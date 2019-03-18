@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -41,6 +39,8 @@ public class ShowQnaActivity extends AppCompatActivity
     EditText qnaCommentEditText;
     Button qnaCommentBtn;
 
+    Intent intent;
+
     AnswerAdapter answerAdapter;
     ArrayList<Answer> arrayList = new ArrayList<>();
 
@@ -66,33 +66,39 @@ public class ShowQnaActivity extends AppCompatActivity
         recyclerView.setAdapter(answerAdapter);
 
         qnaCommentBtn.setOnClickListener(this);
+
+        intent = getIntent();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        answerAdapter.remove();
-        Intent intent = getIntent();
-        if(isFinishing())
+        loadingQnaComment();
+    }
+
+    private void loadingQnaComment(){
         UtilClass.loadProgress(this);
         Connector.api.shpwQnA(Objects.requireNonNull(intent.getExtras()).getString("id"))
                 .enqueue(new Res<QnaDetail>(getApplicationContext()) {
                     @Override
                     public void callback(int code, QnaDetail body) {
                         if(code == 200) {
-                            qnaTitle.setText(body.title);
-                            qnaContent.setText(body.content);
-                            StringBuilder tag = new StringBuilder();
-                            for (String s : body.tags) tag.append("#").append(s).append(" ");
-                            qnaTag.setText(tag);
-                            qnaUserName.setText(body.author.name);
-                            Glide.with(getApplicationContext())
-                                    .load(body.author.picture)
-                                    .apply(new RequestOptions().override(100))
-                                    .into(qnaUserImage);
-                            for(int i = 0; i < body.answers.size(); i++){
-                                answerAdapter.add(body.answers.get(i));
-                            }
+                            try{
+                                qnaTitle.setText(body.title);
+                                qnaContent.setText(body.content);
+                                StringBuilder tag = new StringBuilder();
+                                for (String s : body.tags) tag.append("#").append(s).append(" ");
+                                qnaTag.setText(tag);
+                                qnaUserName.setText(body.author.name);
+                                Glide.with(getApplicationContext())
+                                        .load(body.author.picture)
+                                        .apply(new RequestOptions().override(100))
+                                        .into(qnaUserImage);
+                                answerAdapter.remove();
+                                for(Answer a : body.answers){
+                                    answerAdapter.add(a);
+                                }
+                            }catch (NullPointerException ignore){}
                         }
                     }
                 });
@@ -115,10 +121,7 @@ public class ShowQnaActivity extends AppCompatActivity
                                     @Override
                                     public void callback(int code, QnaDetail body) {
                                         if(code == 200) {
-                                            answerAdapter.remove();
-                                            for(int i = 0; i < body.answers.size(); i++){
-                                                answerAdapter.add(body.answers.get(i));
-                                            }
+                                            loadingQnaComment();
                                         }
                                     }
                                 });
