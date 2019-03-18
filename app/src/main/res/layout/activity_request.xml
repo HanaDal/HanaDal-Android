@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.request.RequestActivity">
 
+    <TextView
+        android:id="@+id/no_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="도전에 대한 피드백이 없어요. ㅠㅠ"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/request_recycler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/request_recycler" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/request_recycler"
         android:layout_width="match_parent"

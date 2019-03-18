@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.hanadal.dooson.hanadal.R;
@@ -27,6 +28,7 @@ public class RequestActivity extends AppCompatActivity
     RecyclerView requestRecycler;
     EditText requestEdit;
     Button requestBtn;
+    TextView noText;
 
     Intent intent;
 
@@ -40,6 +42,7 @@ public class RequestActivity extends AppCompatActivity
         requestRecycler = findViewById(R.id.request_recycler);
         requestEdit = findViewById(R.id. request_edit);
         requestBtn = findViewById(R.id.request_btn);
+        noText = findViewById(R.id.no_text);
 
         requestNAnswerAdapter = new RequestNQnaListAdapter(new ArrayList<>(), getApplicationContext(), true);
         requestRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -61,9 +64,13 @@ public class RequestActivity extends AppCompatActivity
                     @Override
                     public void callback(int code, ArrayList<QnACard> body) {
                         if(code == 200) {
-                            requestNAnswerAdapter.remove();
-                            for(QnACard qna : body){
-                                requestNAnswerAdapter.add(qna);
+                            if(body.size() > 0) {
+                                requestNAnswerAdapter.remove();
+                                for (QnACard qna : body) {
+                                    requestNAnswerAdapter.add(qna);
+                                }
+                            } else {
+                                noText.setVisibility(View.VISIBLE);
                             }
                         }
                     }
