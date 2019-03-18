@@ -61,20 +61,22 @@ public class SearchFragment extends Fragment implements TextView.OnEditorActionL
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-            UtilClass.loadProgress(getActivity());
-            Connector.api.searching(v.getText().toString()).enqueue(new Res<Search>(getContext()) {
-                @Override
-                public void callback(int code, Search body) {
-                    if(code == 200){
-                        UtilClass.Toast(getContext(),
-                                "도전 " + body.challenges.size() + "개,\n" +
-                                "질문 " + body.qnas.size() + "개를 찾았습니다.");
-                        challengeResultFragment.putResult(body.challenges);
-                        qnaResultFragment.putResult(body.qnas);
+            if(v.length() > 0) {
+                UtilClass.loadProgress(getActivity());
+                Connector.api.searching(v.getText().toString()).enqueue(new Res<Search>(getContext()) {
+                    @Override
+                    public void callback(int code, Search body) {
+                        if (code == 200) {
+                            UtilClass.Toast(getContext(),
+                                    "도전 " + body.challenges.size() + "개,\n" +
+                                            "질문 " + body.qnas.size() + "개를 찾았습니다.");
+                            challengeResultFragment.putResult(body.challenges);
+                            qnaResultFragment.putResult(body.qnas);
+                        }
                     }
-                }
-            });
-            return true;
+                });
+                return true;
+            }
         }
         return false;
     }

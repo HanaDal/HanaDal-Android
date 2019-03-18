@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,22 +53,31 @@ public class QnaListAdapter extends RecyclerView.Adapter<QnaListAdapter.ViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.thisItemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ShowQnaActivity.class);
-            intent.putExtra("id", arrayList.get(position).id);
-            context.startActivity(intent);
-        });
-        holder.qnaName.setText(arrayList.get(position).title);
-        holder.qnaUserName.setText(arrayList.get(position).author.name);
-        holder.commentCount.setText("답변수: " + arrayList.get(position).answerCount);
-        StringBuilder stringBuilder = new StringBuilder();
-        for(String tag : arrayList.get(position).tags) stringBuilder.append("#").append(tag).append(" ");
-        holder.qnaTag.setText(stringBuilder.toString());
+        try{
+            CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
+            circularProgressDrawable.setStrokeWidth(5f);
+            circularProgressDrawable.setCenterRadius(30f);
+            circularProgressDrawable.start();
 
-        Glide.with(context)
-                .load(arrayList.get(position).author.picture)
-                .apply(new RequestOptions()
-                        .override(150)).into(holder.qnaUserImage);
+            holder.thisItemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, ShowQnaActivity.class);
+                intent.putExtra("id", arrayList.get(position).id);
+                context.startActivity(intent);
+            });
+            holder.qnaName.setText(arrayList.get(position).title);
+            holder.qnaUserName.setText(arrayList.get(position).author.name);
+            holder.commentCount.setText("답변수: " + arrayList.get(position).answerCount);
+            StringBuilder stringBuilder = new StringBuilder();
+            for(String tag : arrayList.get(position).tags) stringBuilder.append("#").append(tag).append(" ");
+            holder.qnaTag.setText(stringBuilder.toString());
+
+            Glide.with(context)
+                    .load(arrayList.get(position).author.picture)
+                    .apply(new RequestOptions()
+                            .placeholder(circularProgressDrawable)
+                            .override(150))
+                    .into(holder.qnaUserImage);
+        }catch (NullPointerException ignored){}
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity
         if (viewPager.getCurrentItem() == 3) {
             tabLayout.setVisibility(View.VISIBLE);
             viewPager.setCurrentItem(lastPagerNum);
+            editText.setHint("하나달");
             return;
         }
 
@@ -163,7 +165,6 @@ public class MainActivity extends AppCompatActivity
         switch (v.getId()) {
             case R.id.search_edit:
                 if (lastPagerNum != 3) {
-                    lastPagerNum = viewPager.getCurrentItem();
                     tabLayout.setVisibility(View.GONE);
                     editText.setHint("편린&QnA 검색");
                     viewPager.setCurrentItem(3);
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity
         lastPagerNum =  tab.getPosition();
         int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.white);
         tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+        Log.e("asdf", ""+lastPagerNum);
     }
 
     @Override

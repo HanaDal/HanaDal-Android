@@ -4,11 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,8 +24,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder>
         implements View.OnClickListener{
 
-    ArrayList<Answer> arrayList;
-    Context context;
+    private ArrayList<Answer> arrayList;
+    private Context context;
 
     public void add(Answer data){
         arrayList.add(data);
@@ -54,12 +54,20 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.qnaDetailCommentContent.setText(arrayList.get(position).content);
-        holder.qnaDetailCommentUserName.setText(arrayList.get(position).author.name);
-        Glide.with(context)
-                .load(arrayList.get(position).author.picture)
-                .apply(new RequestOptions()
-                        .override(100)).into(holder.qnaDetailCommentUserImage);
+        try {
+            CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
+            circularProgressDrawable.setStrokeWidth(5f);
+            circularProgressDrawable.setCenterRadius(30f);
+            circularProgressDrawable.start();
+
+            holder.qnaDetailCommentContent.setText(arrayList.get(position).content);
+            holder.qnaDetailCommentUserName.setText(arrayList.get(position).author.name);
+            Glide.with(context)
+                    .load(arrayList.get(position).author.picture)
+                    .apply(new RequestOptions()
+                            .placeholder(circularProgressDrawable)
+                            .override(130)).into(holder.qnaDetailCommentUserImage);
+        } catch (NullPointerException ignored){}
     }
 
     @Override

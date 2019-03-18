@@ -4,11 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,8 +24,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdapter.ViewHolder> {
 
-    ArrayList<ChallengeCard> arrayList;
-    Context context;
+    private ArrayList<ChallengeCard> arrayList;
+    private Context context;
 
     public void add(ChallengeCard data){
         arrayList.add(data);
@@ -105,30 +103,40 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
             challengeFork.setOnClickListener(this);
             challengeShare.setOnClickListener(this);
 
-            Glide.with(context)
-                    .load(card.pictureUrl)
-                    .apply(new RequestOptions().override(50))
-                    .into(challengeImage);
+            CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
+            circularProgressDrawable.setStrokeWidth(5f);
+            circularProgressDrawable.setCenterRadius(30f);
+            circularProgressDrawable.start();
 
-            challengeName.setText(card.name);
-            challengeUserName.setText(card.author.name);
-            challengeAchieve.setText("달성률 : " + card.achievementRate + "%");
-            StringBuilder tags = new StringBuilder();
-            for(String s : card.tags) tags.append("#").append(s).append(" ");
-            challengeTag.setText(tags);
+            try{
+                Glide.with(context)
+                        .load(card.pictureUrl)
+                        .apply(new RequestOptions()
+                                .placeholder(circularProgressDrawable)
+                                .override(50))
+                        .into(challengeImage);
 
-            Glide.with(context).load(card.pictureUrl).into(challengeImage);
-            Glide.with(context).load(card.author.picture)
-                    .apply(new RequestOptions().override(150))
-                    .into(challengeUserImage);
-            Log.e("테스트", card.achievementRate.toString());
+                challengeName.setText(card.name);
+                challengeUserName.setText(card.author.name);
+                challengeAchieve.setText("달성률 : " + card.achievementRate + "%");
+                StringBuilder tags = new StringBuilder();
+                for(String s : card.tags) tags.append("#").append(s).append(" ");
+                challengeTag.setText(tags);
 
-            thisItemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, ShowChallengeActivity.class);
-                intent.putExtra("id", card.id);
-                intent.putExtra("title", card.name);
-                context.startActivity(intent);
-            });
+                Glide.with(context).load(card.pictureUrl).into(challengeImage);
+                Glide.with(context).load(card.author.picture)
+                        .apply(new RequestOptions()
+                                .placeholder(circularProgressDrawable)
+                                .override(150))
+                        .into(challengeUserImage);
+
+                thisItemView.setOnClickListener(v -> {
+                    Intent intent = new Intent(context, ShowChallengeActivity.class);
+                    intent.putExtra("id", card.id);
+                    intent.putExtra("title", card.name);
+                    context.startActivity(intent);
+                });
+            }catch (NullPointerException ignored){ }
         }
 
         @Override
