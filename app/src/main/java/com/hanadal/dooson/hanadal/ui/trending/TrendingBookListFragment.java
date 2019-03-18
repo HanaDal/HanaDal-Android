@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.ui.adapter.BookListAdapter;
@@ -20,9 +21,10 @@ import com.hanadal.dooson.hanadal.util.UtilClass;
 
 import java.util.ArrayList;
 
-public class TredingBookListFragment extends Fragment {
+public class TrendingBookListFragment extends Fragment {
 
     RecyclerView challengeList;
+    TextView noText;
     BookListAdapter adapter;
     ArrayList<BookCard> arrayList = new ArrayList<>();
 
@@ -35,8 +37,13 @@ public class TredingBookListFragment extends Fragment {
             @Override
             public void callback(int code, ArrayList<BookCard> body) {
                 if(code == 200){
-                    for(BookCard b : body){
-                        adapter.add(b);
+                    if(body.size() > 0) {
+                        for (BookCard b : body) {
+                            adapter.add(b);
+                        }
+                    } else {
+                        noText.setVisibility(View.VISIBLE);
+                        noText.setText("트렌딩한 책이 없어요. ㅠㅠ");
                     }
                 }
             }
@@ -48,6 +55,7 @@ public class TredingBookListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler, container, false);
         challengeList = view.findViewById(R.id.fragment_recycler_view);
+        noText = view.findViewById(R.id.no_text);
 
         adapter = new BookListAdapter(arrayList, getContext());
         challengeList.setHasFixedSize(false);

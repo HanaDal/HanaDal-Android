@@ -63,7 +63,7 @@
                                 android:background="@android:color/white"
                                 android:cursorVisible="false"
                                 android:gravity="center_vertical"
-                                android:hint="@string/hanadal"
+                                android:hint="검색"
                                 android:onClick="onClick"
                                 android:paddingEnd="8dp"
                                 android:paddingStart="8dp"

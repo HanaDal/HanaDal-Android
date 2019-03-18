@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity
         if (viewPager.getCurrentItem() == 3) {
             tabLayout.setVisibility(View.VISIBLE);
             viewPager.setCurrentItem(lastPagerNum);
-            editText.setHint("하나달");
+            //editText.setHint("하나달");
             return;
         }
 
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.search_edit:
                 if (lastPagerNum != 3) {
                     tabLayout.setVisibility(View.GONE);
-                    editText.setHint("편린&QnA 검색");
+                    //editText.setHint("편린&QnA 검색");
                     viewPager.setCurrentItem(3);
                 }
                 break;

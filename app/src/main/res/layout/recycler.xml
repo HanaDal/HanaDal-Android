@@ -5,6 +5,19 @@
     android:layout_height="match_parent"
     android:background="#f7f7f7">
 
+    <TextView
+        android:id="@+id/no_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="22sp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_recycler_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment_recycler_view" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_recycler_view"
         android:layout_width="match_parent"

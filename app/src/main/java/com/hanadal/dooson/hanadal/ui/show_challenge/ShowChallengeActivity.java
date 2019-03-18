@@ -73,7 +73,7 @@ public class ShowChallengeActivity extends AppCompatActivity {
             tv.setTextColor(Color.argb(255, 80, 80, 80));
         }
 
-        btnWriteDiary.setVisibility(View.INVISIBLE);
+        btnWriteDiary.setVisibility(View.GONE);
         for (int i = 0; i < todos.size(); i++) todos.get(i).setEnabled(true);
 
         UtilClass.loadProgress(this);
@@ -94,11 +94,14 @@ public class ShowChallengeActivity extends AppCompatActivity {
 
                             if (isMine) btnWriteDiary.setVisibility(View.VISIBLE);
 
+                            for(int j = 0; j < todos.size(); j++){
+                                if (!isMine) todos.get(j).setEnabled(false);
+                            }
+
                             try {
                                 String[] todo = body.todo.get(day).split(", ");
                                 for (int i = 0; i < todo.length; i++) {
                                     todos.get(i).setText(todo[i]);
-                                    if (!isMine) todos.get(i).setEnabled(false);
                                 }
                                 markdownView.loadMarkdown("# " + body.diary.get(body.day).title + "\n" + body.diary.get(body.day).content);
                             } catch (Exception ignored) {

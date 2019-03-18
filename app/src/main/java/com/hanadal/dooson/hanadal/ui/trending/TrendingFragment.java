@@ -28,7 +28,7 @@ public class TrendingFragment extends Fragment {
 
         fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager());
         fragmentViewPagerAdapter.addFragment(new TrendingChallengeFragment());
-        fragmentViewPagerAdapter.addFragment(new TredingBookListFragment());
+        fragmentViewPagerAdapter.addFragment(new TrendingBookListFragment());
 
         viewPager.setAdapter(fragmentViewPagerAdapter);
         viewPager.setPagingEnabled(false);

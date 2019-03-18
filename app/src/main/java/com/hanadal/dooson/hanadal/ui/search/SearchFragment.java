@@ -21,7 +21,6 @@ import com.hanadal.dooson.hanadal.ui.main.MainActivity;
 import com.hanadal.dooson.hanadal.ui.view.DoNotSwipeViewPager;
 import com.hanadal.dooson.hanadal.util.UtilClass;
 
-//ToDo("검색 입력시 페이지에 맞게 리스트 값 계속 가져오기")
 public class SearchFragment extends Fragment implements TextView.OnEditorActionListener {
 
     private TabLayout tabLayout;
@@ -67,9 +66,9 @@ public class SearchFragment extends Fragment implements TextView.OnEditorActionL
                     @Override
                     public void callback(int code, Search body) {
                         if (code == 200) {
-                            UtilClass.Toast(getContext(),
+/*                            UtilClass.Toast(getContext(),
                                     "도전 " + body.challenges.size() + "개,\n" +
-                                            "질문 " + body.qnas.size() + "개를 찾았습니다.");
+                                            "질문 " + body.qnas.size() + "개를 찾았습니다.");*/
                             challengeResultFragment.putResult(body.challenges);
                             qnaResultFragment.putResult(body.qnas);
                         }

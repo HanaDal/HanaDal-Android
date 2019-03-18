@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
@@ -22,6 +23,7 @@ public class FavoriteActivity extends AppCompatActivity {
     RecyclerView challengeList;
     ChallengeListAdapter adapter;
     ArrayList<ChallengeCard> arrayList = new ArrayList<>();
+    TextView noText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorite);
 
         challengeList = findViewById(R.id.recycler_view);
+        noText = findViewById(R.id.no_text);
 
         adapter = new ChallengeListAdapter(arrayList, getApplicationContext());
         challengeList.setHasFixedSize(false);
@@ -42,7 +45,11 @@ public class FavoriteActivity extends AppCompatActivity {
             @Override
             public void callback(int code, ArrayList<ChallengeCard> body) {
                 if(code == 200){
-                    for(ChallengeCard c : body) adapter.add(c);
+                    if(body.size() > 0) {
+                        for (ChallengeCard c : body) adapter.add(c);
+                    }else {
+                        noText.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });

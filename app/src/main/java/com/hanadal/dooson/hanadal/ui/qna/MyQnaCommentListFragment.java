@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.ui.adapter.RequestNQnaListAdapter;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class MyQnaCommentListFragment extends Fragment {
 
     RecyclerView challengeList;
+    TextView noText;
     RequestNQnaListAdapter adapter;
     ArrayList<QnACard> arrayList = new ArrayList<>();
 
@@ -34,8 +36,13 @@ public class MyQnaCommentListFragment extends Fragment {
             @Override
             public void callback(int code, ArrayList<QnACard> body) {
                 if(code == 200){
-                    for(QnACard qac : body)
-                        adapter.add(qac);
+                    if(body.size() > 0) {
+                        for (QnACard qac : body)
+                            adapter.add(qac);
+                    }else{
+                        noText.setVisibility(View.VISIBLE);
+                        noText.setText("댓글을 남긴 QnA 가 없어요. ㅠㅠ");
+                    }
                 }
             }
         });
@@ -46,6 +53,7 @@ public class MyQnaCommentListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler, container, false);
         challengeList = view.findViewById(R.id.fragment_recycler_view);
+        noText = view.findViewById(R.id.no_text);
 
         adapter = new RequestNQnaListAdapter(arrayList, getContext(), false);
         challengeList.setHasFixedSize(false);

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
@@ -25,6 +26,7 @@ public class SearchResultFragment extends Fragment {
     private ChallengeListAdapter challengeListAdapter;
     private RequestNQnaListAdapter qnaListAdapter;
     private RecyclerView recyclerView;
+    private TextView noText;
 
     void putResult(ArrayList<ChallengeCard> list){
         if(challengeListAdapter == null) {
@@ -36,6 +38,9 @@ public class SearchResultFragment extends Fragment {
             for (ChallengeCard c : list) {
                 challengeListAdapter.add(c);
             }
+        } else{
+            noText.setVisibility(View.VISIBLE);
+            noText.setText("검색된 도전이 없어요. ㅠㅠ");
         }
     }
 
@@ -50,6 +55,9 @@ public class SearchResultFragment extends Fragment {
             for (QnACard q : list) {
                 qnaListAdapter.add(q);
             }
+        } else{
+            noText.setVisibility(View.VISIBLE);
+            noText.setText("검색된 QnA 가 없어요. ㅠㅠ");
         }
     }
 
@@ -59,6 +67,7 @@ public class SearchResultFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler, container, false);
 
         recyclerView = view.findViewById(R.id.fragment_recycler_view);
+        noText = view.findViewById(R.id.no_text);
 
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
