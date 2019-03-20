@@ -87,7 +87,7 @@ public class MakeChallengeActivity extends AppCompatActivity
                 editChallengeInfo.length() > 0 &&
                 editTag.length() > 0) {
                     File file = new File(imgeUrl.toString());
-                    RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+                    RequestBody fileReqBody = imgeUrl.length() > 0 ? RequestBody.create(MediaType.parse("image/*"), file) : null;
 
                     Connector.api.makeMyChallenge(
                             UtilClass.getToken(getApplicationContext()),

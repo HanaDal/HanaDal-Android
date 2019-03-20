@@ -13,7 +13,6 @@ public class DoNotSwipeViewPager extends ViewPager {
         super(context, attrs);
         this.enabled = true;
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (this.enabled) {

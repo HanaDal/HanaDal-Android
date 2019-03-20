@@ -29,8 +29,8 @@ public class ChallengeListFragment extends Fragment {
     ArrayList<ChallengeCard> arrayList = new ArrayList<>();
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
         adapter.remove();
         Connector.api.getMyChallenge(UtilClass.getToken(getContext())).enqueue(new Res<ArrayList<ChallengeCard>>(getContext()) {
             @Override
