@@ -35,6 +35,7 @@ public class SearchResultFragment extends Fragment {
         }
         challengeListAdapter.remove();
         if(list.size() > 0) {
+            noText.setVisibility(View.INVISIBLE);
             for (ChallengeCard c : list) {
                 challengeListAdapter.add(c);
             }
@@ -52,6 +53,7 @@ public class SearchResultFragment extends Fragment {
 
         qnaListAdapter.remove();
         if(list.size() > 0) {
+            noText.setVisibility(View.INVISIBLE);
             for (QnACard q : list) {
                 qnaListAdapter.add(q);
             }

@@ -13,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hanadal.dooson.hanadal.R;
-import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.connect.Connector;
 import com.hanadal.dooson.hanadal.connect.Res;
 import com.hanadal.dooson.hanadal.data.ChallengeCard;
+import com.hanadal.dooson.hanadal.ui.adapter.ChallengeListAdapter;
 import com.hanadal.dooson.hanadal.util.UtilClass;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -31,14 +29,15 @@ public class ChallengeListFragment extends Fragment {
     ArrayList<ChallengeCard> arrayList = new ArrayList<>();
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         adapter.remove();
         Connector.api.getMyChallenge(UtilClass.getToken(getContext())).enqueue(new Res<ArrayList<ChallengeCard>>(getContext()) {
             @Override
             public void callback(int code, ArrayList<ChallengeCard> body) {
                 if(code == 200){
                     if(body.size() > 0) {
+                        noText.setVisibility(View.INVISIBLE);
                         for (ChallengeCard c : body) {
                             adapter.add(c);
                         }

@@ -37,6 +37,7 @@ public class QnaListFragment extends Fragment {
             public void callback(int code, ArrayList<QnACard> body) {
                 if(code == 200){
                     if(body.size() > 0) {
+                        noText.setVisibility(View.INVISIBLE);
                         for (QnACard q : body) adapter.add(q);
                     } else{
                         noText.setVisibility(View.VISIBLE);

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +64,7 @@ public class RequestActivity extends AppCompatActivity
                     public void callback(int code, ArrayList<QnACard> body) {
                         if(code == 200) {
                             if(body.size() > 0) {
+                                noText.setVisibility(View.INVISIBLE);
                                 requestNAnswerAdapter.remove();
                                 for (QnACard qna : body) {
                                     requestNAnswerAdapter.add(qna);

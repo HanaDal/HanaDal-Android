@@ -38,6 +38,7 @@ public class TrendingBookListFragment extends Fragment {
             public void callback(int code, ArrayList<BookCard> body) {
                 if(code == 200){
                     if(body.size() > 0) {
+                        noText.setVisibility(View.INVISIBLE);
                         for (BookCard b : body) {
                             adapter.add(b);
                         }

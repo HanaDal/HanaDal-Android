@@ -37,6 +37,7 @@ public class TrendingChallengeFragment extends Fragment {
             public void callback(int code, ArrayList<ChallengeCard> body) {
                 if(code == 200){
                     if (body.size() > 0) {
+                        noText.setVisibility(View.INVISIBLE);
                         for (ChallengeCard c : body) {
                             adapter.add(c);
                         }
